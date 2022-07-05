@@ -1,6 +1,6 @@
 
 <div class="content-section implementation dock-demo">
-    <p-menubar [model]="menubarItems" styleClass="menu-bar">
+    <p-menubar [model]="(menubarItems | async) || []" styleClass="menu-bar">
         <ng-template pTemplate="start">
             <img class="logo" src="/assets/images/colombia.png">
         </ng-template>
@@ -9,28 +9,11 @@
         </ng-template>
     </p-menubar>
     <div class="dock-window dock-advanced">
-        <p-dock [model]="dockItems" position="bottom">
+        <p-dock [model]="(dockItems | async) || []" position="bottom">
             <ng-template pTemplate="item" let-item>
                 <img [src]="item.icon" [alt]="item.label" width="100%">
             </ng-template>
         </p-dock>
-
-        <p-toast></p-toast>
-
-        <p-dialog [(visible)]="displayFinder" [breakpoints]="{'960px': '50vw'}" [style]="{width: '30vw', height: '18rem'}" [draggable]="false" [resizable]="false">
-            <p-tree [value]="nodes"></p-tree>
-        </p-dialog>
-
-        <p-dialog [maximizable]="true" [(visible)]="displayTerminal" [breakpoints]="{'960px': '50vw'}" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
-            <p-terminal welcomeMessage="Welcome to PrimeNG (cmd: 'date', 'greet {0}', 'random')" prompt="primeng $"></p-terminal>
-        </p-dialog>
-
-        <p-galleria [value]="images" [showThumbnails]="false" [showThumbnailNavigators]="false" [showItemNavigators]="true" [(visible)]="displayGalleria" [circular]="true" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '850px'}"
-            [circular]="true" [fullScreen]="true">
-            <ng-template pTemplate="item" let-item>
-                <img [src]="item.previewImageSrc" style="width: 100%; display: block;"/>
-            </ng-template>
-        </p-galleria>
     </div>
 </div>
 
