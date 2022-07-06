@@ -18,20 +18,26 @@ export class MenuService {
   generateMenus() {
     let menubarItems = [
       {
-        label: 'Configuración',
+        label: 'Área de interés',
         items: [
           {
-            label: 'Crear Catálogos',
+            label: 'Crear área de interés',
             icon: 'pi pi-fw pi-cog',
             id: 'create-catalog',
+            command: () => {
+              this.router.navigateByUrl("config/create");
+            },
           },
           {
             separator: true,
           },
           {
-            label: 'Listado de catálogos',
+            label: 'Listado de cáreas de interés',
             icon: 'pi pi-fw pi-list',
             id: 'list-catalog',
+            command: () => {
+              this.router.navigateByUrl("config/list");
+            },
           },
         ],
       },

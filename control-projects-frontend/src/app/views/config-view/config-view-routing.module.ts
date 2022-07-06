@@ -12,19 +12,19 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateCatalogViewComponent,
-    title: "Crear catálogo"
+    title: "Crear área de interés"
   },
   {
     path: 'edit/:id',
     component: CreateCatalogViewComponent,
-    title: "Editar catálogo",
+    title: "Editar área de interés",
     data: {
       isEdit: true,
     },
   },
   {
     path: 'list',
-    title: "Listado de catálogos",
+    title: "Listado de áreas de interés",
     component: ListCatalogViewComponent,
   },
 ];

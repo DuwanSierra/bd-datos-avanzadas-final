@@ -8,8 +8,8 @@
             <span>{{ time | date: 'medium' }}</span>
         </ng-template>
     </p-menubar>
-    <div class="dock-window dock-advanced">
-        <p-dock [model]="(dockItems | async) || []" position="bottom">
+    <div class="dock-window dock-advanced" (pointerenter)="onFocusInEvent($event)" (pointerleave)="onFocusOutEvent($event)">
+        <p-dock [model]="(dockItems | async) || []" position="bottom" [ngClass]="{'show_dock_blur' : !displayFullDock}">
             <ng-template pTemplate="item" let-item>
                 <img [src]="item.icon" [alt]="item.label" width="100%">
             </ng-template>

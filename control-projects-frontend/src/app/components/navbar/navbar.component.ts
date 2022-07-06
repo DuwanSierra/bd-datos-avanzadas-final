@@ -13,11 +13,7 @@ export class NavbarComponent implements OnInit {
     
     currentDate = new Date();
 
-    displayTerminal: boolean = false;
-
-    displayFinder: boolean= false;
-
-    displayGalleria: boolean= false;
+    displayFullDock: boolean = false;
 
     dockItems:  BehaviorSubject<MenuItem[]> = new BehaviorSubject<MenuItem[]>([]);
 
@@ -69,6 +65,14 @@ export class NavbarComponent implements OnInit {
     getMenus(){
         this.menubarItems = this.menuService.menuItems;
         this.dockItems = this.menuService.menuDockItems;
+    }
+
+    onFocusInEvent(event: Event){
+        this.displayFullDock = true;
+    }
+
+    onFocusOutEvent(event: Event){
+        this.displayFullDock = false;
     }
 
     ngOnDestroy() {
