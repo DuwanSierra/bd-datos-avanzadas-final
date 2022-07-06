@@ -90,6 +90,22 @@ export class MenuService {
         ],
       },
       {
+        label: 'Proyectos de investigación',
+        items: [
+          {
+            label: 'Registrar proyecto',
+            icon: 'pi pi-fw pi-book',
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Listado de proyectos',
+            icon: 'pi pi-fw pi-list',
+          },
+        ],
+      },
+      {
         label: 'Reportes',
         items: [
           {
@@ -132,9 +148,9 @@ export class MenuService {
           tooltipPosition: 'top',
           positionTop: -15,
           positionLeft: 15,
-          showDelay: 1000,
+          showDelay: 200,
         },
-        icon: 'assets/images/settings.png',
+        icon: 'assets/images/social.png',
         command: () => {
           this.router.navigateByUrl("config");
         },
@@ -146,7 +162,7 @@ export class MenuService {
           tooltipPosition: 'top',
           positionTop: -15,
           positionLeft: 15,
-          showDelay: 1000,
+          showDelay: 200,
         },
         icon: 'assets/images/faculty.png',
         command: () => {
@@ -160,7 +176,7 @@ export class MenuService {
           tooltipPosition: 'top',
           positionTop: -15,
           positionLeft: 15,
-          showDelay: 1000,
+          showDelay: 200,
         },
         icon: 'assets/images/professor.png',
         command: () => {
@@ -174,11 +190,25 @@ export class MenuService {
           tooltipPosition: 'top',
           positionTop: -15,
           positionLeft: 15,
-          showDelay: 1000,
+          showDelay: 200,
         },
         icon: 'assets/images/group-investigation.png',
         command: () => {
           console.log('investigation');
+        },
+      },
+      {
+        label: 'Proyectos de investigación',
+        tooltipOptions: {
+          tooltipLabel: 'Proyectos de investigación',
+          tooltipPosition: 'top',
+          positionTop: -15,
+          positionLeft: 15,
+          showDelay: 200,
+        },
+        icon: 'assets/images/management.png',
+        command: () => {
+          console.log('projects');
         },
       },
       {
@@ -188,7 +218,7 @@ export class MenuService {
           tooltipPosition: 'top',
           positionTop: -15,
           positionLeft: 15,
-          showDelay: 1000,
+          showDelay: 200,
         },
         icon: 'assets/images/reports.png',
         command: () => {
