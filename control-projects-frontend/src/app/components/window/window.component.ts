@@ -7,7 +7,10 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { CustomConfirmDialogDto } from '../custom-confirm-dialog/custom-confim-dialog.dto';
+import { CustomConfimDialogService } from '../custom-confirm-dialog/custom-confim-dialog.service';
 import { WindowConstants } from './window.constants';
 
 @Component({
@@ -16,11 +19,10 @@ import { WindowConstants } from './window.constants';
   styleUrls: ['./window.component.scss'],
 })
 export class WindowComponent implements OnInit {
-  
   // Inputs
   @Input() title?: string;
   @Input() showActions = false;
-  
+
   //Outputs
   @Output() closeEvent = new EventEmitter<boolean>();
   @Output() maximiseEvent = new EventEmitter<boolean>();
@@ -28,16 +30,29 @@ export class WindowComponent implements OnInit {
 
   //variables
   public isFullScreen = false;
+  public autoNavigateInit = true;
 
   public CONSTANTS = WindowConstants;
 
-  constructor() {}
+  constructor(
+    private customConfimDialog: CustomConfimDialogService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   buttonAction(action: string) {
     switch (action) {
       case this.CONSTANTS.ACTION_CLOSE:
+        if (this.autoNavigateInit) {
+          let data = new CustomConfirmDialogDto();
+          data.acceptEvent = () => {
+            this.navigateInit();
+          };
+          data.message = "¿Está seguro de cerrar esta vista?";
+          data.title = "Atención"
+          this.customConfimDialog.confirmDialog(data);
+        }
         this.closeEvent.emit();
         break;
       case this.CONSTANTS.ACTION_MAXIMISE:
@@ -49,5 +64,9 @@ export class WindowComponent implements OnInit {
         this.minimiseEvent.emit();
         break;
     }
+  }
+
+  private navigateInit() {
+    this.router.navigate(['']);
   }
 }
