@@ -1,8 +1,15 @@
-<div class="outer yosemite">
+<div class="windows">
+  <div class="outer yosemite">
     <div class="dot red"></div>
     <div class="dot amber"></div>
     <div class="dot green"></div>
-</div>
-<div class="content">
-    <ng-content select="[content]"></ng-content>
+  </div>
+  <div class="content">
+    <div class="title-container">
+      <h2 class="title">{{title}}</h2>
+    </div>
+    <p-card>
+      <ng-content select="[content]"></ng-content>
+    </p-card>
+  </div>
 </div>

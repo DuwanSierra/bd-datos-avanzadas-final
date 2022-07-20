@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-catalog-view.component.scss']
 })
 export class CreateCatalogViewComponent implements OnInit {
+  public title = "Crear área de interes"
 
   constructor() { }
 
