@@ -27,7 +27,7 @@ export class WindowComponent implements OnInit {
   @Output() minimiseEvent = new EventEmitter<boolean>();
 
   //variables
-  public isFullScreen = true;
+  public isFullScreen = false;
 
   public CONSTANTS = WindowConstants;
 

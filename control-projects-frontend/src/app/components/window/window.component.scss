@@ -50,9 +50,8 @@
 }
 
 .content {
-  height: 89vh;
+  height: 88vh;
   padding: 20px 20%;
-  margin-top: -16px;
   display: flex;
   justify-content: center;
   background-color: var(--surface-section);
@@ -109,7 +108,7 @@
   .content {
     height: 97vh;
   }
-  .yosemite{
+  .yosemite {
     background: var(--surface-d);
     opacity: 1;
     position: relative;
