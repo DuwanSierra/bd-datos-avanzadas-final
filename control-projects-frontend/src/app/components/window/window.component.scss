@@ -1,5 +1,15 @@
 .windows {
   margin: 5px 10px;
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    height: 60px;
+    padding: 10px 0;
+    width: 100%;
+    button {
+      margin: auto 5px;
+    }
+  }
 }
 .outer {
   opacity: 0.9;
@@ -40,7 +50,49 @@
 
 .content {
   height: 89vh;
+  padding: 20px 20%;
   margin-top: -16px;
-  padding: 20px 200px;
+  display: flex;
+  justify-content: center;
   background-color: var(--surface-section);
+  .form-content {
+    width: 100%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+  .content {
+    padding: 20px 200px;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  .content {
+    padding: 10px 10px;
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  .content {
+    padding: 10px 10px;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .content {
+    padding: 10px 10px;
+  }
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  .content {
+    padding: 10px 10px;
+  }
+}
+
+::ng-deep .card-content {
+  .p-card-body {
+    padding: 1rem 1.5rem;
+  }
 }

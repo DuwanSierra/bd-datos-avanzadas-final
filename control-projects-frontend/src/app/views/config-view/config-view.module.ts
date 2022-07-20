@@ -5,6 +5,7 @@ import { ConfigViewRoutingModule } from './config-view-routing.module';
 import { CreateCatalogViewComponent } from './create-catalog-view/create-catalog-view.component';
 import { ListCatalogViewComponent } from './list-catalog-view/list-catalog-view.component';
 import { WindowModule } from 'src/app/components/window/window.module';
+import { InputTextFormModule } from 'src/app/components/input-text-form/input-text-form.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { WindowModule } from 'src/app/components/window/window.module';
   imports: [
     CommonModule,
     ConfigViewRoutingModule,
-    WindowModule
+    WindowModule,
+    InputTextFormModule
   ]
 })
 export class ConfigViewModule { }

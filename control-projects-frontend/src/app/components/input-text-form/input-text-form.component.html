@@ -1,0 +1,7 @@
+<div class="input-text">
+    <div class="field">
+        <label for="{{id}}" class="block" *ngIf="label">{{label}}</label>
+        <input id="{{id}}" type="{{type || 'text'}}" class="input" [attr.aria-describedby]="id+'-help'" pInputText />
+        <small id="{{id}}-help" class="block" *ngIf="hint">{{hint}}</small>
+    </div>
+</div>

@@ -5,11 +5,27 @@
     <div class="dot green"></div>
   </div>
   <div class="content">
-    <div class="title-container">
-      <h2 class="title">{{title}}</h2>
+    <div class="form-content">
+      <div class="title-container">
+        <h2 class="title">{{ title }}</h2>
+      </div>
+      <div class="form">
+        <p-card styleClass="card-content">
+          <ng-content select="[content]"></ng-content>
+          <ng-template pTemplate="footer" *ngIf="showActions">
+            <div class="actions">
+              <button
+                pButton
+                pRipple
+                type="button"
+                label="Cancelar"
+                class="p-button-text"
+              ></button>
+              <button pButton pRipple type="button" label="Guardar"></button>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
     </div>
-    <p-card>
-      <ng-content select="[content]"></ng-content>
-    </p-card>
   </div>
 </div>

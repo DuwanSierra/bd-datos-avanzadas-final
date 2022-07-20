@@ -8,6 +8,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 export class WindowComponent implements OnInit {
 
   @Input() title?: string;
+  @Input() showActions = false;
 
   constructor() {}
 
