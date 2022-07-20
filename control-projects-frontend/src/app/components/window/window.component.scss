@@ -19,7 +19,7 @@
   border-radius: 7px 7px 0px 0px;
 
   &.yosemite {
-    background: var(--surface-ground);
+    background: var(--surface-d);
     border: 1px solid var(--surface-border);
   }
 }
@@ -31,6 +31,7 @@
   background: #f9f9f9;
   border-radius: 50%;
   margin: 0 5px 0 0;
+  z-index: 1;
 
   &.red {
     background: #ff6057;
@@ -94,5 +95,23 @@
 ::ng-deep .card-content {
   .p-card-body {
     padding: 1rem 1.5rem;
+  }
+}
+
+.fullscreen {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: 0;
+  z-index: 1;
+  .content {
+    height: 97vh;
+  }
+  .yosemite{
+    background: var(--surface-d);
+    opacity: 1;
+    position: relative;
   }
 }

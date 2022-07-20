@@ -1,8 +1,8 @@
-<div class="windows">
+<div class="windows {{ isFullScreen ? 'fullscreen' : ''}}">
   <div class="outer yosemite">
-    <div class="dot red"></div>
-    <div class="dot amber"></div>
-    <div class="dot green"></div>
+    <button class="dot red" (click)="buttonAction(CONSTANTS.ACTION_CLOSE)"></button>
+    <button class="dot amber" (click)="buttonAction(CONSTANTS.ACTION_MAXIMISE)"></button>
+    <button class="dot green" (click)="buttonAction(CONSTANTS.ACTION_MINIMISE)"></button>
   </div>
   <div class="content">
     <div class="form-content">
