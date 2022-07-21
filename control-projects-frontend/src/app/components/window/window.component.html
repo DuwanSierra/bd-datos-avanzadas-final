@@ -1,8 +1,17 @@
-<div class="windows {{ isFullScreen ? 'fullscreen' : ''}}">
+<div class="windows {{ isFullScreen ? 'fullscreen' : '' }}">
   <div class="outer yosemite">
-    <button class="dot red" (click)="buttonAction(CONSTANTS.ACTION_CLOSE)"></button>
-    <button class="dot amber" (click)="buttonAction(CONSTANTS.ACTION_MAXIMISE)"></button>
-    <button class="dot green" (click)="buttonAction(CONSTANTS.ACTION_MINIMISE)"></button>
+    <button
+      class="dot red"
+      (click)="buttonAction(CONSTANTS.ACTION_CLOSE)"
+    ></button>
+    <button
+      class="dot amber"
+      (click)="buttonAction(CONSTANTS.ACTION_MAXIMISE)"
+    ></button>
+    <button
+      class="dot green"
+      (click)="buttonAction(CONSTANTS.ACTION_MINIMISE)"
+    ></button>
   </div>
   <div class="content">
     <div class="form-content">
@@ -13,16 +22,18 @@
         <p-card styleClass="card-content">
           <ng-content select="[content]"></ng-content>
           <ng-template pTemplate="footer" *ngIf="showActions">
-            <div class="actions">
-              <button
-                pButton
-                pRipple
-                type="button"
-                label="Cancelar"
-                class="p-button-text"
-              ></button>
-              <button pButton pRipple type="button" label="Guardar"></button>
-            </div>
+            <form [formGroup]="customFormGroup" (ngSubmit)="clickAction()">
+              <div class="actions">
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Cancelar"
+                  class="p-button-text"
+                ></button>
+                <button pButton pRipple type="submit" label="Guardar"></button>
+              </div>
+            </form>
           </ng-template>
         </p-card>
       </div>

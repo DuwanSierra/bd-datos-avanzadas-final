@@ -13,6 +13,8 @@ export class CustomConfimDialogService {
       message: options.message || 'Title',
       header: options.title || 'Title',
       icon: options.icon || 'pi pi-exclamation-triangle',
+      acceptLabel: options.labelAcceptButton || 'Aceptar',
+      rejectLabel: options.labelCancelButton || 'Cancelar',
       accept: () => {
         if (options.acceptEvent) {
           options.acceptEvent();

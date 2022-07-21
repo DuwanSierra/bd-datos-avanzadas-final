@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { CustomConfirmDialogDto } from '../custom-confirm-dialog/custom-confim-dialog.dto';
@@ -22,11 +23,14 @@ export class WindowComponent implements OnInit {
   // Inputs
   @Input() title?: string;
   @Input() showActions = false;
+  @Input() customFormGroup: FormGroup = new FormGroup({});
+  @Input() validateForm = false;
 
   //Outputs
   @Output() closeEvent = new EventEmitter<boolean>();
   @Output() maximiseEvent = new EventEmitter<boolean>();
   @Output() minimiseEvent = new EventEmitter<boolean>();
+  @Output() actionPrimaryEvent = new EventEmitter<boolean>();
 
   //variables
   public isFullScreen = false;
@@ -49,8 +53,8 @@ export class WindowComponent implements OnInit {
           data.acceptEvent = () => {
             this.navigateInit();
           };
-          data.message = "¿Está seguro de cerrar esta vista?";
-          data.title = "Atención"
+          data.message = '¿Está seguro de cerrar esta vista?';
+          data.title = 'Atención';
           this.customConfimDialog.confirmDialog(data);
         }
         this.closeEvent.emit();
@@ -68,5 +72,13 @@ export class WindowComponent implements OnInit {
 
   private navigateInit() {
     this.router.navigate(['']);
+  }
+
+  clickAction() {
+    if (this.validateForm) {
+      this.actionPrimaryEvent.emit(this.customFormGroup.valid);
+    } else {
+      this.actionPrimaryEvent.emit(true);
+    }
   }
 }

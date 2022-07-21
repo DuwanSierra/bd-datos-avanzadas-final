@@ -1,7 +1,17 @@
-<div class="input-text">
+<form [formGroup]="customFormGroup">
+  <div class="input-text">
     <div class="field">
-        <label for="{{id}}" class="block" *ngIf="label">{{label}}</label>
-        <input id="{{id}}" type="{{type || 'text'}}" class="input" [attr.aria-describedby]="id+'-help'" pInputText />
-        <small id="{{id}}-help" class="block" *ngIf="hint">{{hint}}</small>
+      <label for="{{ id }}" class="block" *ngIf="label">{{ label }}</label>
+      <input
+        id="{{ id }}"
+        type="{{ type || 'text' }}"
+        class="input"
+        [attr.aria-describedby]="id + '-help'"
+        formControlName="{{ id }}"
+        [required]="isRequired"
+        pInputText
+      />
+      <small id="{{ id }}-help" class="block" *ngIf="hint">{{ hint }}</small>
     </div>
-</div>
+  </div>
+</form>

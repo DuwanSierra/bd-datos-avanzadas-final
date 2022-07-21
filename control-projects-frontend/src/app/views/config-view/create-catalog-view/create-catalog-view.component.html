@@ -1,8 +1,12 @@
-<window-template [title]="title" [showActions]="true">
+<window-template [title]="title" [showActions]="true" [customFormGroup]="viewFormGroup" [validateForm]="true" (actionPrimaryEvent)="saveEvent($event)">
   <div class="create-catalog" content>
-    <input-text-form
-      label="Nombre del área de interes"
-      hint="Ingresa por favor el nombre del área de interes"
-    ></input-text-form>
+    <div [formGroup]="viewFormGroup">
+      <input-text-form
+        label="Nombre del área de interes"
+        hint="Ingresa por favor el nombre del área de interes"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+      ></input-text-form>
+    </div>    
   </div>
 </window-template>
