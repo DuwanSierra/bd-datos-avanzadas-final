@@ -15,7 +15,9 @@ import { MessageService } from 'primeng/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { CustomConfirmDialogModule } from './components/custom-confirm-dialog/custom-confirm-dialog.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CustomSpinnerModule } from './@core/spinner/custom-spinner.module';
+import { CustomHttpInterceptor } from './@core/interceptor/custom-http.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -34,8 +36,17 @@ import { HttpClientModule } from '@angular/common/http';
     GalleriaModule,
     CustomConfirmDialogModule,
     HttpClientModule,
+    CustomSpinnerModule,
   ],
-  providers: [MessageService, TerminalService],
+  providers: [
+    MessageService,
+    TerminalService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
