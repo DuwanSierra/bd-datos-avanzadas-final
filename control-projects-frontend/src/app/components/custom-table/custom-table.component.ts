@@ -29,8 +29,8 @@ export class CustomTableComponent implements OnInit {
     if (this.service && this.method) {
       this.loading = true;
       let paginate = new CustomTablePaginateDto();
-      paginate.page = event.first;
       paginate.size = event.rows;
+      paginate.page = Math.ceil(((event.first || 1) - 1) / (paginate.size || 10));
       this.service[this.method](paginate)?.subscribe(
         (res: CustomTablePaginatorDto) => {
           this.data = res.content;
