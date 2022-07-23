@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -24,6 +26,9 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   @Input() pattern?: string;
   @Input() maxLength?: number;
   @Input() minLength?: number;
+  @Input() model: any;
+
+  @Output() modelChange = new EventEmitter();
 
   //Variables
   public id: string = Utils.generateUUID();
@@ -69,6 +74,11 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
       );
     }
     return this.errorHint;
+  }
+
+  modelHasBeenChanged(event: any) {
+    this.model = event;
+    this.modelChange.emit(event);
   }
 
   private changeFormGroup(formGroupNew: FormGroup) {

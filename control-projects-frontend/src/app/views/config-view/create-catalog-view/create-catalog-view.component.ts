@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericConstants } from 'src/app/utils/general.constants';
 import { GenericView } from 'src/app/utils/generic-view';
+import { CreateCatalogViewService } from './create-catalog-view.service';
 
 @Component({
   selector: 'app-create-catalog-view',
@@ -9,8 +10,9 @@ import { GenericView } from 'src/app/utils/generic-view';
 })
 export class CreateCatalogViewComponent extends GenericView implements OnInit {
   public title = 'Crear área de interes';
+  public areaNombre: string = '';
 
-  constructor() {
+  constructor(private createCatalogService: CreateCatalogViewService) {
     super();
   }
 
@@ -18,7 +20,7 @@ export class CreateCatalogViewComponent extends GenericView implements OnInit {
 
   saveEvent(isValid: boolean) {
     if (isValid) {
-      console.log('Is valid, save');
+      this.createCatalogService.createAreaInteres(this.areaNombre || '');
     }
   }
 }

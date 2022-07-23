@@ -16,6 +16,8 @@
         [attr.aria-describedby]="id + '-help'"
         formControlName="{{ id }}"
         [required]="isRequired"
+        [ngModel]="model"
+        (ngModelChange)="modelHasBeenChanged($event)"
         pInputText
       />
       <ng-container

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  appName: "Control projects UD"
+  appName: "Control projects UD",
+  apiUrl: 'http://localhost:8080',
+  areaInteresEndpoint: 'http://localhost:8080/area-interes'
 };
 
 /*

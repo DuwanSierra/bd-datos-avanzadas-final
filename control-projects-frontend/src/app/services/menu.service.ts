@@ -47,6 +47,10 @@ export class MenuService {
           {
             label: 'Registrar facultad',
             icon: 'pi pi-fw pi-building',
+            id: 'faculty-create',
+            command: () => {
+              this.router.navigateByUrl("faculty/create");
+            },
           },
           {
             separator: true,
@@ -54,6 +58,10 @@ export class MenuService {
           {
             label: 'Listado de facultades',
             icon: 'pi pi-fw pi-list',
+            id: 'faculty-list',
+            command: () => {
+              this.router.navigateByUrl("faculty/list");
+            },
           },
         ],
       },
@@ -142,9 +150,9 @@ export class MenuService {
   generateDockMenus() {
     let dockItems = [
       {
-        label: 'Catálogos',
+        label: 'Áreas de interés',
         tooltipOptions: {
-          tooltipLabel: 'Catálogos',
+          tooltipLabel: 'Áreas de interés',
           tooltipPosition: 'top',
           positionTop: -15,
           positionLeft: 15,

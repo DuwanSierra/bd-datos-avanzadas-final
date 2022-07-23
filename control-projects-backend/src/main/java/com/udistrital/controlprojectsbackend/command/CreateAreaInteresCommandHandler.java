@@ -1,0 +1,27 @@
+package com.udistrital.controlprojectsbackend.command;
+
+import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
+import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
+import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+@Service
+public class CreateAreaInteresCommandHandler implements CreateAreaInteresCommand {
+
+    private AreaInteresRepository _areaInteresRepository;
+
+    public CreateAreaInteresCommandHandler(@Autowired AreaInteresRepository areaInteresRepository){
+        _areaInteresRepository = areaInteresRepository;
+    }
+    @Override
+    public Mono<AreaInteresDto> CreateAreaInteres(AreaInteresDto areaInteresDto) {
+        return Mono.fromCallable(() -> {
+            AreaInteresEntity areaInteresEntity = new AreaInteresEntity(null,areaInteresDto.getAreaNombre());
+            areaInteresEntity = _areaInteresRepository.save(areaInteresEntity);
+            areaInteresDto.setAreaId(areaInteresEntity.getArea_Id());
+            return areaInteresDto;
+        });
+    }
+}

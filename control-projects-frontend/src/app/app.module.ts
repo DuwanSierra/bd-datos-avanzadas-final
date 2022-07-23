@@ -15,6 +15,8 @@ import { MessageService } from 'primeng/api';
 import { BrowserModule } from '@angular/platform-browser';
 import { CustomConfirmDialogModule } from './components/custom-confirm-dialog/custom-confirm-dialog.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
   imports: [
@@ -31,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastModule,
     GalleriaModule,
     CustomConfirmDialogModule,
+    HttpClientModule,
   ],
   providers: [MessageService, TerminalService],
   bootstrap: [AppComponent],

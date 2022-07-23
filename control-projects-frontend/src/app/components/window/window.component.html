@@ -31,7 +31,26 @@
                   label="Cancelar"
                   class="p-button-text"
                 ></button>
-                <button pButton pRipple type="submit" label="Guardar"></button>
+                <div
+                  pTooltip="{{
+                    customFormGroup.invalid
+                      ? 'No has completado la información requerida'
+                      : 'Guardar información'
+                  }}"
+                  tooltipPosition="top"
+                  [showDelay]="600"
+                  [hideDelay]="300"
+                >
+                  <button
+                    pButton
+                    pRipple
+                    type="submit"
+                    [disabled]="
+                      validateForm ? customFormGroup.invalid : validateForm
+                    "
+                    label="Guardar"
+                  ></button>
+                </div>
               </div>
             </form>
           </ng-template>

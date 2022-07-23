@@ -4,7 +4,8 @@ import { WindowComponent } from './window.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { CustomConfirmDialogModule } from '../custom-confirm-dialog/custom-confirm-dialog.module';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [WindowComponent],
@@ -13,7 +14,9 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardModule,
     ButtonModule,
     CustomConfirmDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    TooltipModule,
   ],
   exports: [WindowComponent],
 })
