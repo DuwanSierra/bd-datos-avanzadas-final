@@ -1,5 +1,8 @@
-import { FormGroup } from "@angular/forms";
+import { FormGroup } from '@angular/forms';
+import { GenericConstants } from './general.constants';
 
 export class GenericView {
-    viewFormGroup: FormGroup = new FormGroup({});
+  public GENERAL_CONSTANTS = GenericConstants;
+
+  viewFormGroup: FormGroup = new FormGroup({});
 }

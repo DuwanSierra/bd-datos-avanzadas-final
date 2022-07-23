@@ -76,6 +76,7 @@ export class WindowComponent implements OnInit {
 
   clickAction() {
     if (this.validateForm) {
+      this.customFormGroup.markAllAsTouched();
       this.actionPrimaryEvent.emit(this.customFormGroup.valid);
     } else {
       this.actionPrimaryEvent.emit(true);

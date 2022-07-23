@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GenericConstants } from 'src/app/utils/general.constants';
 import { GenericView } from 'src/app/utils/generic-view';
 
 @Component({
@@ -17,7 +18,7 @@ export class CreateCatalogViewComponent extends GenericView implements OnInit {
 
   saveEvent(isValid: boolean) {
     if (isValid) {
-      console.log('Is valid');
+      console.log('Is valid, save');
     }
   }
 }

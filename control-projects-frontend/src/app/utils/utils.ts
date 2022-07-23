@@ -24,4 +24,28 @@ export class Utils {
       }
     );
   }
+
+  public static getErrorControl(errorsCode: string[]): string {
+    let errorMessage = '';
+    errorsCode.forEach((error) => {
+      switch (error) {
+        case 'required':
+          errorMessage += 'Este campo es requerido,';
+          break;
+        case 'pattern':
+          errorMessage +=
+            'La información que tratas de ingresar no cumple con el patrón,';
+          break;
+        case 'minlength':
+        case 'maxlength':
+          errorMessage +=
+            'La información que tratas de ingresar no tiene la longitud válida,';
+          break;
+        default:
+          errorMessage += 'Debes ingresar información válida en el campo,';
+          break;
+      }
+    });
+    return errorMessage.substring(0, errorMessage.length - 1);
+  }
 }

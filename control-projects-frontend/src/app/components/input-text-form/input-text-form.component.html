@@ -1,17 +1,41 @@
 <form [formGroup]="customFormGroup">
   <div class="input-text">
     <div class="field">
-      <label for="{{ id }}" class="block" *ngIf="label">{{ label }}</label>
+      <label for="{{ id }}" class="block" *ngIf="label"
+        >{{ label }}<i class="required" *ngIf="isRequired"> *</i></label
+      >
       <input
         id="{{ id }}"
         type="{{ type || 'text' }}"
         class="input"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            !customFormGroup.controls[id].valid &&
+            customFormGroup.controls[id].touched
+        }"
         [attr.aria-describedby]="id + '-help'"
         formControlName="{{ id }}"
         [required]="isRequired"
         pInputText
       />
-      <small id="{{ id }}-help" class="block" *ngIf="hint">{{ hint }}</small>
+      <ng-container
+        *ngTemplateOutlet="
+          !customFormGroup.controls[id].valid &&
+          customFormGroup.controls[id]?.touched
+            ? errorHintTemplate
+            : hintTemplate
+        "
+      ></ng-container>
     </div>
   </div>
 </form>
+
+<ng-template #hintTemplate>
+  <small id="{{ id }}-help" class="block" *ngIf="hint">{{ hint }}</small>
+</ng-template>
+
+<ng-template #errorHintTemplate>
+  <small id="{{ id }}-help" class="p-error block" *ngIf="hint">{{
+    getErrorMessage
+  }}</small>
+</ng-template>
