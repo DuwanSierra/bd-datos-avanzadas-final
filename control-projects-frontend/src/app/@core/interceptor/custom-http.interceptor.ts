@@ -4,6 +4,7 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpResponse,
 } from '@angular/common/http';
 import { catchError, map, Observable } from 'rxjs';
 import { CustomSpinnerService } from '../spinner/custom-spinner.service';
@@ -16,6 +17,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+    this.customSpinnerService.openSpinner();
     return next
       .handle(request)
       .pipe(
@@ -25,8 +27,10 @@ export class CustomHttpInterceptor implements HttpInterceptor {
         })
       )
       .pipe(
-        map((evt: any) => {
-          this.customSpinnerService.openSpinner();
+        map<unknown, any>((evt: any) => {
+          if (evt instanceof HttpResponse) {
+            this.customSpinnerService.closeSpinner();
+          }
           return evt;
         })
       );
