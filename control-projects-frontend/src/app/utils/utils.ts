@@ -48,4 +48,9 @@ export class Utils {
     });
     return errorMessage.substring(0, errorMessage.length - 1);
   }
+
+  public static getQueryParams<T>(object: T): string {
+    let obj: any = object;
+    return new URLSearchParams(obj).toString();
+  }
 }

@@ -9,7 +9,7 @@ import { CreateCatalogViewService } from './create-catalog-view.service';
   styleUrls: ['./create-catalog-view.component.scss'],
 })
 export class CreateCatalogViewComponent extends GenericView implements OnInit {
-  public title = 'Crear área de interes';
+  public title = 'Crear área de interés';
   public areaNombre: string = '';
 
   constructor(private createCatalogService: CreateCatalogViewService) {

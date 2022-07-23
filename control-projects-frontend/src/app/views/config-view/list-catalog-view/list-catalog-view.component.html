@@ -1,5 +1,10 @@
 <window-template>
-    <div class="list-catalog" content>
-        <p>list-catalog-view works!</p>
-    </div>
-  </window-template>
+  <div class="list-catalog" content>
+    <custom-table
+      [service]="areaInteresManager"
+      method="findAllAreaInteres"
+      [configuration]="configTable"
+    >
+    </custom-table>
+  </div>
+</window-template>

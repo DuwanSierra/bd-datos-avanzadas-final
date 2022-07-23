@@ -1,0 +1,42 @@
+<div class="custom-table">
+  <p-table
+    [value]="data"
+    [lazy]="true"
+    (onLazyLoad)="loadData($event)"
+    responsiveLayout="scroll"
+    dataKey="id"
+    [selection]="dataSelected"
+    (selectionChange)="onSelectionChange($event)"
+    [paginator]="true"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem" *ngIf="configuration?.showSelectCheck">
+          {{ "" }}
+        </th>
+        <th *ngFor="let header of configuration?.headers">
+          {{ header.label }}
+        </th>
+        <th style="width: 120px" *ngIf="configuration?.showActions">
+          Actions
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-dataItem>
+      <tr>
+        <td *ngIf="configuration?.showSelectCheck">
+          <p-tableCheckbox [value]="dataItem"></p-tableCheckbox>
+        </td>
+        <td *ngFor="let configItem of configuration?.dataConfig">
+          {{ configItem.key ? dataItem[configItem.key] : "" }}
+        </td>
+        <td *ngIf="configuration?.showActions">
+          {{ "Actions " }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

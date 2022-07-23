@@ -7,6 +7,7 @@ import { ListCatalogViewComponent } from './list-catalog-view/list-catalog-view.
 import { WindowModule } from 'src/app/components/window/window.module';
 import { InputTextFormModule } from 'src/app/components/input-text-form/input-text-form.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomTableModule } from 'src/app/components/custom-table/custom-table.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WindowModule,
     InputTextFormModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomTableModule
   ]
 })
 export class ConfigViewModule { }
