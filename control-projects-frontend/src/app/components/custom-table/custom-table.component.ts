@@ -12,7 +12,7 @@ import { CustomTablePaginatorDto } from './custom-table.paginator.dto';
 export class CustomTableComponent implements OnInit {
   @Input() service: any;
   @Input() method: string = '';
-  @Input() rows = 10;
+  @Input() rows = 5;
   @Input() configuration?: CustomTableConfiguration;
 
   loading = false;
@@ -30,7 +30,7 @@ export class CustomTableComponent implements OnInit {
       this.loading = true;
       let paginate = new CustomTablePaginateDto();
       paginate.size = event.rows;
-      paginate.page = Math.ceil(((event.first || 1) - 1) / (paginate.size || 10));
+      paginate.page = Math.ceil(((event.first || 1) - 1) / (paginate.size || 5));
       this.service[this.method](paginate)?.subscribe(
         (res: CustomTablePaginatorDto) => {
           this.data = res.content;

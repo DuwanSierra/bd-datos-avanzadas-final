@@ -20,9 +20,7 @@
         <th *ngFor="let header of configuration?.headers">
           {{ header.label }}
         </th>
-        <th style="width: 120px" *ngIf="configuration?.showActions">
-          Actions
-        </th>
+        <th style="width: 120px" *ngIf="configuration?.showActions">Actions</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-dataItem>
@@ -34,7 +32,20 @@
           {{ configItem.key ? dataItem[configItem.key] : "" }}
         </td>
         <td *ngIf="configuration?.showActions">
-          {{ "Actions " }}
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-text"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger p-button-text p-button-plain"
+          ></button>
         </td>
       </tr>
     </ng-template>
