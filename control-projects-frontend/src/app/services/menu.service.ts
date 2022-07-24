@@ -32,7 +32,7 @@ export class MenuService {
             separator: true,
           },
           {
-            label: 'Listado de cáreas de interés',
+            label: 'Listado de áreas de interés',
             icon: 'pi pi-fw pi-list',
             id: 'list-catalog',
             command: () => {
