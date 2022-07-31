@@ -11,6 +11,7 @@
     [rows]="rows"
     [totalRecords]="totalRecords"
     [loading]="loading"
+    #customDataTable
   >
     <ng-template pTemplate="header">
       <tr>
@@ -38,6 +39,7 @@
             type="button"
             icon="pi pi-pencil"
             class="p-button-rounded p-button-text"
+            (click)="tableEditEvent(dataItem)"
           ></button>
           <button
             pButton
@@ -45,6 +47,7 @@
             type="button"
             icon="pi pi-trash"
             class="p-button-rounded p-button-danger p-button-text p-button-plain"
+            (click)="deleteEvent(dataItem)"
           ></button>
         </td>
       </tr>

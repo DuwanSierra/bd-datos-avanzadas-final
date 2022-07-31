@@ -1,6 +1,7 @@
 package com.udistrital.controlprojectsbackend.command;
 
 import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
+import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,15 @@ public class CreateAreaInteresCommandHandler implements CreateAreaInteresCommand
     @Override
     public Mono<AreaInteresDto> CreateAreaInteres(AreaInteresDto areaInteresDto) {
         return Mono.fromCallable(() -> {
-            AreaInteresEntity areaInteresEntity = new AreaInteresEntity(null,areaInteresDto.getAreaNombre());
-            areaInteresEntity = _areaInteresRepository.save(areaInteresEntity);
-            areaInteresDto.setAreaId(areaInteresEntity.getArea_Id());
-            return areaInteresDto;
+            try{
+                AreaInteresEntity areaInteresEntity = new AreaInteresEntity(null,areaInteresDto.getAreaNombre());
+                areaInteresEntity = _areaInteresRepository.save(areaInteresEntity);
+                areaInteresDto.setAreaId(areaInteresEntity.getArea_Id());
+                return areaInteresDto;
+            }
+            catch (Exception e){
+                throw new ConflictException("No se pudo crear el área de interés",e.getMessage());
+            }
         });
     }
 }
