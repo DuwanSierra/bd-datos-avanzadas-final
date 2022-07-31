@@ -2,8 +2,10 @@
   <div class="list-catalog" content>
     <custom-table
       [service]="areaInteresManager"
-      method="findAllAreaInteres"
+      methodGetData="findAllAreaInteres"
+      methodDelete="deleteAreaInteres"
       [configuration]="configTable"
+      (editEvent)="editAreaInteres($event)"
     >
     </custom-table>
   </div>

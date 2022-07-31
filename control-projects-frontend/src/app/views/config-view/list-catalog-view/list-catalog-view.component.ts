@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   CustomTableConfiguration,
   CustomTableHeader,
   CustomTableItem,
 } from 'src/app/components/custom-table/custom-table.configuration.dto';
 import { AreaInteresManagerService } from 'src/app/managers/area-interes-manager/area-interes-manager.service';
+import { AreaInteresRequest } from 'src/app/managers/request-dto/area-interes.request';
 
 @Component({
   selector: 'app-list-catalog-view',
@@ -14,7 +16,7 @@ import { AreaInteresManagerService } from 'src/app/managers/area-interes-manager
 export class ListCatalogViewComponent implements OnInit {
   public configTable?: CustomTableConfiguration;
 
-  constructor(public areaInteresManager: AreaInteresManagerService) {}
+  constructor(public areaInteresManager: AreaInteresManagerService, private router: Router) {}
 
   ngOnInit(): void {
     this.createTableConfig();
@@ -29,5 +31,9 @@ export class ListCatalogViewComponent implements OnInit {
     config.headers = [header];
     config.dataConfig = [item];
     this.configTable = config;
+  }
+
+  editAreaInteres(areaEdit: AreaInteresRequest){
+    this.router.navigate(['/config/edit',areaEdit.areaId]);
   }
 }

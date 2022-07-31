@@ -1,0 +1,33 @@
+package com.udistrital.controlprojectsbackend.query;
+
+import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
+import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
+import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
+import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
+import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+@Service
+public class FindAreaInteresByIdQueryHandler implements FindAreaInteresByIdQuery{
+
+    private AreaInteresRepository _areaInteresRepository;
+
+    public FindAreaInteresByIdQueryHandler(@Autowired AreaInteresRepository areaInteresRepository){
+        _areaInteresRepository = areaInteresRepository;
+    }
+
+    @Override
+    public Mono<AreaInteresDto> FindAreaInteresById(long id) {
+        return Mono.fromCallable(() -> {
+            AreaInteresEntity areaInteresEntity = _areaInteresRepository.findById(id).orElse(null);
+            if(areaInteresEntity==null){
+                throw new NotFoundException("No se ha encontrado el área de interes", "AreInteresNotFound");
+            }
+           AreaInteresDto areaInteresDto = new AreaInteresDto(areaInteresEntity.getArea_Id(), areaInteresEntity.getAreaNombre());
+            return areaInteresDto;
+        });
+    }
+}
