@@ -8,8 +8,9 @@ import { AreaInteresRequest } from 'src/app/managers/request-dto/area-interes.re
   providedIn: 'root',
 })
 export class CreateCatalogViewService {
-
-  public areaInteresDto = new BehaviorSubject<AreaInteresRequest>(new AreaInteresRequest());
+  public areaInteresDto = new BehaviorSubject<AreaInteresRequest>(
+    new AreaInteresRequest()
+  );
 
   constructor(
     private areaInteresManager: AreaInteresManagerService,
@@ -20,8 +21,8 @@ export class CreateCatalogViewService {
     let areaCreate = new AreaInteresRequest();
     areaCreate.areaNombre = nombreAreaInteres;
     this.areaInteresManager.createAreaInteres(areaCreate).subscribe((res) => {
-      this.areaInteresDto.next(new AreaInteresRequest());
-      this.router.navigate(['config/list']);
+      this.resetAll();
+      this.router.navigate(['config/area/list']);
     });
   }
 
@@ -30,14 +31,20 @@ export class CreateCatalogViewService {
     areaCreate.areaNombre = nombreAreaInteres;
     areaCreate.areaId = this.areaInteresDto.value.areaId;
     this.areaInteresManager.editAreaInteres(areaCreate).subscribe((res) => {
-      this.areaInteresDto.next(new AreaInteresRequest());
-      this.router.navigate(['config/list']);
+      this.resetAll();
+      this.router.navigate(['config/area/list']);
     });
   }
 
-  public findAreaInteres(areaInteresId: number){
-    this.areaInteresManager.findAreaInteres(areaInteresId).subscribe((res: AreaInteresRequest)=>{
-      this.areaInteresDto.next(res);
-    });
+  public findAreaInteres(areaInteresId: number) {
+    this.areaInteresManager
+      .findAreaInteres(areaInteresId)
+      .subscribe((res: AreaInteresRequest) => {
+        this.areaInteresDto.next(res);
+      });
+  }
+
+  public resetAll() {
+    this.areaInteresDto.next(new AreaInteresRequest());
   }
 }
