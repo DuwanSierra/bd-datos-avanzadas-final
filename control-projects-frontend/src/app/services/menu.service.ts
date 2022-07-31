@@ -18,25 +18,41 @@ export class MenuService {
   generateMenus() {
     let menubarItems = [
       {
-        label: 'Área de interés',
+        label: 'Cátalogos',
         items: [
           {
             label: 'Crear área de interés',
             icon: 'pi pi-fw pi-cog',
             id: 'create-catalog',
             command: () => {
-              this.router.navigateByUrl("config/create");
+              this.router.navigateByUrl("config/area/create");
             },
-          },
-          {
-            separator: true,
           },
           {
             label: 'Listado de áreas de interés',
             icon: 'pi pi-fw pi-list',
             id: 'list-catalog',
             command: () => {
-              this.router.navigateByUrl("config/list");
+              this.router.navigateByUrl("config/area/list");
+            },
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Crear sede',
+            icon: 'pi pi-fw pi-building',
+            id: 'create-catalog',
+            command: () => {
+              this.router.navigateByUrl("config/sede/create");
+            },
+          },
+          {
+            label: 'Listado de sedes',
+            icon: 'pi pi-fw pi-list',
+            id: 'list-catalog',
+            command: () => {
+              this.router.navigateByUrl("config/sede/list");
             },
           },
         ],
@@ -161,6 +177,20 @@ export class MenuService {
         icon: 'assets/images/social.png',
         command: () => {
           this.router.navigateByUrl("config");
+        },
+      },
+      {
+        label: 'Sedes',
+        tooltipOptions: {
+          tooltipLabel: 'Sedes',
+          tooltipPosition: 'top',
+          positionTop: -15,
+          positionLeft: 15,
+          showDelay: 200,
+        },
+        icon: 'assets/images/sede.png',
+        command: () => {
+          this.router.navigateByUrl("config/sede/list");
         },
       },
       {

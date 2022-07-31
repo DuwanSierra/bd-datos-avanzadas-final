@@ -27,7 +27,6 @@ export class CreateCatalogViewComponent extends GenericView implements OnInit {
 
   saveEvent(isValid: boolean) {
     if (isValid) {
-      console.log(this.isEdit)
       this.isEdit ? this.createCatalogService.editAreaInteres(this.areaNombre) : this.createCatalogService.createAreaInteres(this.areaNombre || '');
     }
   }
@@ -47,6 +46,9 @@ export class CreateCatalogViewComponent extends GenericView implements OnInit {
   override afterLoadParams(data: any): void {
     if (data?.id) {
       this.createCatalogService.findAreaInteres(data?.id);
+    }
+    else{
+      this.createCatalogService.resetAll();
     }
   }
 }

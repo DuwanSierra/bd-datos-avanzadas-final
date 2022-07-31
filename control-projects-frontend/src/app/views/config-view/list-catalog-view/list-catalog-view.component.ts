@@ -34,6 +34,6 @@ export class ListCatalogViewComponent implements OnInit {
   }
 
   editAreaInteres(areaEdit: AreaInteresRequest){
-    this.router.navigate(['/config/edit',areaEdit.areaId]);
+    this.router.navigate(['/config/area/edit',areaEdit.areaId]);
   }
 }
