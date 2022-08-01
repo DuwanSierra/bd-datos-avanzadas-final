@@ -1,16 +1,15 @@
 package com.udistrital.controlprojectsbackend.controller;
 
-import com.udistrital.controlprojectsbackend.command.CreateAreaInteresCommand;
-import com.udistrital.controlprojectsbackend.command.DeleteAreaInteresCommand;
-import com.udistrital.controlprojectsbackend.command.EditAreaInteresCommand;
+import com.udistrital.controlprojectsbackend.command.areainteres.CreateAreaInteresCommand;
+import com.udistrital.controlprojectsbackend.command.areainteres.DeleteAreaInteresCommand;
+import com.udistrital.controlprojectsbackend.command.areainteres.EditAreaInteresCommand;
 import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
 import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
-import com.udistrital.controlprojectsbackend.query.FindAreaInteresByIdQuery;
-import com.udistrital.controlprojectsbackend.query.FindAreaInteresQuery;
+import com.udistrital.controlprojectsbackend.query.area.FindAreaInteresByIdQuery;
+import com.udistrital.controlprojectsbackend.query.area.FindAreaInteresQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController()

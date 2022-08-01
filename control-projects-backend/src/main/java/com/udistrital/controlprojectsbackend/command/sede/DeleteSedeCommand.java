@@ -1,10 +1,10 @@
-package com.udistrital.controlprojectsbackend.command;
+package com.udistrital.controlprojectsbackend.command.sede;
 
 import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public interface DeleteAreaInteresCommand {
-    Mono<DeleteDto> deleteAreaInteres(long id);
+public interface DeleteSedeCommand {
+    Mono<DeleteDto> deleteSede(long id);
 }

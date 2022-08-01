@@ -1,8 +1,6 @@
-package com.udistrital.controlprojectsbackend.query;
+package com.udistrital.controlprojectsbackend.query.area;
 
 import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
-import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
-import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
 import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
