@@ -1,4 +1,4 @@
-package com.udistrital.controlprojectsbackend.query;
+package com.udistrital.controlprojectsbackend.query.area;
 
 import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
 import org.springframework.data.domain.Page;

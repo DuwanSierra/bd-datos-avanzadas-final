@@ -1,12 +1,15 @@
-.field {
-  height: 77px;
-  width: 364px;
-  left: 0px;
-  top: 0px;
-  .input {
-    width: 100%;
-  }
-  .required {
-    color: var(--primary-color);
+.input-text {
+  margin-bottom: 3.5rem;
+  .field {
+    height: 77px;
+    width: 364px;
+    left: 0px;
+    top: 0px;
+    .input {
+      width: 100%;
+    }
+    .required {
+      color: var(--primary-color);
+    }
   }
 }

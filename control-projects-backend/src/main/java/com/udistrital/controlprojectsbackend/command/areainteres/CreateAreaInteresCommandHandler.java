@@ -1,4 +1,4 @@
-package com.udistrital.controlprojectsbackend.command;
+package com.udistrital.controlprojectsbackend.command.areainteres;
 
 import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;

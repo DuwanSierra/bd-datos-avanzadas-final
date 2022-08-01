@@ -45,7 +45,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: CreateSedeViewComponent,
-        title: 'Editar sede'
+        title: 'Editar sede',
+        data: {
+          isEdit: true,
+        },
       }
       ,
       {

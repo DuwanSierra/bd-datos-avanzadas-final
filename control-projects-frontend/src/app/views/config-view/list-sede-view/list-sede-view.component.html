@@ -1,1 +1,13 @@
-<p>list-sede-view works!</p>
+<window-template>
+    <div class="list-catalog" content>
+      <custom-table
+        [service]="sedeManagerService"
+        methodGetData="findAllSedes"
+        methodDelete="deleteSede"
+        [configuration]="configTable"
+        (editEvent)="editSede($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  

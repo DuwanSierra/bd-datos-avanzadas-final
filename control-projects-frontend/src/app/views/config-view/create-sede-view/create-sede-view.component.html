@@ -1,1 +1,32 @@
-<p>create-sede-view works!</p>
+<window-template
+  [title]="title"
+  [showActions]="true"
+  [customFormGroup]="viewFormGroup"
+  [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
+>
+  <div class="create-sede" content>
+    <div [formGroup]="viewFormGroup">
+        <input-text-form
+        label="Código de la sede"
+        hint="Ingresa por favor el código de la sede"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [(model)]="codigoSede"
+      ></input-text-form>
+      <input-text-form
+        label="Nombre de la sede"
+        hint="Ingresa por favor el nombre de la sede"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [(model)]="nombreSede"
+      ></input-text-form>
+    </div>
+  </div>
+</window-template>

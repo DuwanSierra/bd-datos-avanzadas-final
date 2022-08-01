@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   appName: "Control projects UD",
   apiUrl: 'http://localhost:8080',
-  areaInteresEndpoint: 'http://localhost:8080/area-interes'
+  areaInteresEndpoint: 'http://localhost:8080/area-interes',
+  sedeEndpoint: 'http://localhost:8080/sede',
 };
 
 /*
