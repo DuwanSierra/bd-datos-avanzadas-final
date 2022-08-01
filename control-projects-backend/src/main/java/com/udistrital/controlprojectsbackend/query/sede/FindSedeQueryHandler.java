@@ -1,10 +1,7 @@
 package com.udistrital.controlprojectsbackend.query.sede;
 
-import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
-import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
-import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
+import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.repository.SedeRepository;
-import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +30,7 @@ public class FindSedeQueryHandler implements FindSedeQuery {
         dto.setSedeId(input.getSedeId());
         dto.setNombre(input.getNombre());
         dto.setCodigo(input.getCodigo());
+        dto.setDireccion(input.getDireccion());
         return dto;
     }
 }

@@ -1,12 +1,9 @@
 package com.udistrital.controlprojectsbackend.command.sede;
 
-import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
-import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
-import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
 import com.udistrital.controlprojectsbackend.repository.SedeRepository;
-import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +26,7 @@ public class EditSedeCommandHandler implements EditSedeCommand {
                 }
                 sedeToEdit.setCodigo(sedeDto.getCodigo());
                 sedeToEdit.setNombre(sedeDto.getNombre());
+                sedeToEdit.setDireccion(sedeDto.getDireccion());
                 _sedeRepository.save(sedeToEdit);
                 return sedeDto;
             }

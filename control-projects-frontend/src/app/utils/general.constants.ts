@@ -3,4 +3,5 @@ export class GenericConstants {
     '^[a-zA-Z0-9_\\-\\. áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü]+$';
   public static MAX_LENGTH_NAME = 70;
   public static MIN_LENGTH_NAME = 3;
+  public static REGEX_ADDRESS_LATAM= '^[a-zA-Z0-9_\\-\\. áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü#]+$'
 }

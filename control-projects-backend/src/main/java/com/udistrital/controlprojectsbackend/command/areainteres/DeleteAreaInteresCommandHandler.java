@@ -1,6 +1,6 @@
 package com.udistrital.controlprojectsbackend.command.areainteres;
 
-import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.exceptions.controller.dto.DeleteDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
