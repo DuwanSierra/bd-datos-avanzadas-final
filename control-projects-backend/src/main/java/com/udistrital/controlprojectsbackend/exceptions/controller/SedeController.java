@@ -1,13 +1,10 @@
-package com.udistrital.controlprojectsbackend.controller;
+package com.udistrital.controlprojectsbackend.exceptions.controller;
 
-import com.udistrital.controlprojectsbackend.command.areainteres.CreateAreaInteresCommand;
-import com.udistrital.controlprojectsbackend.command.areainteres.DeleteAreaInteresCommand;
-import com.udistrital.controlprojectsbackend.command.areainteres.EditAreaInteresCommand;
 import com.udistrital.controlprojectsbackend.command.sede.CreateSedeCommand;
 import com.udistrital.controlprojectsbackend.command.sede.DeleteSedeCommand;
 import com.udistrital.controlprojectsbackend.command.sede.EditSedeCommand;
-import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
-import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.exceptions.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.query.sede.FindSedeByIdQuery;
 import com.udistrital.controlprojectsbackend.query.sede.FindSedeQuery;
 import org.springframework.beans.factory.annotation.Autowired;

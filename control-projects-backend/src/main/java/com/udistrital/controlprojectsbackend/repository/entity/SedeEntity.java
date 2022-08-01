@@ -24,4 +24,8 @@ public class SedeEntity {
     @Column(nullable = false)
     @Size(max = 10, message = "El código de la sede debe ser alfanúmerico no mayor a 10 carácteres")
     private String codigo;
+    @NotEmpty
+    @Column(nullable = false)
+    @Size(max = 30, message = "La dirección de la sede debe ser alfanúmerico no mayor a 30 carácteres")
+    private String direccion;
 }

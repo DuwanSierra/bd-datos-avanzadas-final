@@ -1,7 +1,6 @@
 package com.udistrital.controlprojectsbackend.command.sede;
 
-import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
-import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 

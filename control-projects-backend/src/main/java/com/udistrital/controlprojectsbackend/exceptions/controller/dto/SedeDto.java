@@ -1,4 +1,4 @@
-package com.udistrital.controlprojectsbackend.controller.dto;
+package com.udistrital.controlprojectsbackend.exceptions.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,4 +11,5 @@ public class SedeDto {
     private Long sedeId;
     private String nombre;
     private String codigo;
+    private String direccion;
 }

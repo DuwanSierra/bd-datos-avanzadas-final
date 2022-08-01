@@ -34,6 +34,9 @@ export class ListSedeViewComponent implements OnInit {
       {
         label: 'Código',
       },
+      {
+        label: 'Ubicación',
+      },
     ];
     config.dataConfig = [
       {
@@ -41,7 +44,10 @@ export class ListSedeViewComponent implements OnInit {
       },
       {
         key: 'codigo',
-      }
+      },
+      {
+        key: 'direccion',
+      },
     ];
     this.configTable = config;
   }

@@ -13,7 +13,11 @@ export class CreateSedeViewComponent extends GenericView implements OnInit {
   title: string = 'Crear nueva sede';
   public nombreSede = '';
   public codigoSede = '';
-  constructor(public override activatedRoute: ActivatedRoute, public createSedeService: CreateSedeViewService) {
+  public direccionSede = '';
+  constructor(
+    public override activatedRoute: ActivatedRoute,
+    public createSedeService: CreateSedeViewService
+  ) {
     super(activatedRoute);
   }
 
@@ -23,17 +27,18 @@ export class CreateSedeViewComponent extends GenericView implements OnInit {
 
   saveEvent(isValid: boolean) {
     if (isValid) {
-      this.isEdit ? this.createSedeService.editSede(this.nombreSede, this.codigoSede) : this.createSedeService.createSede(this.nombreSede, this.codigoSede);
+      this.isEdit
+        ? this.createSedeService.editSede(this.nombreSede, this.codigoSede, this.direccionSede)
+        : this.createSedeService.createSede(this.nombreSede, this.codigoSede, this.direccionSede);
     }
   }
 
   getCurrentSede() {
-    this.createSedeService.sedeDto.subscribe(
-      (sede: SedeRequest) => {
-        this.nombreSede = sede.nombre || '';
-        this.codigoSede = sede.codigo || '';
-      }
-    );
+    this.createSedeService.sedeDto.subscribe((sede: SedeRequest) => {
+      this.nombreSede = sede.nombre || '';
+      this.codigoSede = sede.codigo || '';
+      this.direccionSede = sede.direccion || '';
+    });
   }
 
   override afterCheckIsEditMode(): void {
@@ -43,8 +48,7 @@ export class CreateSedeViewComponent extends GenericView implements OnInit {
   override afterLoadParams(data: any): void {
     if (data?.id) {
       this.createSedeService.findSede(data?.id);
-    }
-    else{
+    } else {
       this.createSedeService.resetAll();
     }
   }
