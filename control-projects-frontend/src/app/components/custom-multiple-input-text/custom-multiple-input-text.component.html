@@ -1,0 +1,7 @@
+<div class="custom-multiple-input-text">
+    <ng-container
+    *ngFor="let item of items; let i = index"
+    >
+    <input-text-form [(model)]="items[i]"></input-text-form>
+    </ng-container>
+</div>

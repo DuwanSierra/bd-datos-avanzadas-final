@@ -204,7 +204,7 @@ export class MenuService {
         },
         icon: 'assets/images/faculty.png',
         command: () => {
-          console.log('navigate to faculty');
+          this.router.navigateByUrl("faculty/list");
         },
       },
       {
