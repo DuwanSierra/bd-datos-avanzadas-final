@@ -1,7 +1,50 @@
 <div class="custom-multiple-input-text">
-    <ng-container
-    *ngFor="let item of items; let i = index"
-    >
-    <input-text-form [(model)]="items[i]"></input-text-form>
+  <div class="input-container">
+    <ng-container *ngFor="let item of model; let i = index">
+      <input-text-form
+        [model]="model && model[i] ? model[i].value : ''"
+        (focusOutEvent)="addModel(i,$event)"
+        [addMarginBottom]="false"
+        [label]="i === 0 ? labelInput : ''"
+        [rightIcon]="i !== 0 ? 'pi pi-minus-circle' : ''"
+        [rightIconTooltip]="tooltipRemoveIcon"
+        (rightIconEvent)="removeItem(i)"
+        [hint]="hint"
+        [type]="type"
+        [customFormGroup]="customFormGroup"
+        [typesControl]="typesControl"
+        [isRequired]="isRequired"
+        [pattern]="pattern"
+        [maxLength]="maxLength"
+        [minLength]="minLength"
+        [placeHolder]="placeHolder"
+        [controlName]=" i + '--'  + controlName"
+        (controlNameChange)="addControls(i, $event)"
+      ></input-text-form>
     </ng-container>
+  </div>
+  <div class="actions">
+    <div
+      class="add-action"
+      pTooltip="{{
+        this.model?.length === this.maxItems
+          ? toolTipMaxItems
+            ? toolTipMaxItems
+            : 'No puedes añadir más de ' + maxItems + ' items'
+          : ''
+      }}"
+      tooltipPosition="top"
+    >
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-plus"
+        [label]="labelButton"
+        (click)="addControl()"
+        [disabled]="this.model?.length === this.maxItems"
+        class="p-button-text action-button"
+      ></button>
+    </div>
+  </div>
 </div>

@@ -1,29 +1,41 @@
 <form [formGroup]="customFormGroup">
-  <div class="input-text">
+  <div class="input-text {{ addMarginBottom ? 'margin-bottom' : '' }}">
     <div class="field">
-      <label for="{{ id }}" class="block" *ngIf="label"
+      <label for="{{ controlName }}" class="block" *ngIf="label"
         >{{ label }}<i class="required" *ngIf="isRequired"> *</i></label
       >
-      <input
-        id="{{ id }}"
-        type="{{ type || 'text' }}"
-        class="input"
-        [ngClass]="{
-          'ng-invalid ng-dirty':
-            !customFormGroup.controls[id].valid &&
-            customFormGroup.controls[id].touched
-        }"
-        [attr.aria-describedby]="id + '-help'"
-        formControlName="{{ id }}"
-        [required]="isRequired"
-        [ngModel]="model"
-        (ngModelChange)="modelHasBeenChanged($event)"
-        pInputText
-      />
+      <span class="input {{ rightIcon ? 'p-input-icon-right' : '' }}">
+        <i
+          *ngIf="rightIcon"
+          class="{{ rightIcon }} rigth-icon"
+          pTooltip="{{ rightIconTooltip }}"
+          (click)="rightIconEmit()"
+          tooltipPosition="top"
+        ></i>
+        <input
+          id="{{ controlName }}"
+          type="{{ type || 'text' }}"
+          class="input"
+          [ngClass]="{
+            'ng-invalid ng-dirty':
+              !customFormGroup.controls[controlName].valid &&
+              customFormGroup.controls[controlName].touched
+          }"
+          [attr.aria-describedby]="controlName + '-help'"
+          formControlName="{{ controlName }}"
+          [required]="isRequired"
+          [ngModel]="model"
+          (ngModelChange)="modelHasBeenChanged($event)"
+          (focusout)="focusOutEmit()"
+          [placeholder]="placeHolder"
+          pInputText
+        />
+      </span>
+
       <ng-container
         *ngTemplateOutlet="
-          !customFormGroup.controls[id].valid &&
-          customFormGroup.controls[id]?.touched
+          !customFormGroup.controls[controlName].valid &&
+          customFormGroup.controls[controlName]?.touched
             ? errorHintTemplate
             : hintTemplate
         "
@@ -33,11 +45,11 @@
 </form>
 
 <ng-template #hintTemplate>
-  <small id="{{ id }}-help" class="block" *ngIf="hint">{{ hint }}</small>
+  <small id="{{ controlName }}-help" class="block" *ngIf="hint">{{ hint }}</small>
 </ng-template>
 
 <ng-template #errorHintTemplate>
-  <small id="{{ id }}-help" class="p-error block" *ngIf="hint">{{
+  <small id="{{ controlName }}-help" class="p-error block" *ngIf="hint">{{
     getErrorMessage
   }}</small>
 </ng-template>

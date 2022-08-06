@@ -2,9 +2,12 @@
   border-radius: 0;
   padding: 0px 15px;
 }
-.logo{
-    width: 32px;
+:host ::ng-deep .p-dock {
+  position: fixed;
+}
+.logo {
+  width: 32px;
 }
 
-.show_dock_blur{
+.show_dock_blur {
 }
