@@ -1,0 +1,59 @@
+<window-template
+  [title]="title"
+  [showActions]="true"
+  [customFormGroup]="viewFormGroup"
+  [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
+>
+  <div class="create-catalog" content>
+    <div [formGroup]="viewFormGroup">
+      <input-text-form
+        label="Nombre del la facultad"
+        hint="Ingresa por favor el nombre de la facultad"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [(model)]="faculty.nombre"
+      ></input-text-form>
+      <custom-dropdown
+        [service]="sedeManager"
+        methodGetData="findAllSedes"
+        [keysToShow]="['codigo', 'nombre']"
+        label="Selecciona la sede"
+        hint="Selecciona la sede a la cual pertenece la facultad"
+        placeholder="Sede"
+        [isRequired]="true"
+        [model]="faculty.sede"
+        (modelChange)="faculty.sede = $event"
+        [customFormGroup]="viewFormGroup"
+      >
+      </custom-dropdown>
+      <custom-dropdown
+        [service]="sedeManager"
+        methodGetData="findAllSedes"
+        [keysToShow]="['codigo', 'nombre']"
+        label="Selecciona el Decano"
+        hint="Selecciona el Decano actual que dirige la facultad"
+        placeholder="Decano"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+      >
+      </custom-dropdown>
+      <custom-multiple-input-text
+      [labelButton]="'Añadir teléfono'"
+      [labelInput]="'Teléfono(s) de la facultad'"
+      [maxItems]="2"
+      [isRequired]="true"
+      [hint]="'Ingresa un numero de teléfono ej: 601 792 2126 ó 6017922126 x5678'"
+      [customFormGroup]="viewFormGroup"
+      [model]="phones"
+      [pattern]="GENERAL_CONSTANTS.REGEX_PHONE_NUMBER"
+      [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_PHONE"
+      [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_PHONE"
+      (modelChange)="setPhones($event)"
+      ></custom-multiple-input-text>
+    </div>
+  </div>
+</window-template>

@@ -24,7 +24,7 @@ public class FindAreaInteresByIdQueryHandler implements FindAreaInteresByIdQuery
             if(areaInteresEntity==null){
                 throw new NotFoundException("No se ha encontrado el área de interes", "AreInteresNotFound");
             }
-           AreaInteresDto areaInteresDto = new AreaInteresDto(areaInteresEntity.getArea_Id(), areaInteresEntity.getAreaNombre());
+           AreaInteresDto areaInteresDto = new AreaInteresDto(areaInteresEntity.getAreaId(), areaInteresEntity.getAreaNombre());
             return areaInteresDto;
         });
     }

@@ -1,20 +1,16 @@
-.input-text {
-  &.margin-bottom {
-    margin-bottom: 25px;
-  }
+.custom-dropdown {
+  margin-bottom: 25px;
   .field {
     height: fit-content;
     width: 364px;
     left: 0px;
     top: 0px;
-    .input {
-      width: 100%;
-    }
     .required {
       color: var(--primary-color);
     }
-    .rigth-icon {
-      z-index: 5;
-    }
   }
+}
+
+:host ::ng-deep .input{
+    width: 100%;
 }

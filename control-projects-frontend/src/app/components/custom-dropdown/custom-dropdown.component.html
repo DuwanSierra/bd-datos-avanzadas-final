@@ -1,0 +1,70 @@
+<form [formGroup]="customFormGroup">
+  <div class="custom-dropdown">
+    <div class="field">
+      <label for="{{ id }}" class="block" *ngIf="label"
+        >{{ label }}<i class="required" *ngIf="isRequired"> *</i></label
+      >
+      <p-dropdown
+        id="{{ id }}"
+        formControlName="{{ id }}"
+        styleClass="input"
+        [ngClass]="{
+          'ng-invalid ng-dirty':
+            !customFormGroup.controls[id].valid &&
+            customFormGroup.controls[id].touched
+        }"
+        [options]="data"
+        [ngModel]="model"
+        (ngModelChange)="selectItem($event)"
+        [placeholder]="placeholder"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="size"
+        [lazy]="true"
+        (onLazyLoad)="loadData($event)"
+        [virtualScrollOptions]="{
+          showLoader: true,
+          loading: loading,
+          delay: 250
+        }"
+      >
+        <ng-template pTemplate="loader" let-options="options">
+          <div class="flex align-items-center py-2 px-3" style="height: 38px">
+            <p-skeleton
+              [width]="options.even ? '60%' : '50%'"
+              height="1rem"
+            ></p-skeleton>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="selectedItem">
+          <div class="country-item country-item-value" *ngIf="model">
+            <div>{{ getText(model) }}</div>
+          </div>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <div class="country-item">
+            <div>{{ getText(item) }}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+
+      <ng-container
+        *ngTemplateOutlet="
+          !customFormGroup.controls[id].valid &&
+          customFormGroup.controls[id]?.touched
+            ? errorHintTemplate
+            : hintTemplate
+        "
+      ></ng-container>
+    </div>
+  </div>
+</form>
+
+<ng-template #hintTemplate>
+  <small id="{{ id }}-help" class="block" *ngIf="hint">{{ hint }}</small>
+</ng-template>
+
+<ng-template #errorHintTemplate>
+  <small id="{{ id }}-help" class="p-error block" *ngIf="hint">{{
+    getErrorMessage
+  }}</small>
+</ng-template>

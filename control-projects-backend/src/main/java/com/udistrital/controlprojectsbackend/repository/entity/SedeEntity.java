@@ -7,11 +7,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
 @Entity
+@Table(name = "sede", indexes = {
+        @Index(name = "idx_sede_id", columnList = "sedeId")
+})
+@Data
 public class SedeEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -28,4 +32,6 @@ public class SedeEntity {
     @Column(nullable = false)
     @Size(max = 30, message = "La dirección de la sede debe ser alfanúmerico no mayor a 30 carácteres")
     private String direccion;
+    @OneToMany(mappedBy="sede")
+    private Set<FacultadEntity> facultadEntities;
 }

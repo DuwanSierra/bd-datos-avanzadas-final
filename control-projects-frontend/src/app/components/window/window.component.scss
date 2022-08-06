@@ -50,7 +50,8 @@
 }
 
 .content {
-  height: 88vh;
+  height: fit-content;
+  margin-bottom: 60px;
   padding: 20px 20%;
   display: flex;
   justify-content: center;

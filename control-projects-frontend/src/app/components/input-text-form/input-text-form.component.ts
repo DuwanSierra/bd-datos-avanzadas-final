@@ -26,12 +26,18 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   @Input() pattern?: string;
   @Input() maxLength?: number;
   @Input() minLength?: number;
-  @Input() model: any;
-
+  @Input() model?: any;
+  @Input() addMarginBottom = true;
+  @Input() rightIcon = '';
+  @Input() rightIconTooltip = '';
+  @Input() placeHolder = '';
+  @Input() controlName: string = Utils.generateUUID();
   @Output() modelChange = new EventEmitter();
+  @Output() controlNameChange = new EventEmitter();
+  @Output() rightIconEvent = new EventEmitter();
+  @Output() focusOutEvent = new EventEmitter();
 
   //Variables
-  public id: string = Utils.generateUUID();
   public errorHint: string = 'Error';
   constructor() {}
 
@@ -40,7 +46,7 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   }
 
   initializeForm() {
-    if (!this.customFormGroup?.get(this.id)) {
+    if (!this.customFormGroup?.get(this.controlName)) {
       let validatorsApplyControl = [];
       if (this.isRequired) {
         validatorsApplyControl.push(Validators.required);
@@ -55,9 +61,10 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
         validatorsApplyControl.push(Validators.minLength(this.minLength));
       }
       this.customFormGroup.addControl(
-        this.id,
+        this.controlName,
         new FormControl<any>('', validatorsApplyControl)
       );
+      this.controlNameChange.emit(this.controlName);
     }
   }
 
@@ -68,9 +75,9 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   }
 
   get getErrorMessage(): string {
-    if (this.customFormGroup.get(this.id)?.errors) {
+    if (this.customFormGroup.get(this.controlName)?.errors) {
       this.errorHint = Utils.getErrorControl(
-        Object.keys(this.customFormGroup.get(this.id)?.errors || {})
+        Object.keys(this.customFormGroup.get(this.controlName)?.errors || {})
       );
     }
     return this.errorHint;
@@ -79,6 +86,14 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   modelHasBeenChanged(event: any) {
     this.model = event;
     this.modelChange.emit(event);
+  }
+
+  focusOutEmit() {
+    this.focusOutEvent.emit(this.model);
+  }
+
+  rightIconEmit() {
+    this.rightIconEvent.emit();
   }
 
   private changeFormGroup(formGroupNew: FormGroup) {

@@ -36,11 +36,11 @@ const routes: Routes = [
   },
   {
     path: 'sede',
-    children:[
+    children: [
       {
         path: 'create',
         component: CreateSedeViewComponent,
-        title: 'Crear sede'
+        title: 'Crear sede',
       },
       {
         path: 'edit/:id',
@@ -49,15 +49,14 @@ const routes: Routes = [
         data: {
           isEdit: true,
         },
-      }
-      ,
+      },
       {
         path: 'list',
         component: ListSedeViewComponent,
-        title: 'Listado de sedes'
-      }
-    ]
-  }
+        title: 'Listado de sedes',
+      },
+    ],
+  },
 ];
 
 @NgModule({
