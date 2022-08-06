@@ -26,7 +26,7 @@ public class EditAreaInteresCommandHandler implements  EditAreaInteresCommand{
                 }
                 areaToEdit.setAreaNombre(areaInteresDto.getAreaNombre());
                 areaToEdit = _areaInteresRepository.save(areaToEdit);
-                areaInteresDto.setAreaId(areaToEdit.getArea_Id());
+                areaInteresDto.setAreaId(areaToEdit.getAreaId());
                 return areaInteresDto;
             }
             catch (Exception e){
