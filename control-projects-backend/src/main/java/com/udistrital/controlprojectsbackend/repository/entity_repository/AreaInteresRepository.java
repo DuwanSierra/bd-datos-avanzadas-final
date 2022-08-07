@@ -1,4 +1,4 @@
-package com.udistrital.controlprojectsbackend.repository;
+package com.udistrital.controlprojectsbackend.repository.entity_repository;
 
 import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
 import org.springframework.data.domain.Page;
