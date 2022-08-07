@@ -23,8 +23,7 @@
         (onLazyLoad)="loadData($event)"
         [virtualScrollOptions]="{
           showLoader: true,
-          loading: loading,
-          delay: 250
+          loading: loading
         }"
       >
         <ng-template pTemplate="loader" let-options="options">

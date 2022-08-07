@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProfesorManagerService } from 'src/app/managers/profesor-manager/profesor-manager.service';
 import { FacultyRequest } from 'src/app/managers/request-dto/faculty.request';
 import { PhoneRequest } from 'src/app/managers/request-dto/phone.request';
 import { SedeManagerService } from 'src/app/managers/sede-manager/sede-manager.service';
@@ -22,7 +23,8 @@ export class CreateFacultyViewComponent extends GenericView implements OnInit {
 
   constructor(
     public override activatedRoute: ActivatedRoute,
-    public sedeManager: SedeManagerService
+    public sedeManager: SedeManagerService,
+    public professorManager: ProfesorManagerService
   ) {
     super(activatedRoute);
   }

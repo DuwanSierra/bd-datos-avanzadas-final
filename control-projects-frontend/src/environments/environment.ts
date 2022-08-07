@@ -8,6 +8,7 @@ export const environment = {
   apiUrl: 'http://localhost:8080',
   areaInteresEndpoint: 'http://localhost:8080/area-interes',
   sedeEndpoint: 'http://localhost:8080/sede',
+  profesorEndpoint: 'http://localhost:8080/profesor',
 };
 
 /*
