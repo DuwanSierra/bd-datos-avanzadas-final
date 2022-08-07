@@ -1,4 +1,4 @@
-package com.udistrital.controlprojectsbackend.exceptions.controller.dto;
+package com.udistrital.controlprojectsbackend.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.udistrital.controlprojectsbackend.command.sede;
 
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;

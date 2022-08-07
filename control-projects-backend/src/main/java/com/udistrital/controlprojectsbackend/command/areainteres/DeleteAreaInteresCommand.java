@@ -1,6 +1,6 @@
 package com.udistrital.controlprojectsbackend.command.areainteres;
 
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 

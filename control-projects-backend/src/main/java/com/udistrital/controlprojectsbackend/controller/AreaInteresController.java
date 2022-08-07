@@ -1,10 +1,10 @@
-package com.udistrital.controlprojectsbackend.exceptions.controller;
+package com.udistrital.controlprojectsbackend.controller;
 
 import com.udistrital.controlprojectsbackend.command.areainteres.CreateAreaInteresCommand;
 import com.udistrital.controlprojectsbackend.command.areainteres.DeleteAreaInteresCommand;
 import com.udistrital.controlprojectsbackend.command.areainteres.EditAreaInteresCommand;
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.AreaInteresDto;
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
+import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
 import com.udistrital.controlprojectsbackend.query.area.FindAreaInteresByIdQuery;
 import com.udistrital.controlprojectsbackend.query.area.FindAreaInteresQuery;
 import org.springframework.beans.factory.annotation.Autowired;
