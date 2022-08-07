@@ -1,10 +1,10 @@
-package com.udistrital.controlprojectsbackend.exceptions.controller;
+package com.udistrital.controlprojectsbackend.controller;
 
 import com.udistrital.controlprojectsbackend.command.sede.CreateSedeCommand;
 import com.udistrital.controlprojectsbackend.command.sede.DeleteSedeCommand;
 import com.udistrital.controlprojectsbackend.command.sede.EditSedeCommand;
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.DeleteDto;
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.query.sede.FindSedeByIdQuery;
 import com.udistrital.controlprojectsbackend.query.sede.FindSedeQuery;
 import org.springframework.beans.factory.annotation.Autowired;

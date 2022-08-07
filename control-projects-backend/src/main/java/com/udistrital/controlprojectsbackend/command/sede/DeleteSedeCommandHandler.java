@@ -1,6 +1,6 @@
 package com.udistrital.controlprojectsbackend.command.sede;
 
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.DeleteDto;
+import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;

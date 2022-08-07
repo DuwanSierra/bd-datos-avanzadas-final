@@ -27,4 +27,7 @@ public class GrupoInvestigacionEntity {
     @ManyToOne
     @JoinColumn(name = "area_interes_area_id")
     private AreaInteresEntity areaInteres;
+    @OneToOne
+    @JoinColumn(name = "profesor_entity_cedula_profesor")
+    private ProfesorEntity profesorEntity;
 }

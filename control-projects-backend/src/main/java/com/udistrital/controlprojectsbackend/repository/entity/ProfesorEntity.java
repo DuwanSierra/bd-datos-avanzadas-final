@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,11 +26,4 @@ public class ProfesorEntity {
     @NotEmpty
     @Column(nullable = false)
     private Date inicioInvestigacion;
-    @OneToOne
-    @JoinColumns({
-            @JoinColumn(name = "grupoInvestigacion_facultad_nombre", referencedColumnName = "facultad_nombre"),
-            @JoinColumn(name = "grupoInvestigacion_nombreGrupoInvestigacion", referencedColumnName = "nombreGrupoInvestigacion"),
-            @JoinColumn(name = "grupoInvestigacion_codigoGrupoInvestigacion", referencedColumnName = "codigoGrupoInvestigacion")
-    })
-    private GrupoInvestigacionEntity grupoInvestigacion;
 }

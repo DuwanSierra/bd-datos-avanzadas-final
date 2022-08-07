@@ -1,6 +1,6 @@
 package com.udistrital.controlprojectsbackend.command.areainteres;
 
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.AreaInteresDto;
+import com.udistrital.controlprojectsbackend.controller.dto.AreaInteresDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.AreaInteresRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;

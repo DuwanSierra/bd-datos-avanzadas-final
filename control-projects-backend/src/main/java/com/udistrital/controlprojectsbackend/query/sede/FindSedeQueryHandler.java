@@ -1,6 +1,6 @@
 package com.udistrital.controlprojectsbackend.query.sede;
 
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
