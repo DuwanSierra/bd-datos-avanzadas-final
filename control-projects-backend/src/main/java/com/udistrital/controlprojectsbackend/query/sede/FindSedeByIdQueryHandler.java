@@ -2,7 +2,7 @@ package com.udistrital.controlprojectsbackend.query.sede;
 
 import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
-import com.udistrital.controlprojectsbackend.repository.SedeRepository;
+import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -34,6 +34,4 @@ public class ProfesorEntity {
             @JoinColumn(name = "grupoInvestigacion_codigoGrupoInvestigacion", referencedColumnName = "codigoGrupoInvestigacion")
     })
     private GrupoInvestigacionEntity grupoInvestigacion;
-    @OneToMany(mappedBy="profesor")
-    private Set<TituloEntity> titulos;
 }
