@@ -2,7 +2,7 @@ package com.udistrital.controlprojectsbackend.query.area;
 
 import com.udistrital.controlprojectsbackend.exceptions.controller.dto.AreaInteresDto;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
-import com.udistrital.controlprojectsbackend.repository.AreaInteresRepository;
+import com.udistrital.controlprojectsbackend.repository.entity_repository.AreaInteresRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.AreaInteresEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
