@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: 'config',
@@ -18,6 +19,12 @@ const routes: Routes = [
     path: 'investigation-group',
     loadChildren: ()=> import('./views/investigation-group-view/investigation-group-view.module').then(m=>m.InvestigationGroupViewModule)
   },
+  {
+    path: 'investigation-project',
+    loadChildren: ()=> import('./views/investigation-project-view/investigation-project-view.module').then(m=>m.InvestigationProjectViewModule)
+  },
+ 
+
 ];
 
 @NgModule({

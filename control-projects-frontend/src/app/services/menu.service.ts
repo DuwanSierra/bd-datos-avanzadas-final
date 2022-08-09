@@ -133,15 +133,23 @@ export class MenuService {
         label: 'Proyectos de investigación',
         items: [
           {
-            label: 'Registrar proyecto',
-            icon: 'pi pi-fw pi-book',
+          label: 'Proyectos de investigación',
+            icon: 'pi pi pi-fw pi-list',
+            id: 'investigation-project-create',
+            command: () => {
+              this.router.navigateByUrl("investigation-project/create");
+            }
           },
           {
             separator: true,
           },
           {
-            label: 'Listado de proyectos',
+            label: 'Listado de proyectos de investigacion',
             icon: 'pi pi-fw pi-list',
+            id: 'investigation-project-list',
+            command: () => {
+              this.router.navigateByUrl("investigation-project/list");
+            }
           },
         ],
       },
