@@ -109,15 +109,23 @@ export class MenuService {
         label: 'Grupos de investigación',
         items: [
           {
-            label: 'Registrar grupo',
+            label: 'Registrar grupo de investigacion',
             icon: 'pi pi-fw pi-book',
+            id: 'investigation-group-create',
+            command: () => {
+              this.router.navigateByUrl("investigation-group/create");
+            }
           },
           {
             separator: true,
           },
           {
-            label: 'Listado de grupos',
-            icon: 'pi pi-fw pi-list',
+            label: 'Listado de grupos de investigacion',
+            icon: 'pi pi-fw pi-book',
+            id: 'professor-list',
+            command: () => {
+              this.router.navigateByUrl("investigation-group/list");
+            }
           },
         ],
       },

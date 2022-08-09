@@ -1,0 +1,28 @@
+<window-template [title]="title" [showActions]="true" [validateForm]="true">
+    <div class="create-catalog" content>
+        <div>
+            <input-text-form 
+            label="Nombre del grupo de investigación: " 
+            hint="Ingresa por favor el nombre del profesor"
+            [isRequired]="true"
+                ></input-text-form>
+
+            <custom-dropdown 
+            methodGetData="findAllSedes" 
+            label="Selecciona la facultad"
+            hint="Selecciona la facultad a la cual pertenece la facultad" placeholder="Facultad"
+            [isRequired]="true">
+            </custom-dropdown>
+
+            <!-- Area de interes esta representado en la base de datos como otra tabla -->
+            <input-text-form
+            label="Area de interes del grupo de investigación: "
+            hint="Ingresa por favor el area de interes"
+            [isRequired]="true"
+          ></input-text-form>
+
+
+
+        </div>
+    </div>
+</window-template>
