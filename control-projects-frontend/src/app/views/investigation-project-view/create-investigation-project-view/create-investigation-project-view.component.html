@@ -1,29 +1,24 @@
 <window-template [title]="title" [showActions]="true" [validateForm]="true">
     <div class="create-catalog" content>
         <div>
-            <input-text-form 
-            label="Nombre del grupo de investigación: " 
-            hint="Ingresa por favor el nombre del profesor"
-            [isRequired]="true"
-                ></input-text-form>
+            <input-text-form label="Nombre del grupo de investigación: " hint="Ingresa por favor el nombre del profesor"
+                [isRequired]="true"></input-text-form>
 
-            <custom-dropdown 
-            methodGetData="findAllSedes" 
-            label="Selecciona la facultad"
-            hint="Selecciona la facultad a la cual pertenece la facultad" placeholder="Facultad"
-            [isRequired]="true">
+            <custom-dropdown methodGetData="findAllSedes" label="Selecciona la facultad"
+                hint="Selecciona la facultad a la cual pertenece la facultad" placeholder="Facultad"
+                [isRequired]="true">
             </custom-dropdown>
 
 
-          <custom-dropdown 
-          methodGetData="findAllSedes" 
-          label="Area de interes del grupo de investigación: "
-          hint="Ingrese el area de interes" placeholder="Area de interes"
-          [isRequired]="true">
-          </custom-dropdown>
+            <custom-dropdown methodGetData="findAllSedes" label="Area de interes del grupo de investigación: "
+                hint="Ingrese el area de interes" placeholder="Area de interes" [isRequired]="true">
+            </custom-dropdown>
 
-
-
+            <div class="p-field p-col-12 p-md-4">
+                <label for="range">Duracion del proyecto de investigacion </label>
+                <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="false" inputId="range" [disabledDays]="[0,6]">
+                </p-calendar>
+            </div>
         </div>
     </div>
 </window-template>

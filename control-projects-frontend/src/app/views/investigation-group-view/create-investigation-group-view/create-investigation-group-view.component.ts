@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CreateInvestigationGroupViewComponent implements OnInit {
 
+  rangeDates!: Date[];
   title = 'Crear Grupo de Investigación';
   phones = [
     {

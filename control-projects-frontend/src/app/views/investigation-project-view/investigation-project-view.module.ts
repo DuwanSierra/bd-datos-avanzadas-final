@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextFormModule } from 'src/app/components/input-text-form/input-text-form.module';
 import { CustomDropdownModule } from 'src/app/components/custom-dropdown/custom-dropdown.module';
 import { CustomMultipleInputTextModule } from 'src/app/components/custom-multiple-input-text/custom-multiple-input-text.module';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { CustomMultipleInputTextModule } from 'src/app/components/custom-multipl
     ReactiveFormsModule,
     InputTextFormModule,
     CustomDropdownModule,
-    CustomMultipleInputTextModule
+    CustomMultipleInputTextModule,
+    FormsModule,
+    CalendarModule
   ]
 })
 export class InvestigationProjectViewModule { }

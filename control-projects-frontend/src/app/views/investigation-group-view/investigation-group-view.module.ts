@@ -12,12 +12,13 @@ import { InputTextFormModule } from 'src/app/components/input-text-form/input-te
 import { CustomDropdownModule } from 'src/app/components/custom-dropdown/custom-dropdown.module';
 import { CustomMultipleInputTextModule } from 'src/app/components/custom-multiple-input-text/custom-multiple-input-text.module';
 
+
 @NgModule({
   declarations: [
     CreateInvestigationGroupViewComponent,
     ListInvestigationGroupViewComponent
   ],
-  imports: [
+  imports: [ 
     CommonModule,
     InvestigationGroupViewRoutingModule,
     WindowModule,

@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomSpinnerModule } from './@core/spinner/custom-spinner.module';
 import { CustomHttpInterceptor } from './@core/interceptor/custom-http.interceptor';
+import { CalendarModule } from 'primeng/calendar';
+
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -37,6 +39,9 @@ import { CustomHttpInterceptor } from './@core/interceptor/custom-http.intercept
     CustomConfirmDialogModule,
     HttpClientModule,
     CustomSpinnerModule,
+    CalendarModule,
+    
+
   ],
   providers: [
     MessageService,
@@ -49,4 +54,4 @@ import { CustomHttpInterceptor } from './@core/interceptor/custom-http.intercept
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
