@@ -87,6 +87,10 @@ export class MenuService {
           {
             label: 'Registrar profesor',
             icon: 'pi pi-fw pi-user',
+            id: 'professor-create',
+            command: () => {
+              this.router.navigateByUrl("professor/create");
+            }
           },
           {
             separator: true,
@@ -94,6 +98,10 @@ export class MenuService {
           {
             label: 'Listado de profesores',
             icon: 'pi pi-fw pi-users',
+            id: 'professor-list',
+            command: () => {
+              this.router.navigateByUrl("professor/list");
+            },
           },
         ],
       },
