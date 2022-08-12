@@ -8,15 +8,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "facultad", indexes = {
-        @Index(name = "idx_facultad_nombre", columnList = "facultadNombre")
+        @Index(name = "idx_facultad_nombre", columnList = "nombreFacultad")
 })
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class FacultadEntity {
     @Id
-    private String facultadNombre;
+    private String nombreFacultad;
     @ManyToOne
-    @JoinColumn(name="sedeId", nullable=false)
+    @JoinColumn(name="FK_Id_Sede", nullable=false, foreignKey = @ForeignKey(name = "FK_FACULTAD_SEDE"))
     private SedeEntity sede;
 }

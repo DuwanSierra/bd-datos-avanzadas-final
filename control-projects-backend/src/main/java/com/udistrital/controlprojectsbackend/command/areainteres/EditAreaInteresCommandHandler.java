@@ -24,9 +24,7 @@ public class EditAreaInteresCommandHandler implements  EditAreaInteresCommand{
                 if(areaToEdit==null){
                     throw new NotFoundException("No se ha encontrado el área de interes", "AreInteresNotFound");
                 }
-                areaToEdit.setAreaNombre(areaInteresDto.getAreaNombre());
                 areaToEdit = _areaInteresRepository.save(areaToEdit);
-                areaInteresDto.setAreaId(areaToEdit.getAreaId());
                 return areaInteresDto;
             }
             catch (Exception e){

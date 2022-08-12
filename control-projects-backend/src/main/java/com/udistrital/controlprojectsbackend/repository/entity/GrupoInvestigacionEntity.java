@@ -10,24 +10,23 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "grupo_investigacion", indexes = {
-        @Index(name = "idx_grupo_investigacion_nombre_id", columnList = "nombreGrupoInvestigacion", unique = true),
-        @Index(name = "idx_grupo_investigacion_codigo_id", columnList = "codigoGrupoInvestigacion", unique = true)
+        @Index(name = "idx_grupo_investigacion_nombre_id", columnList = "nombreGrupo"),
+        @Index(name = "idx_grupo_investigacion_codigo_id", columnList = "codigoGrupo")
 })
 @Data
 @IdClass(GrupoInvestigacionId.class)
 public class GrupoInvestigacionEntity {
     @Id
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "facultad_nombre", nullable = false)
-    public FacultadEntity facultad;
+    private String codigoGrupo;
     @Id
-    private String nombreGrupoInvestigacion;
-    @Id
-    private Long codigoGrupoInvestigacion;
+    private String nombreGrupo;
     @ManyToOne
-    @JoinColumn(name = "area_interes_area_id")
+    @JoinColumn(name = "FK_Nombre_Facultad", nullable = false, foreignKey = @ForeignKey(name = "FK_GRUPO_INVESTIGACION_FACULTAD"))
+    private FacultadEntity facultad;
+    @ManyToOne
+    @JoinColumn(name = "FK_Id_Area_Interes", nullable = false, foreignKey = @ForeignKey(name = "FK_GRUPO_INVESTIGACION_AREA_INTERES"))
     private AreaInteresEntity areaInteres;
-    @OneToOne
-    @JoinColumn(name = "profesor_entity_cedula_profesor")
-    private ProfesorEntity profesorEntity;
+    @ManyToOne
+    @JoinColumn(name = "FK_Cedula_Profesor", nullable = false, foreignKey = @ForeignKey(name = "FK_GRUPO_INVESTIGACION_PROFESOR"))
+    private ProfesorEntity profesor;
 }

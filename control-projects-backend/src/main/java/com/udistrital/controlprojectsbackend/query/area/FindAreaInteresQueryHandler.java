@@ -28,8 +28,6 @@ public class FindAreaInteresQueryHandler implements  FindAreaInteresQuery {
 
     private AreaInteresDto convertToObjectDto(AreaInteresEntity input) {
         AreaInteresDto dto = new AreaInteresDto();
-        dto.setAreaId(input.getAreaId());
-        dto.setAreaNombre(input.getAreaNombre());
         return dto;
     }
 }

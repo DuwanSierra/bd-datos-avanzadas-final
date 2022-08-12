@@ -25,10 +25,6 @@ public class FindSedeByIdQueryHandler implements FindSedeByIdQuery {
                 throw new NotFoundException("No se ha encontrado la sede", "SedeNotFound");
             }
             SedeDto sedeDto = new SedeDto();
-            sedeDto.setSedeId(sede.getSedeId());
-            sedeDto.setNombre(sede.getNombre());
-            sedeDto.setCodigo(sede.getCodigo());
-            sedeDto.setDireccion(sede.getDireccion());
             return sedeDto;
         });
     }

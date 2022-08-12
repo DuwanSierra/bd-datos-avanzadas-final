@@ -24,9 +24,6 @@ public class EditSedeCommandHandler implements EditSedeCommand {
                 if(sedeToEdit==null){
                     throw new NotFoundException("No se ha encontrado la sede", "SedeNotFound");
                 }
-                sedeToEdit.setCodigo(sedeDto.getCodigo());
-                sedeToEdit.setNombre(sedeDto.getNombre());
-                sedeToEdit.setDireccion(sedeDto.getDireccion());
                 _sedeRepository.save(sedeToEdit);
                 return sedeDto;
             }
