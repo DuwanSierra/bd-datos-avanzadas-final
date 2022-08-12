@@ -1,26 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Customer } from '../../../interfaces/customer-interface';
-
-
-@Component({
-  selector: 'app-report-list',
-  templateUrl: './report-list.component.html',
-  styleUrls: ['./report-list.component.scss'],
-  styles: [`
-  :host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 5rem;
-  }
-
-  .layout-news-active :host ::ng-deep .p-datatable tr > th {
-      top: 7rem;
-  }
-`]
-})
-export class ReportListComponent implements OnInit {
-
-  customers: Customer[] = [
+{"data": [
     {
       "id": 1000,
       "name": "James Butt",
@@ -31,6 +9,7 @@ export class ReportListComponent implements OnInit {
       "company": "Benton, John B Jr",
       "date": "2015-09-13",
       "status": "unqualified",
+      "activity": 17,
       "representative": {
         "name": "Ioni Bowcher",
         "image": "ionibowcher.png"
@@ -46,6 +25,7 @@ export class ReportListComponent implements OnInit {
       "company": "Chanay, Jeffrey A Esq",
       "date": "2019-02-09",
       "status": "proposal",
+      "activity": 0,
       "representative": {
         "name": "Amy Elsner",
         "image": "amyelsner.png"
@@ -61,7 +41,7 @@ export class ReportListComponent implements OnInit {
       "company": "Chemel, James L Cpa",
       "date": "2017-05-13",
       "status": "qualified",
-
+      "activity": 63,
       "representative": {
         "name": "Asiya Javayant",
         "image": "asiyajavayant.png"
@@ -77,7 +57,7 @@ export class ReportListComponent implements OnInit {
       "company": "Feltz Printing Service",
       "date": "2020-09-15",
       "status": "new",
-
+      "activity": 37,
       "representative": {
         "name": "Xuxue Feng",
         "image": "xuxuefeng.png"
@@ -93,25 +73,10 @@ export class ReportListComponent implements OnInit {
       "company": "Printing Dimensions",
       "date": "2016-05-20",
       "status": "proposal",
+      "activity": 33,
       "representative": {
         "name": "Asiya Javayant",
         "image": "asiyajavayant.png"
       }
     }
-
-  ]
-  title = 'REPORTES';
-
-  constructor() { }
-
-  ngOnInit(): void {
-
-  }
-
-
-
-
-}
-
-
-
+]}

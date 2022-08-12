@@ -1,1 +1,34 @@
-<p>report-list works!</p>
+<window-template [title]="title" [showActions]="true" [validateForm]="true" style="padding-block: 10px;">
+  
+    <div class="create-catalog" content style="border:solid;border-color: white; border-radius:1px; border-width: 1.5px;">
+        
+        <p-table  [value]="customers">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Representative</th>
+                    <th>Status</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+                <tr>
+                    <td>
+                        {{customer.name}}
+                    </td>
+                    <td>
+                        <span class="image-text">{{customer.country.name}}</span>
+                    </td>
+                    <td>
+                        <span class="image-text">{{customer.representative.name}}</span>
+                    </td>
+                    <td>
+                        <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+    
+</window-template>
