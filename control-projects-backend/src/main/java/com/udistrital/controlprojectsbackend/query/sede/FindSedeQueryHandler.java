@@ -27,10 +27,6 @@ public class FindSedeQueryHandler implements FindSedeQuery {
     }
     private SedeDto convertToObjectDto(SedeEntity input) {
         SedeDto dto = new SedeDto();
-        dto.setSedeId(input.getSedeId());
-        dto.setNombre(input.getNombre());
-        dto.setCodigo(input.getCodigo());
-        dto.setDireccion(input.getDireccion());
         return dto;
     }
 }

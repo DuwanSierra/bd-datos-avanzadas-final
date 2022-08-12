@@ -30,7 +30,6 @@ public class FindProfesorQueryHandler implements FindProfesorQuery {
     private ProfesorDto convertToObjectDto(ProfesorEntity input) {
         ProfesorDto dto = new ProfesorDto();
         dto.setCedulaProfesor(input.getCedulaProfesor());
-        dto.setNombreProfesor(input.getNombreProfesor());
         return dto;
     }
 }

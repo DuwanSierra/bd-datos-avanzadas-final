@@ -22,8 +22,14 @@ public class ProfesorEntity {
     @NotEmpty
     @Column(nullable = false)
     @Size(max = 70, message = "El nombre del profesor debe ser alfanúmerico no mayor a 70 carácteres")
-    private String nombreProfesor;
+    private String nombre;
     @NotEmpty
     @Column(nullable = false)
-    private Date inicioInvestigacion;
+    private Date experienciaInv;
+    @ManyToOne
+    @JoinColumn(name = "FK_Id_cargo", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFESOR_CARGO"))
+    private CargoEntity cargo;
+    @ManyToOne
+    @JoinColumn(name = "FK_Nombre_Facultad", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFESOR_FACULTAD"))
+    private FacultadEntity facultad;
 }

@@ -7,19 +7,19 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sede", indexes = {
-        @Index(name = "idx_sede_id", columnList = "sede")
+@Table(name = "rol", indexes = {
+        @Index(name = "idx_rol_id", columnList = "rolId")
 })
 @Data
-public class SedeEntity {
+public class RolEntity {
     @Id
-    private Long idSede;
+    private Long rolId;
     @NotEmpty
-    @Size(max = 70, message = "El nombre de la sede debe ser alfanúmerico no mayor a 70 carácteres")
-    private String sede;
+    @Column(nullable = false)
+    @Size(max = 70, message = "El rol debe ser alfanúmerico no mayor a 70 carácteres")
+    private String rol;
 }

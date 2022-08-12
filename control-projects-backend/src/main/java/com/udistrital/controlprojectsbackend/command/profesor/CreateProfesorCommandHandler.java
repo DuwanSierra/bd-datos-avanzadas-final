@@ -30,16 +30,11 @@ public class CreateProfesorCommandHandler implements CreateProfesorCommand {
             try{
                 ProfesorEntity profesor = new ProfesorEntity();
                 profesor.setCedulaProfesor(profesorDto.getCedulaProfesor());
-                profesor.setNombreProfesor(profesorDto.getNombreProfesor());
-                profesor.setInicioInvestigacion(profesorDto.getInicioInvestigacion());
                 GrupoInvestigacionId grupoId = new GrupoInvestigacionId();
-                grupoId.setCodigoGrupoInvestigacion(profesorDto.getGrupoInvestigacion().getCodigoGrupoInvestigacion());
-                grupoId.setNombreGrupoInvestigacion(profesorDto.getGrupoInvestigacion().getNombreGrupoInvestigacion());
                 FacultadEntity facultad = _facultadRepository.getReferenceById(profesorDto.getGrupoInvestigacion().getFacultad().getFacultadNombre());
-                if(facultad.getFacultadNombre() == null){
+                if(facultad.getNombreFacultad() == null){
                     throw new NotFoundException("FacultyNotFound","No existe la facultad con la que relacionas el profesor");
                 }
-                grupoId.setFacultad(facultad);
                 profesor = _profesorRepository.save(profesor);
                 return profesorDto;
             }

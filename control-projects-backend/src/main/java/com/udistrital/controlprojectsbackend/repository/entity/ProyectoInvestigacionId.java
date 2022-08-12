@@ -9,7 +9,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class GrupoInvestigacionId implements Serializable {
-    private String codigoGrupo;
-    private String nombreGrupo;
+public class ProyectoInvestigacionId implements Serializable {
+    private GrupoInvestigacionEntity grupoInvestigacion;
+    private String codigoProyecto;
 }

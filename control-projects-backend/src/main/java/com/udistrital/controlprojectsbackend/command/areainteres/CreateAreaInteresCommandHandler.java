@@ -22,7 +22,6 @@ public class CreateAreaInteresCommandHandler implements CreateAreaInteresCommand
             try{
                 AreaInteresEntity areaInteresEntity = new AreaInteresEntity(null,areaInteresDto.getAreaNombre());
                 areaInteresEntity = _areaInteresRepository.save(areaInteresEntity);
-                areaInteresDto.setAreaId(areaInteresEntity.getAreaId());
                 return areaInteresDto;
             }
             catch (Exception e){
