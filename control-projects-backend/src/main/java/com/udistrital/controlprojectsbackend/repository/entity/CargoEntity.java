@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 @Data
 public class CargoEntity {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long idCargo;
     @NotEmpty
     @Column(nullable = false)

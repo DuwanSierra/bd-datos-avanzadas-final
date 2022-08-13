@@ -20,9 +20,10 @@ public class CreateSedeCommandHandler implements CreateSedeCommand {
     public Mono<SedeDto> CreateSede(SedeDto sedeDto) {
         return Mono.fromCallable(() -> {
             try{
-                /*SedeEntity sede = new SedeEntity(null,sedeDto.getNombre(), sedeDto.getCodigo(), sedeDto.getDireccion(), null);
+                SedeEntity sede = new SedeEntity(null,sedeDto.getNombre());
+                sede.setIdSede(null);
                 sede = _sedeRepository.save(sede);
-                sedeDto.setSedeId(sede.getSedeId());*/
+                sedeDto.setSedeId(sede.getIdSede());
                 return sedeDto;
             }
             catch (Exception e){

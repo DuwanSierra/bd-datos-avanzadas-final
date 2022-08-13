@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Service
 public class DeleteSedeCommandHandler implements DeleteSedeCommand {
 
-    private SedeRepository _sedeRepository;
+    private final SedeRepository _sedeRepository;
 
     public DeleteSedeCommandHandler(@Autowired SedeRepository sedeRepository){
         _sedeRepository = sedeRepository;
@@ -22,7 +22,7 @@ public class DeleteSedeCommandHandler implements DeleteSedeCommand {
             try{
                 SedeEntity sedeTodelete = _sedeRepository.getReferenceById(id);
                 _sedeRepository.delete(sedeTodelete);
-                return  new DeleteDto("Se ha borrado la sede con éxito",true);
+                return new DeleteDto("Se ha borrado la sede con éxito",true);
             }
             catch (Exception e){
                 throw new ConflictException("No se pudo borrar la sede",e.getMessage());

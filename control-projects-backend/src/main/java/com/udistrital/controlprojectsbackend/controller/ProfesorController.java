@@ -21,7 +21,7 @@ public class ProfesorController {
         _createProfesorCommand = createProfesorCommand;
     }
     @GetMapping("/all")
-    private Mono<Page<ProfesorDto>> getAllAreaInteres(@RequestParam long page, @RequestParam long size) {
+    private Mono<Page<ProfesorDto>> getAllProfesor(@RequestParam long page, @RequestParam long size) {
         return _findProfesorQuery.FindAllProfesor(page,size);
     }
     @PostMapping("/create")

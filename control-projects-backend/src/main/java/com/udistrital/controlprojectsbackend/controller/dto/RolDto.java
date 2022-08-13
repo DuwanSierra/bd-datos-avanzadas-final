@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class SedeDto {
-    private Long sedeId;
-    private String nombre;
+public class RolDto {
+    private Long rolId;
+    private String rol;
 }

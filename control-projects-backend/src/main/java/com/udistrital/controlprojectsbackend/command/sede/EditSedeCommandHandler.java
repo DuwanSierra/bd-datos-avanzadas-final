@@ -3,6 +3,7 @@ package com.udistrital.controlprojectsbackend.command.sede;
 import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
+import com.udistrital.controlprojectsbackend.mappers.SedeMapper;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,13 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class EditSedeCommandHandler implements EditSedeCommand {
-    private SedeRepository _sedeRepository;
+    private final SedeRepository _sedeRepository;
+    private final SedeMapper _sedeMapper;
 
-    public EditSedeCommandHandler(@Autowired SedeRepository sedeRepository){
+    @Autowired
+    public EditSedeCommandHandler( SedeRepository sedeRepository, SedeMapper sedeMapper){
         _sedeRepository = sedeRepository;
+        _sedeMapper = sedeMapper;
     }
     @Override
     public Mono<SedeDto> EditSede(SedeDto sedeDto, long id) {
@@ -24,8 +28,10 @@ public class EditSedeCommandHandler implements EditSedeCommand {
                 if(sedeToEdit==null){
                     throw new NotFoundException("No se ha encontrado la sede", "SedeNotFound");
                 }
-                _sedeRepository.save(sedeToEdit);
-                return sedeDto;
+                sedeToEdit = _sedeMapper.sedeDtoToSedeEntity(sedeDto);
+                sedeToEdit.setIdSede(id);
+                sedeToEdit = _sedeRepository.save(sedeToEdit);
+                return _sedeMapper.sedeEntityToSedeDto(sedeToEdit);
             }
             catch (Exception e){
                 throw new ConflictException("No se pudo editar la sede",e.getMessage());
