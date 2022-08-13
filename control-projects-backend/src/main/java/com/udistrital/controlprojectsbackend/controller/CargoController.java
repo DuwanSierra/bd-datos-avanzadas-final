@@ -43,27 +43,27 @@ public class CargoController {
     }
 
     @PostMapping("/create")
-    private Mono<CargoDto> createAreaInteres(@RequestBody CargoDto cargoDto) {
+    private Mono<CargoDto> createCargo(@RequestBody CargoDto cargoDto) {
         return _createCargoCommand.CreateCargo(cargoDto);
     }
 
     @PutMapping("/edit/{id}")
-    private Mono<CargoDto> editAreaInteres(@RequestBody CargoDto cargoDto, @PathVariable long id) {
+    private Mono<CargoDto> editCargo(@RequestBody CargoDto cargoDto, @PathVariable long id) {
         return _editCargoCommand.EditCargo(cargoDto, id);
     }
 
     @GetMapping("/all")
-    private Mono<Page<CargoDto>> getAllAreaInteres(@RequestParam long page, @RequestParam long size) {
+    private Mono<Page<CargoDto>> getAllCargo(@RequestParam long page, @RequestParam long size) {
         return _findCargoQuery.FindAllCargos(page, size);
     }
 
     @DeleteMapping("/delete/{id}")
-    private Mono<DeleteDto> deleteAreaInteres(@PathVariable long id) {
+    private Mono<DeleteDto> deleteCargo(@PathVariable long id) {
         return _deleteCargoCommand.deleteCargo(id);
     }
 
     @GetMapping("/find/{id}")
-    private Mono<CargoDto> findAreaInteres(@PathVariable long id) {
+    private Mono<CargoDto> findCargo(@PathVariable long id) {
         return _findCargoByIdQuery.FindCargoById(id);
     }
 }

@@ -35,23 +35,23 @@ public class SedeController {
         _editSedeCommand = editSedeCommand;
     }
     @PostMapping("/create")
-    private Mono<SedeDto> createAreaInteres(@RequestBody SedeDto sedeDto) {
+    private Mono<SedeDto> createSede(@RequestBody SedeDto sedeDto) {
         return _createSedeCommand.CreateSede(sedeDto);
     }
     @PutMapping("/edit/{id}")
-    private Mono<SedeDto> editAreaInteres(@RequestBody SedeDto sedeDto, @PathVariable long id) {
+    private Mono<SedeDto> editSede(@RequestBody SedeDto sedeDto, @PathVariable long id) {
         return _editSedeCommand.EditSede(sedeDto,id);
     }
     @GetMapping("/all")
-    private Mono<Page<SedeDto>> getAllAreaInteres(@RequestParam long page, @RequestParam long size) {
+    private Mono<Page<SedeDto>> getAllSede(@RequestParam long page, @RequestParam long size) {
         return _findSedeQuery.FindAllSede(page,size);
     }
     @DeleteMapping("/delete/{id}")
-    private Mono<DeleteDto> deleteAreaInteres(@PathVariable long id) {
+    private Mono<DeleteDto> deleteSede(@PathVariable long id) {
         return _deleteSedeCommand.deleteSede(id);
     }
     @GetMapping("/find/{id}")
-    private Mono<SedeDto> findAreaInteres(@PathVariable long id) {
+    private Mono<SedeDto> findSede(@PathVariable long id) {
         return _findSedeByIdQuery.FindSedeById(id);
     }
 }

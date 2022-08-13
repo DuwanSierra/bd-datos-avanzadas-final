@@ -24,6 +24,7 @@ public class CreateCargoCommandHandler implements CreateCargoCommand {
         return Mono.fromCallable(() -> {
             try {
                 CargoEntity cargoEntity = _cargoMapper.cargoDtoToCargoEntity(cargoDto);
+                cargoEntity.setIdCargo(null);
                 cargoEntity = _cargoRepository.save(cargoEntity);
                 return _cargoMapper.cargoEntityToCargoDto(cargoEntity);
             } catch (Exception e) {
