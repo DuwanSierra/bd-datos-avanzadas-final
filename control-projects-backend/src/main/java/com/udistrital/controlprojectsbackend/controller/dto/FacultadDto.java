@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class GrupoInvestigacionDto {
-    public FacultadDto facultad;
-    private String nombreGrupoInvestigacion;
-    private Long codigoGrupoInvestigacion;
-    private AreaInteresDto areaInteres;
+public class FacultadDto {
+    private String facultadNombre;
+    private SedeDto sede;
 }

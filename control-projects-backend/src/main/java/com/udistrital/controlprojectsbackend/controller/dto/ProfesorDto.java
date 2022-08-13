@@ -9,8 +9,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class ProfesorDto {
-    public Long cedulaProfesor;
+    private Long cedulaProfesor;
     private String nombreProfesor;
     private Date inicioInvestigacion;
-    private GrupoInvestigacionDto grupoInvestigacion;
+    private Long aniosInvestigacion;
+    private FacultadDto facultad;
+    private CargoDto cargo;
 }

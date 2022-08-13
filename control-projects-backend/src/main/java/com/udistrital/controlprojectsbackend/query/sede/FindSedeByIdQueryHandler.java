@@ -2,6 +2,7 @@ package com.udistrital.controlprojectsbackend.query.sede;
 
 import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.exceptions.NotFoundException;
+import com.udistrital.controlprojectsbackend.mappers.SedeMapper;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,13 @@ import reactor.core.publisher.Mono;
 @Service
 public class FindSedeByIdQueryHandler implements FindSedeByIdQuery {
 
-    private SedeRepository _sedeRepository;
+    private final SedeRepository _sedeRepository;
+    private final SedeMapper _sedeMapper;
 
-    public FindSedeByIdQueryHandler(@Autowired SedeRepository sedeRepository){
+    @Autowired
+    public FindSedeByIdQueryHandler(SedeRepository sedeRepository, SedeMapper sedeMapper){
         _sedeRepository = sedeRepository;
+        _sedeMapper = sedeMapper;
     }
 
     @Override
@@ -24,8 +28,7 @@ public class FindSedeByIdQueryHandler implements FindSedeByIdQuery {
             if(sede==null){
                 throw new NotFoundException("No se ha encontrado la sede", "SedeNotFound");
             }
-            SedeDto sedeDto = new SedeDto();
-            return sedeDto;
+            return _sedeMapper.sedeEntityToSedeDto(sede);
         });
     }
 }
