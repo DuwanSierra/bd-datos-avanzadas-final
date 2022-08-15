@@ -16,7 +16,7 @@
   <div class="content">
     <div class="form-content">
       <div class="title-container">
-        <h2 class="title">{{ title }}</h2>
+        <h2 style="text-align:center;" class="title">{{ title|titlecase }}</h2>
       </div>
       <div class="form">
         <p-card styleClass="card-content">
@@ -25,12 +25,15 @@
             <form [formGroup]="customFormGroup" (ngSubmit)="clickAction()">
               <div class="actions">
                 <button
-                  pButton
-                  pRipple
-                  type="button"
-                  label="Cancelar"
-                  class="p-button-text"
-                ></button>
+                pButton
+                pRipple
+                type="submit"
+                [disabled]="
+                  validateForm ? customFormGroup.invalid : validateForm
+                "
+                label="Guardar"
+              ></button>
+                
                 <div
                   pTooltip="{{
                     customFormGroup.invalid
@@ -41,15 +44,13 @@
                   [showDelay]="600"
                   [hideDelay]="300"
                 >
-                  <button
-                    pButton
-                    pRipple
-                    type="submit"
-                    [disabled]="
-                      validateForm ? customFormGroup.invalid : validateForm
-                    "
-                    label="Guardar"
-                  ></button>
+                <button
+                pButton
+                pRipple
+                type="button"
+                label="Cancelar"
+                class="p-button-text"
+              ></button>
                 </div>
               </div>
             </form>
