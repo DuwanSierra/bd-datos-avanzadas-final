@@ -8,14 +8,14 @@
   <div class="create-sede" content>
     <div [formGroup]="viewFormGroup">
       <input-text-form
-        label="Nombre de la sede"
-        hint="Ingresa por favor el nombre de la sede"
+        label="Nombre del cargo"
+        hint="Ingresa por favor el nombre del cargo"
         [customFormGroup]="viewFormGroup"
         [isRequired]="true"
         [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
         [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
         [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
-        [(model)]="nombreSede"
+        [(model)]="nombreCargo"
       ></input-text-form>
     </div>
   </div>

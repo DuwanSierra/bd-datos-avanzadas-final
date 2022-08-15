@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 @Data
 public class RolEntity {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long rolId;
     @NotEmpty
     @Column(nullable = false)

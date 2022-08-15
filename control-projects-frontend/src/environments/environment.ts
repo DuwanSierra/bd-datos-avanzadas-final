@@ -9,6 +9,8 @@ export const environment = {
   areaInteresEndpoint: 'http://localhost:8080/area-interes',
   sedeEndpoint: 'http://localhost:8080/sede',
   profesorEndpoint: 'http://localhost:8080/profesor',
+  rolEndpoint: 'http://localhost:8080/rol',
+  cargoEndpoint: 'http://localhost:8080/cargo',
 };
 
 /*

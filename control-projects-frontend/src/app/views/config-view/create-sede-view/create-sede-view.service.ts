@@ -17,23 +17,19 @@ export class CreateSedeViewService {
     private router: Router
   ) {}
 
-  public createSede(nombre: string, codigo: string, direccion: string) {
+  public createSede(nombre: string) {
     let sedeCreate = new SedeRequest();
     sedeCreate.nombre = nombre;
-    sedeCreate.codigo = codigo;
-    sedeCreate.direccion = direccion;
     this.sedeManagerService.createSede(sedeCreate).subscribe((res) => {
       this.resetAll();
       this.router.navigate(['config/sede/list']);
     });
   }
 
-  public editSede(nombre: string, codigo: string, direccion: string) {
+  public editSede(nombre: string) {
     let sedeCreate = new SedeRequest();
     sedeCreate.nombre = nombre;
-    sedeCreate.codigo = codigo;
     sedeCreate.sedeId = this.sedeDto.value.sedeId;
-    sedeCreate.direccion = direccion;
     this.sedeManagerService.editSede(sedeCreate).subscribe((res) => {
       this.resetAll();
       this.router.navigate(['config/sede/list']);

@@ -55,6 +55,44 @@ export class MenuService {
               this.router.navigateByUrl("config/sede/list");
             },
           },
+          {
+            separator: true,
+          },
+          {
+            label: 'Crear Rol',
+            icon: 'pi pi-user-plus',
+            id: 'create-rol',
+            command: () => {
+              this.router.navigateByUrl("config/rol/create");
+            },
+          },
+          {
+            label: 'Listado de Roles',
+            icon: 'pi pi-users',
+            id: 'list-rol',
+            command: () => {
+              this.router.navigateByUrl("config/rol/list");
+            },
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Crear Cargo',
+            icon: 'pi pi-id-card',
+            id: 'create-rol',
+            command: () => {
+              this.router.navigateByUrl("config/cargo/create");
+            },
+          },
+          {
+            label: 'Listado de Cargos',
+            icon: 'pi pi-fw pi-list',
+            id: 'list-rol',
+            command: () => {
+              this.router.navigateByUrl("config/cargo/list");
+            },
+          },
         ],
       },
       {
@@ -232,6 +270,34 @@ export class MenuService {
         icon: 'assets/images/sede.png',
         command: () => {
           this.router.navigateByUrl("config/sede/list");
+        },
+      },
+      {
+        label: 'Roles',
+        tooltipOptions: {
+          tooltipLabel: 'Roles',
+          tooltipPosition: 'top',
+          positionTop: -15,
+          positionLeft: 15,
+          showDelay: 200,
+        },
+        icon: 'assets/images/roles.png',
+        command: () => {
+          this.router.navigateByUrl("config/rol/list");
+        },
+      },
+      {
+        label: 'Cargos',
+        tooltipOptions: {
+          tooltipLabel: 'Cargos',
+          tooltipPosition: 'top',
+          positionTop: -15,
+          positionLeft: 15,
+          showDelay: 200,
+        },
+        icon: 'assets/images/cargos.png',
+        command: () => {
+          this.router.navigateByUrl("config/cargo/list");
         },
       },
       {
