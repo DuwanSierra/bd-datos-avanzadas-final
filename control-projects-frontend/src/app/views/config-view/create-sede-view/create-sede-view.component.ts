@@ -12,8 +12,6 @@ import { CreateSedeViewService } from './create-sede-view.service';
 export class CreateSedeViewComponent extends GenericView implements OnInit {
   title: string = 'Crear nueva sede';
   public nombreSede = '';
-  public codigoSede = '';
-  public direccionSede = '';
   constructor(
     public override activatedRoute: ActivatedRoute,
     public createSedeService: CreateSedeViewService
@@ -28,16 +26,14 @@ export class CreateSedeViewComponent extends GenericView implements OnInit {
   saveEvent(isValid: boolean) {
     if (isValid) {
       this.isEdit
-        ? this.createSedeService.editSede(this.nombreSede, this.codigoSede, this.direccionSede)
-        : this.createSedeService.createSede(this.nombreSede, this.codigoSede, this.direccionSede);
+        ? this.createSedeService.editSede(this.nombreSede)
+        : this.createSedeService.createSede(this.nombreSede);
     }
   }
 
   getCurrentSede() {
     this.createSedeService.sedeDto.subscribe((sede: SedeRequest) => {
       this.nombreSede = sede.nombre || '';
-      this.codigoSede = sede.codigo || '';
-      this.direccionSede = sede.direccion || '';
     });
   }
 

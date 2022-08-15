@@ -18,6 +18,7 @@ import java.util.Set;
 @Data
 public class SedeEntity {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long idSede;
     @NotEmpty
     @Size(max = 70, message = "El nombre de la sede debe ser alfanúmerico no mayor a 70 carácteres")

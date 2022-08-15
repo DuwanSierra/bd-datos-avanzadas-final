@@ -1,0 +1,13 @@
+<window-template>
+    <div class="list-catalog" content>
+      <custom-table
+        [service]="cargoManagerService"
+        methodGetData="findAllCargo"
+        methodDelete="deleteCargo"
+        [configuration]="configTable"
+        (editEvent)="editCargo($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  

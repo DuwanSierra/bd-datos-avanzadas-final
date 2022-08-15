@@ -2,6 +2,7 @@ package com.udistrital.controlprojectsbackend.command.sede;
 
 import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
 import com.udistrital.controlprojectsbackend.exceptions.ConflictException;
+import com.udistrital.controlprojectsbackend.mappers.SedeMapper;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +13,21 @@ import reactor.core.publisher.Mono;
 public class CreateSedeCommandHandler implements CreateSedeCommand {
 
     private SedeRepository _sedeRepository;
+    private final SedeMapper _sedeMapper;
 
-    public CreateSedeCommandHandler(@Autowired SedeRepository sedeRepository){
+    @Autowired
+    public CreateSedeCommandHandler(SedeRepository sedeRepository, SedeMapper sedeMapper){
         _sedeRepository = sedeRepository;
+        _sedeMapper = sedeMapper;
     }
     @Override
     public Mono<SedeDto> CreateSede(SedeDto sedeDto) {
         return Mono.fromCallable(() -> {
-            try{
-                SedeEntity sede = new SedeEntity(null,sedeDto.getNombre());
+            try {
+                SedeEntity sede = _sedeMapper.sedeDtoToSedeEntity(sedeDto);
                 sede.setIdSede(null);
                 sede = _sedeRepository.save(sede);
-                sedeDto.setSedeId(sede.getIdSede());
-                return sedeDto;
+                return _sedeMapper.sedeEntityToSedeDto(sede);
             }
             catch (Exception e){
                 throw new ConflictException("No se pudo crear la sede",e.getMessage());
