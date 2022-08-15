@@ -16,15 +16,14 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public abstract class TituloMapper {
+    @Mapping(target = "titulo", expression = "java(titulo.getTitulo())")
+    public abstract TituloEntity convertTituloDtoToTituloEntity(TituloDto titulo, ProfesorEntity profesor);
     @Mapping(target = "titulo", source = "titulo")
-    public abstract TituloEntity convertTituloDtoToTituloEntity(TituloDto tituloDto, ProfesorEntity profesor);
+    public abstract TituloDto convertTituloEntityToTituloDto(TituloEntity tituloEntity);
     @AfterMapping
     protected void setProfesorEntity(@MappingTarget TituloEntity tituloEntity, ProfesorEntity profesor) {
         tituloEntity.setProfesor(profesor);
     }
-    @Mapping(target = "titulo", source = "titulo")
-    public abstract TituloDto convertTituloEntityToTituloDto(TituloEntity tituloEntity);
-
     public List<TituloEntity> convertListTitulotDtoToListTitulooEntity(List<TituloDto> titulosDto, ProfesorEntity profesorEntity){
         return titulosDto.stream().map(titulo -> convertTituloDtoToTituloEntity(titulo,profesorEntity)).collect(Collectors.toList());
     }
