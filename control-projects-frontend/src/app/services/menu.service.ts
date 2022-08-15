@@ -109,15 +109,23 @@ export class MenuService {
         label: 'Grupos de investigación',
         items: [
           {
-            label: 'Registrar grupo',
+            label: 'Registrar grupo de investigacion',
             icon: 'pi pi-fw pi-book',
+            id: 'investigation-group-create',
+            command: () => {
+              this.router.navigateByUrl("investigation-group/create");
+            }
           },
           {
             separator: true,
           },
           {
-            label: 'Listado de grupos',
-            icon: 'pi pi-fw pi-list',
+            label: 'Listado de grupos de investigacion',
+            icon: 'pi pi-fw pi-book',
+            id: 'professor-list',
+            command: () => {
+              this.router.navigateByUrl("investigation-group/list");
+            }
           },
         ],
       },
@@ -125,15 +133,23 @@ export class MenuService {
         label: 'Proyectos de investigación',
         items: [
           {
-            label: 'Registrar proyecto',
-            icon: 'pi pi-fw pi-book',
+          label: 'Proyectos de investigación',
+            icon: 'pi pi pi-fw pi-list',
+            id: 'investigation-project-create',
+            command: () => {
+              this.router.navigateByUrl("investigation-project/create");
+            }
           },
           {
             separator: true,
           },
           {
-            label: 'Listado de proyectos',
+            label: 'Listado de proyectos de investigacion',
             icon: 'pi pi-fw pi-list',
+            id: 'investigation-project-list',
+            command: () => {
+              this.router.navigateByUrl("investigation-project/list");
+            }
           },
         ],
       },
@@ -143,6 +159,11 @@ export class MenuService {
           {
             label: 'Proyectos por profesor',
             icon: 'pi pi-fw pi-list',
+            id: 'proffesor-report',
+            command: () => {
+              this.router.navigateByUrl("report/professor");
+            }
+
           },
           {
             separator: true,
@@ -150,6 +171,10 @@ export class MenuService {
           {
             label: 'Proyectos activos, y terminados',
             icon: 'pi pi-fw pi-list',
+            id: 'report-investigation-project',
+            command: () => {
+              this.router.navigateByUrl("report/investigation-project");
+            }
           },
           {
             separator: true,
@@ -157,6 +182,10 @@ export class MenuService {
           {
             label: 'Profesores con sus proyectos de investigación',
             icon: 'pi pi-fw pi-list',
+            id: 'report-investigation-group',
+            command: () => {
+              this.router.navigateByUrl("report/investigation-group");
+            }
           },
           {
             separator: true,
@@ -164,6 +193,10 @@ export class MenuService {
           {
             label: 'Presupuesto por facultad',
             icon: 'pi pi-fw pi-list',
+            id: 'report-faculty',
+            command: () => {
+              this.router.navigateByUrl("report/faculty");
+            }
           },
         ],
       },
