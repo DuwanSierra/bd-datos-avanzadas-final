@@ -9,6 +9,8 @@ import com.udistrital.controlprojectsbackend.command.sede.EditSedeCommand;
 import com.udistrital.controlprojectsbackend.controller.dto.DeleteDto;
 import com.udistrital.controlprojectsbackend.controller.dto.GrupoInvestigacionDto;
 import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.query.grupoinvestigacion.FindGrupoInvestigacionByIdQuery;
+import com.udistrital.controlprojectsbackend.query.grupoinvestigacion.FindGrupoInvestigacionQuery;
 import com.udistrital.controlprojectsbackend.query.sede.FindSedeByIdQuery;
 import com.udistrital.controlprojectsbackend.query.sede.FindSedeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +23,23 @@ import reactor.core.publisher.Mono;
 @CrossOrigin(origins = "http://localhost:4200")
 public class GrupoInvestigacionController {
     private CreateGrupoInvestigacionCommand _createGrupoInvestigacionCommand;
-    private FindSedeQuery _findSedeQuery;
+    private FindGrupoInvestigacionQuery _findGrupoInvestigacionQuery;
     private DeleteGrupoInvestigacionCommand _deleteGrupoInvestigacionCommand;
-    private FindSedeByIdQuery _findSedeByIdQuery;
+    private FindGrupoInvestigacionByIdQuery _findGrupoInvestigacionByIdQuery;
     private EditGrupoInvestigacionCommand _editGrupoInvestigacionCommand;
 
     @Autowired
     public GrupoInvestigacionController(
             CreateGrupoInvestigacionCommand createGrupoInvestigacionCommand,
-            FindSedeQuery findSedeQuery,
+            FindGrupoInvestigacionQuery findGrupoInvestigacionQuery,
             DeleteGrupoInvestigacionCommand deleteGrupoInvestigacionCommand,
-            FindSedeByIdQuery findSedeByIdQuery,
+            FindGrupoInvestigacionByIdQuery findGrupoInvestigacionByIdQuery,
             EditGrupoInvestigacionCommand editGrupoInvestigacionCommand
     ) {
         _createGrupoInvestigacionCommand = createGrupoInvestigacionCommand;
-        _findSedeQuery = findSedeQuery;
+        _findGrupoInvestigacionQuery = findGrupoInvestigacionQuery;
         _deleteGrupoInvestigacionCommand = deleteGrupoInvestigacionCommand;
-        _findSedeByIdQuery = findSedeByIdQuery;
+        _findGrupoInvestigacionByIdQuery = findGrupoInvestigacionByIdQuery;
         _editGrupoInvestigacionCommand = editGrupoInvestigacionCommand;
     }
 
@@ -48,21 +50,21 @@ public class GrupoInvestigacionController {
 
     @PutMapping("/edit/{nombre}/{codigo}")
     private Mono<GrupoInvestigacionDto> editGrupoInvestigacion(@RequestBody GrupoInvestigacionDto grupoInvestigacionDto, @PathVariable String nombre, @PathVariable String codigo) {
-        return _editGrupoInvestigacionCommand.EditGrupoInvestigacion(grupoInvestigacionDto,nombre,codigo);
+        return _editGrupoInvestigacionCommand.EditGrupoInvestigacion(grupoInvestigacionDto, nombre, codigo);
     }
 
     @GetMapping("/all")
-    private Mono<Page<SedeDto>> getAllGrupoInvestigacion(@RequestParam long page, @RequestParam long size) {
-        return _findSedeQuery.FindAllSede(page, size);
+    private Mono<Page<GrupoInvestigacionDto>> getAllGrupoInvestigacion(@RequestParam long page, @RequestParam long size) {
+        return _findGrupoInvestigacionQuery.FindAllGrupoInvestigacion(page, size);
     }
 
     @DeleteMapping("/delete/{nombre}/{codigo}")
     private Mono<DeleteDto> deleteGrupoInvestigacion(@PathVariable String nombre, @PathVariable String codigo) {
-        return _deleteGrupoInvestigacionCommand.deleteGrupoInvestigacion(nombre,codigo);
+        return _deleteGrupoInvestigacionCommand.deleteGrupoInvestigacion(nombre, codigo);
     }
 
-    @GetMapping("/find/{id}")
-    private Mono<SedeDto> findSede(@PathVariable long id) {
-        return _findSedeByIdQuery.FindSedeById(id);
+    @GetMapping("/find/{nombre}/{codigo}")
+    private Mono<GrupoInvestigacionDto> findSede(@PathVariable String nombre, @PathVariable String codigo) {
+        return _findGrupoInvestigacionByIdQuery.FindGrupoInvestigacionByid(nombre, codigo);
     }
 }
