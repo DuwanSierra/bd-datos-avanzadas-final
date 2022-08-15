@@ -13,6 +13,7 @@ import {TableModule} from 'primeng/table';
   imports: [
     CommonModule,
     ReportViewRoutingModule,
+    
     WindowModule,
     TableModule
   ]
