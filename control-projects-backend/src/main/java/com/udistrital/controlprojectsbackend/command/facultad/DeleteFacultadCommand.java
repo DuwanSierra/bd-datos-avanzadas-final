@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 @Service
 public interface DeleteFacultadCommand {
-    Mono<DeleteDto> deleteCargo(long id);
+    Mono<DeleteDto> deleteFacultad(String id);
 }
