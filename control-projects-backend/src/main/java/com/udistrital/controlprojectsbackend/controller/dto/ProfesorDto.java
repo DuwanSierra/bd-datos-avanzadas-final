@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,4 +16,5 @@ public class ProfesorDto {
     private Long aniosInvestigacion;
     private FacultadDto facultad;
     private CargoDto cargo;
+    private List<TituloDto> titulos;
 }
