@@ -64,7 +64,7 @@ public class GrupoInvestigacionController {
     }
 
     @GetMapping("/find/{nombre}/{codigo}")
-    private Mono<GrupoInvestigacionDto> findSede(@PathVariable String nombre, @PathVariable String codigo) {
+    private Mono<GrupoInvestigacionDto> findGrupoInvestigacion(@PathVariable String nombre, @PathVariable String codigo) {
         return _findGrupoInvestigacionByIdQuery.FindGrupoInvestigacionByid(nombre, codigo);
     }
 }
