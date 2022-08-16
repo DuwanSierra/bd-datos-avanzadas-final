@@ -1,69 +1,57 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { GrupoInvestigacionManagerService } from 'src/app/managers/grupo-investigacion-manager/grupo-investigacion-manager.service';
+import { ProyectoInvestigacionRequest } from 'src/app/managers/request-dto/proyecto-investigacion.request';
+import { GenericView } from 'src/app/utils/generic-view';
+import { CreateInvestigationProjectViewService } from './create-investigation-project-view.service';
 @Component({
   selector: 'app-create-investigation-project-view',
   templateUrl: './create-investigation-project-view.component.html',
-  styleUrls: ['./create-investigation-project-view.component.scss']
+  styleUrls: ['./create-investigation-project-view.component.scss'],
 })
-export class CreateInvestigationProjectViewComponent implements OnInit {
+export class CreateInvestigationProjectViewComponent
+  extends GenericView
+  implements OnInit
+{
+  proyectoInvestigacion = new ProyectoInvestigacionRequest();
+  title = 'Crear Grupo de Investigación';
 
-  minDate: Date = new Date();
-  maxDate: Date = new Date();
+  constructor(
+    public override activatedRoute: ActivatedRoute,
+    public grupoInvestigacionManager: GrupoInvestigacionManagerService,
+    public proyectoCreateService: CreateInvestigationProjectViewService
+  ) {
+    super(activatedRoute);
+  }
 
-  title = 'Crear Proyecto de Investigación';
-  date1: Date = new Date();
-  rangeDates: Date[] = [];
-
-  es: any;
-  invalidDates: Array<Date> = new Array;
-
-  phones = [
-    {
-      id: 0,
-      value: '',
-    },
-  ];
-
-  constructor() { }
-
+  saveEvent(isValid: boolean) {
+    if (isValid) {
+      this.isEdit
+        ? this.proyectoCreateService.editProject(this.proyectoInvestigacion)
+        : this.proyectoCreateService.createProject(this.proyectoInvestigacion);
+    }
+  }
 
   ngOnInit(): void {
+    this.getCurrentData();
+  }
 
-    this.es = {
-      firstDayOfWeek: 1,
-      dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
-      dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
-      dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
-      monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-      monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
-      today: 'Hoy',
-      clear: 'Borrar'
+  override afterCheckIsEditMode(): void {
+    this.title = 'Editar grupo de investigación';
+  }
+
+  override afterLoadParams(data: any): void {
+    if (data?.nombre && data?.codigo && data?.codigoProyecto) {
+      this.proyectoCreateService.findProject(data?.nombre, data?.codigo, data?.codigoProyecto);
+    } else {
+      this.proyectoCreateService.resetAll();
     }
-
-    let today = new Date();
-    let month = today.getMonth();
-    let year = today.getFullYear();
-    let prevMonth = (month === 0) ? 11 : month - 1;
-    let prevYear = (prevMonth === 11) ? year - 1 : year;
-    let nextMonth = (month === 11) ? 0 : month + 1;
-    let nextYear = (nextMonth === 0) ? year + 1 : year;
-    this.minDate = new Date();
-    this.minDate.setMonth(prevMonth);
-    this.minDate.setFullYear(prevYear);
-    this.maxDate = new Date();
-    this.maxDate.setMonth(nextMonth);
-    this.maxDate.setFullYear(nextYear);
-
-    let invalidDate = new Date();
-    invalidDate.setDate(today.getDate() - 1);
-    
   }
 
-
-    
-
-    
+  getCurrentData() {
+    this.proyectoCreateService.proyectoInvestigacionDto.subscribe((res) => {
+      this.proyectoInvestigacion = res;
+    });
   }
-
-
-
+}

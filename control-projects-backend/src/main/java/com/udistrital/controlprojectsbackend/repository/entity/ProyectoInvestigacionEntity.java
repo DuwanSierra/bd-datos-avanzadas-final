@@ -16,31 +16,24 @@ import java.util.Date;
 @Table(name = "proyecto_investigacion", indexes = {
         @Index(name = "idx_grupo_proyecto_Id", columnList = "codigoGrupo"),
         @Index(name = "idx_grupo_nombre_proyecto_Id", columnList = "nombreGrupo"),
-        @Index(name = "idx_proyecto_Id", columnList = "codigoProyecto")
+        //@Index(name = "idx_proyecto_Id", columnList = "codigoProyecto")
 })
 @Data
-@IdClass(ProyectoInvestigacionId.class)
+@AssociationOverrides({
+        @AssociationOverride(name = "codigoGrupo", joinColumns = @JoinColumn(name = "nombreGrupo")),
+        @AssociationOverride(name = "nombreGrupo", joinColumns = @JoinColumn(name = "nombreGrupo"))
+})
 public class ProyectoInvestigacionEntity {
-    @Id
-    @ManyToOne(optional = false)
-    @JoinColumns(value = {
-            @JoinColumn(name = "codigoGrupo", referencedColumnName = "codigoGrupo", nullable = false),
-            @JoinColumn(name = "nombreGrupo", referencedColumnName = "nombreGrupo", nullable = false)
-    }, foreignKey = @ForeignKey(name = "FK_PROYECTO_INVESTIGACION_GRUPO"))
-    private GrupoInvestigacionEntity grupoInvestigacion;
-    @Id
-    private String codigoProyecto;
+    @EmbeddedId
+    private ProyectoInvestigacionId proyectoInvestigacionId;
     @NotEmpty
     @Column(nullable = false)
     @Size(max = 70, message = "El nombre del proyecto debe ser alfanúmerico no mayor a 70 carácteres")
     private String nombre;
-    @NotEmpty
     @Column(nullable = false)
     private BigDecimal valorPres;
-    @NotEmpty
     @Column(nullable = false)
     private Date fechaInicio;
-    @NotEmpty
     @Column(nullable = false)
     private Date fechaTerminacion;
 }

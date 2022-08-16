@@ -1,31 +1,80 @@
-<window-template [title]="title" [showActions]="true" [validateForm]="true">
-    <div class="create-catalog" content>
-        <div>
-            <input-text-form label="Codigo del proyecto de investigación: "
-                hint="Ingresa por favor el codigo del profesor" [isRequired]="true" type="number"></input-text-form>
+<window-template
+  [title]="title"
+  [showActions]="true"
+  [customFormGroup]="viewFormGroup"
+  [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
+>
+<div class="create-catalog" content>
+    <div>
+      <input-text-form
+        label="Codigo del proyecto de investigación "
+        hint="Ingresa por favor el código del proyecto de investigación"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="1"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [disabled]="isEdit"
+        [(model)]="proyectoInvestigacion.codigo"
+        type="number"
+      ></input-text-form>
 
-            <input-text-form label="Nombre del grupo de investigación: " hint="Ingresa por favor el nombre del profesor"
-                [isRequired]="true"></input-text-form>
+      <input-text-form
+        label="Nombre del proyecto de investigación"
+        hint="Ingresa por favor el nombre del proyecto de investigación"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [customFormGroup]="viewFormGroup"
+        [(model)]="proyectoInvestigacion.nombre"
+        [isRequired]="true"
+      ></input-text-form>
 
-            <custom-dropdown methodGetData="findAllSedes" label="Selecciona la facultad"
-                hint="Selecciona la facultad a la cual pertenece la facultad" placeholder="Facultad"
-                [isRequired]="true">
-            </custom-dropdown>
+      <custom-dropdown
+        methodGetData="findAllGrupo"
+        label="Selecciona el grupo de investigación"
+        hint="Selecciona el grupo de investigación al cual pertenece el proyecto"
+        placeholder="Grupo"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="grupoInvestigacionManager"
+        [(model)]="proyectoInvestigacion.grupoInvestigacion"
+        [keysToShow]="['codigoGrupoInvestigacion','nombreGrupoInvestigacion']"
+      >
+      </custom-dropdown>
 
-            <custom-dropdown label="Seleccione el grupo de investigacion" hint="Seleccione el grupo de investigacion"
-                placeholder="grupo Investigacion" [isRequired]="true">
-            </custom-dropdown>
+      <input-text-form
+        label="Presupuesto asignado"
+        hint="Ingresa por favor el resupuesto asignado al proyecto de investigación"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="1"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [disabled]="isEdit"
+        [(model)]="proyectoInvestigacion.presupuesto"
+        type="number"
+      ></input-text-form>
 
-                <custom-dropdown methodGetData="findAllSedes" label="Area de interes del grupo de investigación: "
-                    hint="Ingrese el area de interes" placeholder="Area de interes" [isRequired]="true">
-                </custom-dropdown>
+      <custom-datepicker
+        label="Fecha de inicio"
+        hint="Ingresa la fecha de inicio del proyecto de investigación"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [(model)]="proyectoInvestigacion.fechaInicio"
+      ></custom-datepicker>
 
-                <div class="p-field p-col-12 p-md-4">
-                    <label for="range">Duracion del proyecto de investigacion </label>
-                    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="false" inputId="range"
-                        [disabledDays]="[0,6]">
-                    </p-calendar>
-                </div>
-        </div>
+      <custom-datepicker
+        label="Fecha de terminación"
+        hint="Ingresa la fecha de terminación del proyecto de investigación"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [(model)]="proyectoInvestigacion.fechaTerminacion"
+      ></custom-datepicker>
     </div>
+  </div>
 </window-template>
+
+
+

@@ -13,6 +13,7 @@ export const environment = {
   cargoEndpoint: 'http://localhost:8080/cargo',
   facultadEndpoint: 'http://localhost:8080/facultad',
   grupoEndpoint: 'http://localhost:8080/grupo-investigacion',
+  proyectoEndpoint: 'http://localhost:8080/proyecto-investigacion',
 };
 
 /*

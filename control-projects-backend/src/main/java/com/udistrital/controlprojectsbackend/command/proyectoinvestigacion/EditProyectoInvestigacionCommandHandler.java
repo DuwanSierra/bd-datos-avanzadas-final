@@ -48,8 +48,7 @@ public class EditProyectoInvestigacionCommandHandler implements EditProyectoInve
             }
             try {
                 proyectoInvestigacionEntity = _proyectoInvestigacionMapper.convertProyectoInvestigacionDtoToProyectoInvestigacionEntity(proyectoInvestigacionDto);
-                proyectoInvestigacionEntity.setCodigoProyecto(codigoProyecto);
-                proyectoInvestigacionEntity.setGrupoInvestigacion(grupoInvestigacionEntity);
+                proyectoInvestigacionEntity.setProyectoInvestigacionId(proyectoInvestigacionId);
                 proyectoInvestigacionEntity = _proyectoInvestigacionRepository.save(proyectoInvestigacionEntity);
                 return _proyectoInvestigacionMapper.convertProyectoInvestigacionEntityToProyectoInvestigacionDto(proyectoInvestigacionEntity);
             } catch (Exception e) {
