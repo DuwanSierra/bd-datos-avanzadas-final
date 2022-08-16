@@ -11,5 +11,5 @@ import java.io.Serializable;
 @Data
 public class TituloId implements Serializable {
     private String titulo;
-    private ProfesorEntity profesor;
+    private Long profesor;
 }

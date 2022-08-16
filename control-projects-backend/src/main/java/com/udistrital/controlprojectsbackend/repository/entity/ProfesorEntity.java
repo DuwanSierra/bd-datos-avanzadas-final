@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +23,6 @@ public class ProfesorEntity {
     @Column(nullable = false)
     @Size(max = 70, message = "El nombre del profesor debe ser alfanúmerico no mayor a 70 carácteres")
     private String nombre;
-    @NotEmpty
     @Column(nullable = false)
     private Date experienciaInv;
     @ManyToOne
