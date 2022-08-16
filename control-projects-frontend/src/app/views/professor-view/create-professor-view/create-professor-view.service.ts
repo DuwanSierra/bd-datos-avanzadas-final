@@ -36,7 +36,7 @@ export class CreateProfessorViewService {
 
   public findProfesor(cedulaProfesor: number) {
     this.profesorManager
-      .findProfessir(cedulaProfesor)
+      .findProfessor(cedulaProfesor)
       .subscribe((res: ProfessorRequest) => {
         this.profesorDto.next(res);
       });

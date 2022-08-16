@@ -49,7 +49,7 @@ export class ProfesorManagerService {
     );
   }
 
-  public findProfessir(cedulaProfesor: number): Observable<ProfessorRequest>{
+  public findProfessor(cedulaProfesor: number): Observable<ProfessorRequest>{
     return this.httpClient.get<ProfessorRequest>(
       `${this.profesorEndpoint}/find/${cedulaProfesor}`
     );
