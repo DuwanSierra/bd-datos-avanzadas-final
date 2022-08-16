@@ -51,6 +51,15 @@ export class CustomDropdownComponent implements OnInit, OnChanges {
     if (changes['formGroup']?.currentValue) {
       this.changeFormGroup(changes['formGroup']?.currentValue);
     }
+    if (changes['model']?.currentValue){
+      this.setData();
+    }
+  }
+
+  setData(){
+    if(this.data.length === 0){
+      this.data.push(this.model);
+    }
   }
 
   loadData(event: any) {

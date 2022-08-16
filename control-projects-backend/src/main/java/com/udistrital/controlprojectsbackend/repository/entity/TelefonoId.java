@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class TelefonoId implements Serializable {
-    private FacultadEntity facultad;
+    private String facultad;
     private String telefono;
 }

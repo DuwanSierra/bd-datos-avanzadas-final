@@ -20,22 +20,31 @@ public class CreateFacultadCommandHandler implements CreateFacultadCommand {
     private final FacultadMapper _facultadMapper;
     private final TelefonoMapper _telefonoMapper;
     private final TelefonoRepository _telefonoRepository;
+
     @Autowired
-    public CreateFacultadCommandHandler(FacultadRepository facultadRepository, FacultadMapper facultadMapper, TelefonoMapper telefonoMapper, TelefonoRepository telefonoRepository){
+    public CreateFacultadCommandHandler(FacultadRepository facultadRepository, FacultadMapper facultadMapper, TelefonoMapper telefonoMapper, TelefonoRepository telefonoRepository) {
         _facultadRepository = facultadRepository;
         _facultadMapper = facultadMapper;
         _telefonoMapper = telefonoMapper;
         _telefonoRepository = telefonoRepository;
     }
+
     @Override
     public Mono<FacultadDto> CreateFacultad(FacultadDto facultadDto) {
         return Mono.fromCallable(() -> {
+            FacultadEntity facultadEntity = _facultadMapper.facultadDtoToFacultadEntity(facultadDto);
+            facultadEntity = _facultadRepository.findById(facultadEntity.getNombreFacultad()).orElse(null);
+            if (facultadEntity != null) {
+                throw new ConflictException("Ya existe la facultad", "FacultyAlreadyExist");
+            }
             try {
-                FacultadEntity facultadEntity = _facultadMapper.facultadDtoToFacultadEntity(facultadDto);
-                List<TelefonoEntity> telefonoEntitys = _telefonoMapper.convertListTelefonotDtoToListTelefonoEntity(facultadDto.getTelefonos(),facultadEntity);
+                facultadEntity = _facultadMapper.facultadDtoToFacultadEntity(facultadDto);
                 facultadEntity = _facultadRepository.save(facultadEntity);
                 // Crear numeros de telefono
-                telefonoEntitys = _telefonoRepository.saveAll(telefonoEntitys);
+                List<TelefonoEntity> telefonoEntitys = _telefonoMapper.convertListTelefonotDtoToListTelefonoEntity(facultadDto.getTelefonos(), facultadEntity);
+                if (telefonoEntitys != null) {
+                    telefonoEntitys = _telefonoRepository.saveAll(telefonoEntitys);
+                }
                 FacultadDto response = _facultadMapper.factultadEntityToFactultadDto(facultadEntity);
                 response.setTelefonos(_telefonoMapper.convertListTelefonotEntityToListTelefonoDto(telefonoEntitys));
                 return response;

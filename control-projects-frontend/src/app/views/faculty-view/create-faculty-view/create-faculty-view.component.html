@@ -15,8 +15,10 @@
         [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
         [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
         [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
-        [(model)]="faculty.nombre"
+        [(model)]="faculty.facultadNombre"
+        [disabled]="isEdit"
       ></input-text-form>
+      {{isEdit}}
       <custom-dropdown
         [service]="sedeManager"
         methodGetData="findAllSedes"
@@ -27,17 +29,6 @@
         [isRequired]="true"
         [model]="faculty.sede"
         (modelChange)="faculty.sede = $event"
-        [customFormGroup]="viewFormGroup"
-      >
-      </custom-dropdown>
-      <custom-dropdown
-        [service]="professorManager"
-        methodGetData="findAllProfessor"
-        [keysToShow]="['cedulaProfesor', 'nombreProfesor']"
-        label="Selecciona el Decano"
-        hint="Selecciona el Decano actual que dirige la facultad"
-        placeholder="Decano"
-        [isRequired]="true"
         [customFormGroup]="viewFormGroup"
       >
       </custom-dropdown>

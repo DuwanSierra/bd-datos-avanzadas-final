@@ -37,7 +37,7 @@ public class EditFacultadCommandHandler implements EditFacultadCommand {
         return Mono.fromCallable(() -> {
             FacultadEntity facultadEntity = _facultadRepository.findById(id).orElse(null);
             if(facultadEntity==null){
-                throw new NotFoundException("No se ha encontrado el laf acultad", "FacultadNotFound");
+                throw new NotFoundException("No se ha encontrado el la facultad", "FacultadNotFound");
             }
             try {
                 facultadEntity = _facultadMapper.facultadDtoToFacultadEntity(facultadDto);

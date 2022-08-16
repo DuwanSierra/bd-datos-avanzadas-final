@@ -11,6 +11,7 @@ export const environment = {
   profesorEndpoint: 'http://localhost:8080/profesor',
   rolEndpoint: 'http://localhost:8080/rol',
   cargoEndpoint: 'http://localhost:8080/cargo',
+  facultadEndpoint: 'http://localhost:8080/facultad',
 };
 
 /*

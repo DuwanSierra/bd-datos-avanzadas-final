@@ -14,17 +14,24 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public abstract class TelefonoMapper {
     @Mapping(target = "telefono", expression = "java(telefonoDto.getTelefono())")
+    @Mapping(target = "facultad", expression = "java(facultadEntity)")
     public abstract TelefonoEntity convertTelefonoDtoToTelefonoEntity(TelefonoDto telefonoDto, FacultadEntity facultadEntity);
+
     @Mapping(target = "telefono", source = "telefono")
     public abstract TelefonoDto convertTelefonoEntityToTelefonoDto(TelefonoEntity telefonoEntity);
-    @AfterMapping
-    protected void setFacultadEntity(@MappingTarget TelefonoEntity telefonoEntity, FacultadEntity facultadEntity) {
-        telefonoEntity.setFacultad(facultadEntity);
+    public List<TelefonoEntity> convertListTelefonotDtoToListTelefonoEntity(List<TelefonoDto> telefonoDtos, FacultadEntity facultadEntity) {
+        if (telefonoDtos == null || telefonoDtos.size() == 0) {
+            return null;
+
+        }
+        return telefonoDtos.stream().map(telefono -> convertTelefonoDtoToTelefonoEntity(telefono, facultadEntity)).collect(Collectors.toList());
+
     }
-    public List<TelefonoEntity> convertListTelefonotDtoToListTelefonoEntity(List<TelefonoDto> telefonoDtos, FacultadEntity facultadEntity){
-        return telefonoDtos.stream().map(telefono -> convertTelefonoDtoToTelefonoEntity(telefono,facultadEntity)).collect(Collectors.toList());
-    }
-    public List<TelefonoDto> convertListTelefonotEntityToListTelefonoDto(List<TelefonoEntity> telefonoEntities){
+    public List<TelefonoDto> convertListTelefonotEntityToListTelefonoDto(List<TelefonoEntity> telefonoEntities) {
+        if (telefonoEntities == null || telefonoEntities.size() == 0) {
+            return null;
+
+        }
         return telefonoEntities.stream().map(this::convertTelefonoEntityToTelefonoDto).collect(Collectors.toList());
     }
 }
