@@ -30,7 +30,7 @@
           <p-tableCheckbox [value]="dataItem"></p-tableCheckbox>
         </td>
         <td *ngFor="let configItem of configuration?.dataConfig">
-          {{ configItem.key ? dataItem[configItem.key] : "" }}
+          {{ configItem.key ? printDataByKey(configItem.key, dataItem) : "" }}
         </td>
         <td *ngIf="configuration?.showActions">
           <button

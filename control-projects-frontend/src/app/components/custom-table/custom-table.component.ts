@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { DeleteDto } from 'src/app/@core/dto/delete.dto';
@@ -24,7 +31,7 @@ export class CustomTableComponent implements OnInit {
   @Input() configuration?: CustomTableConfiguration;
 
   @Output() editEvent = new EventEmitter();
- 
+
   loading = false;
   totalRecords = 0;
 
@@ -58,7 +65,7 @@ export class CustomTableComponent implements OnInit {
   }
 
   tableEditEvent(event: any) {
-    if(event){
+    if (event) {
       this.editEvent.emit(event);
     }
   }
@@ -72,6 +79,21 @@ export class CustomTableComponent implements OnInit {
     data.title = 'Atención';
     data.icon = 'pi pi-exclamation-triangle';
     this.customConfimDialog.confirmDialog(data);
+  }
+
+  printDataByKey(key: string, item: any) {
+    let text = item[key];
+    if (key.includes('.')) {
+      let keysExplore = key.split('.');
+      let initialItem = Object.assign({},item);
+      keysExplore.forEach(keySelect=>{
+        if(initialItem[keySelect]){
+          initialItem = initialItem[keySelect];
+        }
+      });
+      text = initialItem;
+    }
+    return text;
   }
 
   private deleteAction(data: any) {

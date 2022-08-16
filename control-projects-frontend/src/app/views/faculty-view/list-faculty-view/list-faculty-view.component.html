@@ -1,1 +1,13 @@
-<p>list-faculty-view works!</p>
+<window-template>
+    <div class="list-faculty" content>
+      <custom-table
+        [service]="facultyManager"
+        methodGetData="findAllFaculty"
+        methodDelete="deleteFaculty"
+        [configuration]="configTable"
+        (editEvent)="editFacultad($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  

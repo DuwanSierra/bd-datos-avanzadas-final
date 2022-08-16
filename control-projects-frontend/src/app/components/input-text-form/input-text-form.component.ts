@@ -31,6 +31,7 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   @Input() rightIcon = '';
   @Input() rightIconTooltip = '';
   @Input() placeHolder = '';
+  @Input() disabled = false;
   @Input() controlName: string = Utils.generateUUID();
   @Output() modelChange = new EventEmitter();
   @Output() controlNameChange = new EventEmitter();
@@ -46,7 +47,7 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   }
 
   initializeForm() {
-    if (!this.customFormGroup?.get(this.controlName)) {
+    if (this.customFormGroup && !this.customFormGroup?.get(this.controlName)) {
       let validatorsApplyControl = [];
       if (this.isRequired) {
         validatorsApplyControl.push(Validators.required);
@@ -64,6 +65,9 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
         this.controlName,
         new FormControl<any>('', validatorsApplyControl)
       );
+      if (this.disabled) {
+        this.customFormGroup.get(this.controlName)?.disable();
+      }
       this.controlNameChange.emit(this.controlName);
     }
   }
@@ -71,6 +75,15 @@ export class InputTextFormComponent<T> implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formGroup']?.currentValue) {
       this.changeFormGroup(changes['formGroup']?.currentValue);
+    }
+    if (changes['disabled']?.currentValue) {
+      this.disabledChanges(); 
+    }
+  }
+
+  disabledChanges(){
+    if(this.customFormGroup?.get(this.controlName)){
+      this.customFormGroup.get(this.controlName)?.disable();
     }
   }
 
