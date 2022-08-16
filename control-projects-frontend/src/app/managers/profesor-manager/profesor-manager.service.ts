@@ -30,7 +30,7 @@ export class ProfesorManagerService {
     profesorRequest: ProfessorRequest
   ): Observable<ProfessorRequest> {
     return this.httpClient.put<ProfessorRequest>(
-      `${this.profesorEndpoint}/edit/${profesorRequest.cedula}`,
+      `${this.profesorEndpoint}/edit/${profesorRequest.cedulaProfesor}`,
       profesorRequest
     );
   }
@@ -45,7 +45,7 @@ export class ProfesorManagerService {
 
   public deleteProfessor(profesor: ProfessorRequest): Observable<DeleteDto>{
     return this.httpClient.delete<DeleteDto>(
-      `${this.profesorEndpoint}/delete/${profesor.cedula}`
+      `${this.profesorEndpoint}/delete/${profesor.cedulaProfesor}`
     );
   }
 
