@@ -1,34 +1,77 @@
-<window-template [title]="title" [showActions]="true" [validateForm]="true">
-    <div class="create-catalog" content>
-        <div>
+<window-template
+  [title]="title"
+  [showActions]="true"
+  [customFormGroup]="viewFormGroup"
+  [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
+>
+<div class="create-catalog" content>
+    <div>
+      <input-text-form
+        label="Codigo del grupo de investigación "
+        hint="Ingresa por favor el código del grupo de investigación"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="1"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [disabled]="isEdit"
+        [(model)]="grupoInvestigacion.codigoGrupoInvestigacion"
+        type="number"
+      ></input-text-form>
 
-            <input-text-form 
-            label="Codigo del grupo de investigación: " 
-            hint="Ingresa por favor el nombre del profesor"
-            [isRequired]="true"
-            type="number"
-                ></input-text-form>
+      <input-text-form
+        label="Nombre del grupo de investigación"
+        hint="Ingresa por favor el nombre del grupo de investigación"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [customFormGroup]="viewFormGroup"
+        [(model)]="grupoInvestigacion.nombreGrupoInvestigacion"
+        [isRequired]="true"
+      ></input-text-form>
 
-            <input-text-form 
-            label="Nombre del grupo de investigación: " 
-            hint="Ingresa por favor el nombre del profesor"
-            [isRequired]="true"
-                ></input-text-form>
+      <custom-dropdown
+        methodGetData="findAllFaculty"
+        label="Selecciona la facultad"
+        hint="Selecciona la facultad a la cual pertenece el grupo"
+        placeholder="Facultad"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="facultadManager"
+        [(model)]="grupoInvestigacion.facultad"
+        [keysToShow]="['facultadNombre']"
+      >
+      </custom-dropdown>
 
-            <custom-dropdown 
-            methodGetData="findAllSedes" 
-            label="Selecciona la facultad"
-            hint="Selecciona la facultad a la cual pertenece la facultad" placeholder="Facultad"
-            [isRequired]="true">
-            </custom-dropdown>
+      <custom-dropdown
+        methodGetData="findAllAreaInteres"
+        label="Area de interes del grupo de investigación "
+        hint="Ingrese el area de interes"
+        placeholder="Area de interes"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="areaInteresManager"
+        [(model)]="grupoInvestigacion.areaInteres"
+        [keysToShow]="['areaNombre']"
+      >
+      </custom-dropdown>
 
-
-          <custom-dropdown 
-          methodGetData="findAllSedes" 
-          label="Area de interes del grupo de investigación: "
-          hint="Ingrese el area de interes" placeholder="Area de interes"
-          [isRequired]="true">
-          </custom-dropdown>
-        </div>
+      <custom-dropdown
+        methodGetData="findAllProfessor"
+        label="Profesor líder del grupo de investigación"
+        hint="Ingrese el profesor lider del grupo de investigación"
+        placeholder="Líder"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="profesorManager"
+        [(model)]="grupoInvestigacion.profesor"
+        [keysToShow]="['cedulaProfesor', 'nombreProfesor']"
+      >
+      </custom-dropdown>
     </div>
+  </div>
 </window-template>
+
+
+
