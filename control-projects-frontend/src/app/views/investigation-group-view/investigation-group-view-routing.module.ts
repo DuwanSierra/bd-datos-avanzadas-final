@@ -21,7 +21,7 @@ const routes: Routes = [
     title: 'Crear facultad',
   },
   {
-    path: 'edit/:id',
+    path: 'edit/:nombre/:codigo',
     component: CreateInvestigationGroupViewComponent,
     title: 'Editar Profesor',
     data: {
