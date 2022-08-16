@@ -1,0 +1,22 @@
+<window-template
+  [title]="title"
+  [showActions]="true"
+  [customFormGroup]="viewFormGroup"
+  [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
+>
+  <div class="create-sede" content>
+    <div [formGroup]="viewFormGroup">
+      <input-text-form
+        label="Nombre del cargo"
+        hint="Ingresa por favor el nombre del cargo"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [(model)]="nombreCargo"
+      ></input-text-form>
+    </div>
+  </div>
+</window-template>

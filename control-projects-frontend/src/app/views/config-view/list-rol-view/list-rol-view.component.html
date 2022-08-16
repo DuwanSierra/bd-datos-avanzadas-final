@@ -1,0 +1,13 @@
+<window-template>
+    <div class="list-catalog" content>
+      <custom-table
+        [service]="rolManagerService"
+        methodGetData="findAllRol"
+        methodDelete="deleteRol"
+        [configuration]="configTable"
+        (editEvent)="editRol($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  

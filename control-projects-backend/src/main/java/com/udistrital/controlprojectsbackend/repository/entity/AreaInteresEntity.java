@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "area_interes", indexes = {
-        @Index(name = "idx_areainteresentity_area_id", columnList = "areaId")
+        @Index(name = "idx_areainteresentity_area_id", columnList = "idAreaInteres")
 })
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 public class AreaInteresEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long areaId;
+    private Long idAreaInteres;
     @NotEmpty
     @Column(nullable = false)
     @Size(max = 70, message = "El nombre del área de interés debe ser alfanúmerico no mayor a 70 carácteres")
-    private String areaNombre;
+    private String areaInteres;
 }

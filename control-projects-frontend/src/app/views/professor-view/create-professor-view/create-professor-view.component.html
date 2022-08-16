@@ -1,23 +1,79 @@
 <window-template
   [title]="title"
   [showActions]="true"
+  [customFormGroup]="viewFormGroup"
   [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
 >
-  <div class="create-catalog" content>
-    <div>
+  <div class="create-professor" content>
+    <div [formGroup]="viewFormGroup">
       <input-text-form
-        label="Nombre del profesor:"
-        hint="Ingrese por favor el nombre del profesor."
+        label="Número de cedula"
+        hint="Ingresa por favor el número de cedula del profesor"
+        [customFormGroup]="viewFormGroup"
         [isRequired]="true"
+        [pattern]="GENERAL_CONSTANTS.REGEX_CC_COLOMBIA"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [(model)]="profesor.cedulaProfesor"
+        [disabled]="isEdit"
       ></input-text-form>
-
       <input-text-form
-        label="Cedula del profesor:"
-        hint="Ingrese por favor la cedula del profesor."
+        label="Nombre de profesor"
+        hint="Ingresa por favor el nombre del profesor"
+        [customFormGroup]="viewFormGroup"
         [isRequired]="true"
-        type="number"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        [(model)]="profesor.nombreProfesor"
       ></input-text-form>
-
+      <custom-datepicker
+        label="Inicio de investigación"
+        hint="Ingresa la fecha de inicio de investigación del profesor"
+        [customFormGroup]="viewFormGroup"
+        [isRequired]="true"
+        [(model)]="profesor.inicioInvestigacion"
+      ></custom-datepicker>
+      <custom-dropdown
+        [service]="facultadManager"
+        methodGetData="findAllFaculty"
+        [keysToShow]="['facultadNombre']"
+        label="Selecciona la facultad"
+        hint="Selecciona la facultad a la cual pertenece el profesor"
+        placeholder="Facultad"
+        [isRequired]="true"
+        [model]="profesor.facultad"
+        (modelChange)="profesor.facultad = $event"
+        [customFormGroup]="viewFormGroup"
+      >
+      </custom-dropdown>
+      <custom-dropdown
+        [service]="cargoManager"
+        methodGetData="findAllCargo"
+        [keysToShow]="['cargo']"
+        label="Selecciona el cargo"
+        hint="Selecciona el cargo el cual posee el profesor"
+        placeholder="Cargo"
+        [isRequired]="true"
+        [model]="profesor.cargo"
+        (modelChange)="profesor.cargo = $event"
+        [customFormGroup]="viewFormGroup"
+      >
+      </custom-dropdown>
+      <custom-multiple-input-text
+        [labelButton]="'Añadir titulo'"
+        [labelInput]="'Titulos del profesor'"
+        [maxItems]="10"
+        [isRequired]="true"
+        [hint]="'Ingresa un titulo ej: Ing de Software'"
+        [customFormGroup]="viewFormGroup"
+        [model]="titles"
+        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
+        [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
+        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
+        (modelChange)="setTitles($event)"
+      ></custom-multiple-input-text>
     </div>
   </div>
 </window-template>

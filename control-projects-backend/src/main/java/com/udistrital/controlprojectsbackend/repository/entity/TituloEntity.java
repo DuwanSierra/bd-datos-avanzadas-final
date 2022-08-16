@@ -5,26 +5,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "titulo_profesor", indexes = {
-        @Index(name = "idx_titulo_id", columnList = "tituloId")
+@Table(name = "titulo", indexes = {
+        @Index(name = "idx_titulo_id", columnList = "titulo"),
+        @Index(name = "idx_profesor_id", columnList = "cedula_profesor")
 })
 @Data
+@IdClass(TituloId.class)
 public class TituloEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long tituloId;
-    @NotEmpty
-    @Column(nullable = false)
     @Size(max = 70, message = "El nombre de la sede debe ser alfanúmerico no mayor a 70 carácteres")
-    private String nombreTitulo;
+    private String titulo;
+    @Id
     @ManyToOne
-    @JoinColumn(name="profesorCedula", nullable=false)
+    @JoinColumn(name="cedula_profesor", nullable=false, foreignKey = @ForeignKey(name = "FK_TITULO_PROFESOR"))
     private ProfesorEntity profesor;
 }

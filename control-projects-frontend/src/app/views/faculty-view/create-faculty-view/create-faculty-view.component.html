@@ -15,7 +15,8 @@
         [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
         [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
         [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
-        [(model)]="faculty.nombre"
+        [(model)]="faculty.facultadNombre"
+        [disabled]="isEdit"
       ></input-text-form>
       <custom-dropdown
         [service]="sedeManager"
@@ -30,18 +31,6 @@
         [customFormGroup]="viewFormGroup"
       >
       </custom-dropdown>
-      <custom-dropdown
-        [service]="sedeManager"
-        methodGetData="findAllSedes"
-        [keysToShow]="['codigo', 'nombre']"
-        label="Selecciona el Decano"
-        hint="Selecciona el Decano actual que dirige la facultad"
-        placeholder="Decano"
-        [isRequired]="true"
-        [customFormGroup]="viewFormGroup"
-      >
-      </custom-dropdown>
-      <!-- 
       <custom-multiple-input-text
       [labelButton]="'Añadir teléfono'"
       [labelInput]="'Teléfono(s) de la facultad'"
@@ -54,7 +43,7 @@
       [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_PHONE"
       [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_PHONE"
       (modelChange)="setPhones($event)"
-      ></custom-multiple-input-text> -->
+      ></custom-multiple-input-text>
     </div>
   </div>
 </window-template>

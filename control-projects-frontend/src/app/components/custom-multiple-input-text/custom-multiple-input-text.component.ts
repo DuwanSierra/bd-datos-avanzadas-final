@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Utils } from 'src/app/utils/utils';
 
@@ -7,7 +15,7 @@ import { Utils } from 'src/app/utils/utils';
   templateUrl: './custom-multiple-input-text.component.html',
   styleUrls: ['./custom-multiple-input-text.component.scss'],
 })
-export class CustomMultipleInputTextComponent<T> implements OnInit {
+export class CustomMultipleInputTextComponent<T> implements OnInit, OnChanges {
   @Input() labelButton = 'Añadir';
   @Input() labelInput = '';
   @Input() tooltipRemoveIcon = 'Quitar';
@@ -35,8 +43,25 @@ export class CustomMultipleInputTextComponent<T> implements OnInit {
   controlName: string = Utils.generateUUID();
   controls: any[] = [];
   constructor() {}
-
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['model']?.currentValue) {
+      this.setData();
+    }
+  }
+
+  setData() {
+    if (this.model === undefined || this.model?.length === 0) {
+      this.model = [
+        {
+          id: 0,
+          value: '',
+        },
+      ];
+    }
+  }
+
   addControl() {
     if (this.model && this.model.length < this.maxItems) {
       this.model.push('');

@@ -13,25 +13,14 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "sede", indexes = {
-        @Index(name = "idx_sede_id", columnList = "sedeId")
+        @Index(name = "idx_sede_id", columnList = "sede")
 })
 @Data
 public class SedeEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long sedeId;
+    private Long idSede;
     @NotEmpty
-    @Column(nullable = false)
     @Size(max = 70, message = "El nombre de la sede debe ser alfanúmerico no mayor a 70 carácteres")
-    private String nombre;
-    @NotEmpty
-    @Column(nullable = false)
-    @Size(max = 10, message = "El código de la sede debe ser alfanúmerico no mayor a 10 carácteres")
-    private String codigo;
-    @NotEmpty
-    @Column(nullable = false)
-    @Size(max = 30, message = "La dirección de la sede debe ser alfanúmerico no mayor a 30 carácteres")
-    private String direccion;
-    @OneToMany(mappedBy="sede")
-    private Set<FacultadEntity> facultadEntities;
+    private String sede;
 }

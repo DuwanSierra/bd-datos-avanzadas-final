@@ -10,7 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class GrupoInvestigacionId implements Serializable {
-    private FacultadEntity facultad;
-    private String nombreGrupoInvestigacion;
-    private Long codigoGrupoInvestigacion;
+    private String codigoGrupo;
+    private String nombreGrupo;
 }

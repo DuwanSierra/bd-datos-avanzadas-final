@@ -10,6 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomTableModule } from 'src/app/components/custom-table/custom-table.module';
 import { CreateSedeViewComponent } from './create-sede-view/create-sede-view.component';
 import { ListSedeViewComponent } from './list-sede-view/list-sede-view.component';
+import { CreateRolViewComponent } from './create-rol-view/create-rol-view.component';
+import { CreateCargoViewComponent } from './create-cargo-view/create-cargo-view.component';
+import { ListCargoViewComponent } from './list-cargo-view/list-cargo-view.component';
+import { ListRolViewComponent } from './list-rol-view/list-rol-view.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { ListSedeViewComponent } from './list-sede-view/list-sede-view.component
     CreateCatalogViewComponent,
     ListCatalogViewComponent,
     CreateSedeViewComponent,
-    ListSedeViewComponent
+    ListSedeViewComponent,
+    CreateRolViewComponent,
+    CreateCargoViewComponent,
+    ListCargoViewComponent,
+    ListRolViewComponent
   ],
   imports: [
     CommonModule,

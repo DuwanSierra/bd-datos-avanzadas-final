@@ -1,6 +1,7 @@
 package com.udistrital.controlprojectsbackend.query.sede;
 
-import com.udistrital.controlprojectsbackend.exceptions.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.controller.dto.SedeDto;
+import com.udistrital.controlprojectsbackend.mappers.SedeMapper;
 import com.udistrital.controlprojectsbackend.repository.entity_repository.SedeRepository;
 import com.udistrital.controlprojectsbackend.repository.entity.SedeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +13,18 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class FindSedeQueryHandler implements FindSedeQuery {
-    private SedeRepository _sedeRepository;
-
-    public FindSedeQueryHandler(@Autowired SedeRepository sedeRepository){
+    private final SedeRepository _sedeRepository;
+    private final SedeMapper _sedeMapper;
+    @Autowired
+    public FindSedeQueryHandler(SedeRepository sedeRepository, SedeMapper sedeMapper){
         _sedeRepository = sedeRepository;
+        _sedeMapper = sedeMapper;
     }
     public Mono<Page<SedeDto>> FindAllSede(long page, long size) {
         return Mono.fromCallable(() -> {
             Pageable pageToFind = PageRequest.of(Integer.parseInt(String.valueOf(page)), Integer.parseInt(String.valueOf(size)));
             Page<SedeEntity> total = _sedeRepository.findAll(pageToFind);
-            Page<SedeDto> result = total.map(this::convertToObjectDto);
-            return result;
+            return total.map(_sedeMapper::sedeEntityToSedeDto);
         });
-    }
-    private SedeDto convertToObjectDto(SedeEntity input) {
-        SedeDto dto = new SedeDto();
-        dto.setSedeId(input.getSedeId());
-        dto.setNombre(input.getNombre());
-        dto.setCodigo(input.getCodigo());
-        dto.setDireccion(input.getDireccion());
-        return dto;
     }
 }

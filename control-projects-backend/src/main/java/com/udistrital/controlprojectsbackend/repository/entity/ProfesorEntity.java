@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Date;
-import java.util.Set;
+import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,15 +22,13 @@ public class ProfesorEntity {
     @NotEmpty
     @Column(nullable = false)
     @Size(max = 70, message = "El nombre del profesor debe ser alfanúmerico no mayor a 70 carácteres")
-    private String nombreProfesor;
-    @NotEmpty
+    private String nombre;
     @Column(nullable = false)
-    private Date inicioInvestigacion;
-    @OneToOne
-    @JoinColumns({
-            @JoinColumn(name = "grupoInvestigacion_facultad_nombre", referencedColumnName = "facultad_nombre"),
-            @JoinColumn(name = "grupoInvestigacion_nombreGrupoInvestigacion", referencedColumnName = "nombreGrupoInvestigacion"),
-            @JoinColumn(name = "grupoInvestigacion_codigoGrupoInvestigacion", referencedColumnName = "codigoGrupoInvestigacion")
-    })
-    private GrupoInvestigacionEntity grupoInvestigacion;
+    private Date experienciaInv;
+    @ManyToOne
+    @JoinColumn(name = "FK_Id_cargo", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFESOR_CARGO"))
+    private CargoEntity cargo;
+    @ManyToOne
+    @JoinColumn(name = "FK_Nombre_Facultad", nullable = false, foreignKey = @ForeignKey(name = "FK_PROFESOR_FACULTAD"))
+    private FacultadEntity facultad;
 }

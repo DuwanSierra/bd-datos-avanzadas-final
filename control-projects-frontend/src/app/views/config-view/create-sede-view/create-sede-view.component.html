@@ -7,16 +7,6 @@
 >
   <div class="create-sede" content>
     <div [formGroup]="viewFormGroup">
-        <input-text-form
-        label="Código de la sede"
-        hint="Ingresa por favor el código de la sede"
-        [customFormGroup]="viewFormGroup"
-        [isRequired]="true"
-        [pattern]="GENERAL_CONSTANTS.REGEX_TEXT_LATAM"
-        [maxLength]="10"
-        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
-        [(model)]="codigoSede"
-      ></input-text-form>
       <input-text-form
         label="Nombre de la sede"
         hint="Ingresa por favor el nombre de la sede"
@@ -26,16 +16,6 @@
         [maxLength]="GENERAL_CONSTANTS.MAX_LENGTH_NAME"
         [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
         [(model)]="nombreSede"
-      ></input-text-form>
-      <input-text-form
-        label="Dirección de la sede"
-        hint="Ingresa por favor la dirección donde se ubica la sede"
-        [customFormGroup]="viewFormGroup"
-        [isRequired]="true"
-        [pattern]="GENERAL_CONSTANTS.REGEX_ADDRESS_LATAM"
-        [maxLength]="30"
-        [minLength]="GENERAL_CONSTANTS.MIN_LENGTH_NAME"
-        [(model)]="direccionSede"
       ></input-text-form>
     </div>
   </div>
