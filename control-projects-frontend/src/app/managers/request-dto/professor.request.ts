@@ -1,8 +1,13 @@
-import { GrupoInvestigacionRequest } from "./grupo-investigacion.request";
+import { CargoRequest } from './cargo.request';
+import { FacultyRequest } from './faculty.request';
+import { TituloRequest } from './titulo.request';
 
 export class ProfessorRequest {
-    cedula?: number;
-    nombreProfesor?:string;
-    inicioInvestigacion?: Date;
-    grupoInvestigacion?: GrupoInvestigacionRequest;
+  cedulaProfesor?: number;
+  nombreProfesor?: string;
+  inicioInvestigacion?: Date;
+  aniosInvestigacion?: number;
+  facultad?: FacultyRequest;
+  cargo?: CargoRequest;
+  titulos?: TituloRequest[];
 }
