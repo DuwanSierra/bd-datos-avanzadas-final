@@ -12,6 +12,7 @@ import { CustomDropdownModule } from 'src/app/components/custom-dropdown/custom-
 import { CustomMultipleInputTextModule } from 'src/app/components/custom-multiple-input-text/custom-multiple-input-text.module';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
+import { CustomDatepickerModule } from 'src/app/components/custom-datepicker/custom-datepicker.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CalendarModule } from 'primeng/calendar';
     ReactiveFormsModule,
     InputTextFormModule,
     CustomDropdownModule,
+    CustomDatepickerModule,
     CustomMultipleInputTextModule,
     FormsModule,
     CalendarModule
