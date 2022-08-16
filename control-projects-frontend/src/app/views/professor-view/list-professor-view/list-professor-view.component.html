@@ -2,8 +2,8 @@
     <div class="list-professor" content>
       <custom-table
         [service]="professormanager"
-        methodGetData="findAllFaculty"
-        methodDelete="deleteFaculty"
+        methodGetData="findAllProfessor"
+        methodDelete="deleteProfessor"
         [configuration]="configTable"
         (editEvent)="editProfesor($event)"
       >

@@ -30,7 +30,7 @@ export class ListprofessorViewComponent implements OnInit {
         label: 'Inicio de investigacion',
       },
       {
-        label: 'Facultad',
+        label: 'años de investigacion',
       },
       {
         label: 'Cargo',
