@@ -1,1 +1,13 @@
-<p>listprofessor-view works!</p>
+<window-template>
+    <div class="list-professor" content>
+      <custom-table
+        [service]="professormanager"
+        methodGetData="findAllFaculty"
+        methodDelete="deleteFaculty"
+        [configuration]="configTable"
+        (editEvent)="editProfesor($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  
