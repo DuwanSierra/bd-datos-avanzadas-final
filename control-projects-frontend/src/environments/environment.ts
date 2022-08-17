@@ -15,6 +15,7 @@ export const environment = {
   grupoEndpoint: 'http://localhost:8080/grupo-investigacion',
   proyectoEndpoint: 'http://localhost:8080/proyecto-investigacion',
   reportEndpoint: 'http://localhost:8080/reports',
+  participaEndpoint: 'http://localhost:8080/participa',
 };
 
 /*
