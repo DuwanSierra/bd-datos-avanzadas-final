@@ -16,7 +16,7 @@
             >
             </custom-dropdown>
           </div>
-          <div class="report">
+          <div class="report" *ngIf="data">
             <p-chart class="pie" type="pie" [data]="data"></p-chart>
           </div>
         </div>
