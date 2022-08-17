@@ -1,1 +1,13 @@
-<p>list-investigation-project-view works!</p>
+<window-template>
+    <div class="list-projects" content>
+      <custom-table
+        [service]="investigationProyectManager"
+        methodGetData="findAllGProjects"
+        methodDelete="deleteProjects"
+        [configuration]="configTable"
+        (editEvent)="editProject($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  

@@ -18,12 +18,12 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateInvestigationGroupViewComponent,
-    title: 'Crear facultad',
+    title: 'Crear grupo de investigacion',
   },
   {
     path: 'edit/:nombre/:codigo',
     component: CreateInvestigationGroupViewComponent,
-    title: 'Editar Profesor',
+    title: 'Editar grupo de investigacion',
     data: {
       isEdit: true,
     },

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GenericView } from 'src/app/utils/generic-view';
 import { ActivatedRoute } from '@angular/router';
 import { ProfesorManagerService } from 'src/app/managers/profesor-manager/profesor-manager.service';
-import { SedeManagerService } from 'src/app/managers/sede-manager/sede-manager.service';
 import { FacultyManagerService } from 'src/app/managers/facultad-manager/faculty-manager.service';
 import { GrupoInvestigacionRequest } from 'src/app/managers/request-dto/grupo-investigacion.request';
 import { AreaInteresManagerService } from 'src/app/managers/area-interes-manager/area-interes-manager.service';
