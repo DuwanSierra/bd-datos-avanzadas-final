@@ -6,10 +6,10 @@ import { GenericConstants } from './general.constants';
 @Injectable({
   providedIn: 'root',
 })
-export class GenericView implements AfterViewInit{
+export class GenericView implements AfterViewInit {
   public GENERAL_CONSTANTS = GenericConstants;
   public isEdit: boolean = false;
-
+  
   viewFormGroup: FormGroup = new FormGroup({});
 
   constructor(public activatedRoute: ActivatedRoute) {
@@ -20,14 +20,15 @@ export class GenericView implements AfterViewInit{
     this.getData();
   }
 
-  getData(){
-    this.activatedRoute.data.subscribe((data)=>{
-      if(data && data['isEdit']){
+  getData() {
+    this.activatedRoute.data.subscribe((data) => {
+      if (data && data['isEdit']) {
         this.isEdit = true;
         this.afterCheckIsEditMode();
       }
     })
   }
+
 
   getParams() {
     this.activatedRoute.params.subscribe((params: any) => {
@@ -35,7 +36,7 @@ export class GenericView implements AfterViewInit{
     });
   }
 
-  afterCheckIsEditMode(){}
+  afterCheckIsEditMode() { }
 
-  afterLoadParams(data: any) {}
+  afterLoadParams(data: any) { }
 }

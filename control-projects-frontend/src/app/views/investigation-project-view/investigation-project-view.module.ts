@@ -13,7 +13,7 @@ import { CustomMultipleInputTextModule } from 'src/app/components/custom-multipl
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { CustomDatepickerModule } from 'src/app/components/custom-datepicker/custom-datepicker.module';
-
+import { CustomTableModule } from 'src/app/components/custom-table/custom-table.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,9 @@ import { CustomDatepickerModule } from 'src/app/components/custom-datepicker/cus
     CustomDatepickerModule,
     CustomMultipleInputTextModule,
     FormsModule,
-    CalendarModule
+    CalendarModule,
+    CustomTableModule
+
   ]
 })
 export class InvestigationProjectViewModule { }

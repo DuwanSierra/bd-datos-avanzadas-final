@@ -29,6 +29,7 @@
         [customFormGroup]="viewFormGroup"
         [(model)]="grupoInvestigacion.nombreGrupoInvestigacion"
         [isRequired]="true"
+        [disabled]="isEdit"
       ></input-text-form>
 
       <custom-dropdown

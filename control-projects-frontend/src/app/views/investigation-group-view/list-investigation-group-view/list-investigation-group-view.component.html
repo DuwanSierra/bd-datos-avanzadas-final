@@ -1,1 +1,13 @@
-<p>list-investigation-group-view works!</p>
+<window-template>
+    <div class="list-projects" content>
+      <custom-table
+        [service]="investigationGroupManager"
+        methodGetData="findAllGrupo"
+        methodDelete="deleteGrupo"
+        [configuration]="configTable"
+        (editEvent)="editGrupo($event)"
+      >
+      </custom-table>
+    </div>
+  </window-template>
+  

@@ -11,12 +11,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextFormModule } from 'src/app/components/input-text-form/input-text-form.module';
 import { CustomDropdownModule } from 'src/app/components/custom-dropdown/custom-dropdown.module';
 import { CustomMultipleInputTextModule } from 'src/app/components/custom-multiple-input-text/custom-multiple-input-text.module';
-
+import { CustomTableModule } from 'src/app/components/custom-table/custom-table.module';
 
 @NgModule({
   declarations: [
     CreateInvestigationGroupViewComponent,
-    ListInvestigationGroupViewComponent
+    ListInvestigationGroupViewComponent,
+    
   ],
   imports: [ 
     CommonModule,
@@ -25,7 +26,9 @@ import { CustomMultipleInputTextModule } from 'src/app/components/custom-multipl
     ReactiveFormsModule,
     InputTextFormModule,
     CustomDropdownModule,
-    CustomMultipleInputTextModule
+    CustomMultipleInputTextModule,
+    CustomTableModule
+    
   ]
 })
 export class InvestigationGroupViewModule { }

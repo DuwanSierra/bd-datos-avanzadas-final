@@ -15,7 +15,7 @@ export class CreateInvestigationProjectViewComponent
   implements OnInit
 {
   proyectoInvestigacion = new ProyectoInvestigacionRequest();
-  title = 'Crear Grupo de Investigación';
+  title = 'Crear Proyecto de Investigación';
 
   constructor(
     public override activatedRoute: ActivatedRoute,
