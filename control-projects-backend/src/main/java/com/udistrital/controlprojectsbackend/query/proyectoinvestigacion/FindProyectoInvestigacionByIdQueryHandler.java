@@ -42,7 +42,7 @@ public class FindProyectoInvestigacionByIdQueryHandler implements FindProyectoIn
         return Mono.fromCallable(() -> {
             GrupoInvestigacionDto grupoInvestigacionDto = _findGrupoInvestigacionByIdQuery.FindGrupoInvestigacionByid(nombreGrupo,codigoGrupo).block();
             GrupoInvestigacionEntity grupoInvestigacionEntity = _grupoInvestigacionMapper.convertGrupoInvestigacionDtoToGrupoInvestigacionEntity(grupoInvestigacionDto);
-            ProyectoInvestigacionId proyectoInvestigacionId = new ProyectoInvestigacionId(null,codigo);
+            ProyectoInvestigacionId proyectoInvestigacionId = new ProyectoInvestigacionId(grupoInvestigacionEntity,codigo);
             ProyectoInvestigacionEntity proyectoInvestigacionEntity = _proyectoInvestigacionRepository.findById(proyectoInvestigacionId).orElse(null);
             if (proyectoInvestigacionEntity == null) {
                 throw new NotFoundException("No se ha encontrado el proyecto de investigación", "ProyectoInvestigacionNotFound");

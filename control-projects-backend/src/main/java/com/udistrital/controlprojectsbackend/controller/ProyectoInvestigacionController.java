@@ -64,7 +64,7 @@ public class ProyectoInvestigacionController {
     }
 
     @GetMapping("/find/{nombreGrupo}/{codigoGrupo}/{codigoProyecto}")
-    private Mono<ProyectoInvestigacionDto> findGrupoInvestigacion(@PathVariable String nombreGrupo,@PathVariable String codigoGrupo , @PathVariable String codigo) {
-        return _findProyectoInvestigacionByIdQuery.FindProyectoInvestigacionByid(nombreGrupo, codigoGrupo, codigo);
+    private Mono<ProyectoInvestigacionDto> findGrupoInvestigacion(@PathVariable String nombreGrupo,@PathVariable String codigoGrupo , @PathVariable String codigoProyecto) {
+        return _findProyectoInvestigacionByIdQuery.FindProyectoInvestigacionByid(nombreGrupo, codigoGrupo, codigoProyecto);
     }
 }

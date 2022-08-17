@@ -6,12 +6,15 @@ import { ProyectoInvestigacionRequest } from 'src/app/managers/request-dto/proye
 @Component({
   selector: 'app-list-investigation-project-view',
   templateUrl: './list-investigation-project-view.component.html',
-  styleUrls: ['./list-investigation-project-view.component.scss']
+  styleUrls: ['./list-investigation-project-view.component.scss'],
 })
 export class ListInvestigationProjectViewComponent implements OnInit {
   public configTable?: CustomTableConfiguration;
-  
-  constructor(public investigationProyectManager: ProyectoInvestigacionManagerService, public router: Router) { }
+
+  constructor(
+    public investigationProyectManager: ProyectoInvestigacionManagerService,
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
     this.createConfigTable();
@@ -41,19 +44,22 @@ export class ListInvestigationProjectViewComponent implements OnInit {
       },
       {
         key: 'fechaInicio',
-        type: 'Date'
+        type: 'Date',
       },
       {
         key: 'fechaTerminacion',
-        type: 'Date'
+        type: 'Date',
       },
     ];
     this.configTable = config;
   }
 
   editProject(projectEdit: ProyectoInvestigacionRequest) {
-    this.router.navigate(['/investigation-project/edit', projectEdit.codigo]);
+    this.router.navigate([
+      '/investigation-project/edit',
+          projectEdit.grupoInvestigacion?.nombreGrupoInvestigacion,
+          projectEdit.grupoInvestigacion?.codigoGrupoInvestigacion,
+          projectEdit.codigo,
+    ]);
   }
-
-
 }
