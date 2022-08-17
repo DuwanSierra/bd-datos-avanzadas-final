@@ -14,11 +14,13 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { CustomDatepickerModule } from 'src/app/components/custom-datepicker/custom-datepicker.module';
 import { CustomTableModule } from 'src/app/components/custom-table/custom-table.module';
+import { AddParticipaProjectViewComponent } from './add-participa-project-view/add-participa-project-view.component';
 
 @NgModule({
   declarations: [
     CreateInvestigationProjectViewComponent,
-    ListInvestigationProjectViewComponent
+    ListInvestigationProjectViewComponent,
+    AddParticipaProjectViewComponent
   ],
   imports: [
     CommonModule,

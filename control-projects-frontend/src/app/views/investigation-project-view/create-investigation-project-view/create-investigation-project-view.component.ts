@@ -38,7 +38,7 @@ export class CreateInvestigationProjectViewComponent
   }
 
   override afterCheckIsEditMode(): void {
-    this.title = 'Editar grupo de investigación';
+    this.title = 'Editar proyecto de investigación';
   }
 
   override afterLoadParams(data: any): void {

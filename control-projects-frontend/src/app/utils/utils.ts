@@ -53,4 +53,8 @@ export class Utils {
     let obj: any = object;
     return new URLSearchParams(obj).toString();
   }
+
+  public static generateRamdomColor(): string{
+    return `#${Math.floor(Math.random()*16777215).toString(16)}`;
+  }
 }

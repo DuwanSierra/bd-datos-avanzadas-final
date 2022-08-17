@@ -9,27 +9,10 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'professor',
+    path: 'general',
     component: ReportListComponent,
     title: 'Reporte de profesores',
-  },
-  {
-    path: 'investigation-project',
-    component: ReportListComponent,
-    title: 'Reporte de grupos investigacion',
-  },
-  {
-    path: 'investigation-group',
-    component: ReportListComponent,
-    title: 'Reporte de grupos investigacion',
-  },
-  {
-    path: 'faculty',
-    component: ReportListComponent,
-    title: 'Reporte de projectos de investigacion',
-  },
-  
-
+  }
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 .custom-dropdown {
   margin-bottom: 25px;
+  height: 100%;
   .field {
     height: fit-content;
     width: 364px;
@@ -13,4 +14,5 @@
 
 :host ::ng-deep .input{
     width: 100%;
+    min-height: 40px;
 }
