@@ -18,7 +18,7 @@ import java.sql.Date;
 @Data
 public class ProfesorEntity {
     @Id
-    public Long cedulaProfesor;
+    private Long cedulaProfesor;
     @NotEmpty
     @Column(nullable = false)
     @Size(max = 70, message = "El nombre del profesor debe ser alfanúmerico no mayor a 70 carácteres")

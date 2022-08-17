@@ -4,18 +4,18 @@ import { CommonModule } from '@angular/common';
 import { ReportViewRoutingModule } from './report-view-routing.module';
 import { ReportListComponent } from './report-list/report-list.component';
 import { WindowModule } from 'src/app/components/window/window.module';
-import {TableModule} from 'primeng/table';
-
+import { TabViewModule } from 'primeng/tabview';
+import { ChartModule } from 'primeng/chart';
+import { CustomDropdownModule } from 'src/app/components/custom-dropdown/custom-dropdown.module';
 @NgModule({
-  declarations: [
-    ReportListComponent
-  ],
+  declarations: [ReportListComponent],
   imports: [
     CommonModule,
     ReportViewRoutingModule,
-    
+    TabViewModule,
     WindowModule,
-    TableModule
-  ]
+    ChartModule,
+    CustomDropdownModule
+  ],
 })
-export class ReportViewModule { }
+export class ReportViewModule {}

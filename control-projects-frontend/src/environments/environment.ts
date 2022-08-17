@@ -14,6 +14,7 @@ export const environment = {
   facultadEndpoint: 'http://localhost:8080/facultad',
   grupoEndpoint: 'http://localhost:8080/grupo-investigacion',
   proyectoEndpoint: 'http://localhost:8080/proyecto-investigacion',
+  reportEndpoint: 'http://localhost:8080/reports',
 };
 
 /*

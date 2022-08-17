@@ -1,117 +1,72 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfesorManagerService } from 'src/app/managers/profesor-manager/profesor-manager.service';
+import { ReportManagerService } from 'src/app/managers/report-manager/report-manager.service';
+import { ProfessorRequest } from 'src/app/managers/request-dto/professor.request';
+import { ProjectsByProfessorView } from 'src/app/managers/request-dto/projects-by-professor.view';
+import { Utils } from 'src/app/utils/utils';
 import { Customer } from '../../../interfaces/customer-interface';
-
 
 @Component({
   selector: 'app-report-list',
   templateUrl: './report-list.component.html',
   styleUrls: ['./report-list.component.scss'],
-  styles: [`
-  :host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 5rem;
-  }
-
-  .layout-news-active :host ::ng-deep .p-datatable tr > th {
-      top: 7rem;
-  }
-`]
 })
 export class ReportListComponent implements OnInit {
-
-  customers: Customer[] = [
-    {
-      "id": 1000,
-      "name": "James Butt",
-      "country": {
-        "name": "Algeria",
-        "code": "dz"
-      },
-      "company": "Benton, John B Jr",
-      "date": "2015-09-13",
-      "status": "unqualified",
-      "representative": {
-        "name": "Ioni Bowcher",
-        "image": "ionibowcher.png"
-      }
-    },
-    {
-      "id": 1001,
-      "name": "Josephine Darakjy",
-      "country": {
-        "name": "Egypt",
-        "code": "eg"
-      },
-      "company": "Chanay, Jeffrey A Esq",
-      "date": "2019-02-09",
-      "status": "proposal",
-      "representative": {
-        "name": "Amy Elsner",
-        "image": "amyelsner.png"
-      }
-    },
-    {
-      "id": 1002,
-      "name": "Art Venere",
-      "country": {
-        "name": "Panama",
-        "code": "pa"
-      },
-      "company": "Chemel, James L Cpa",
-      "date": "2017-05-13",
-      "status": "qualified",
-
-      "representative": {
-        "name": "Asiya Javayant",
-        "image": "asiyajavayant.png"
-      }
-    },
-    {
-      "id": 1003,
-      "name": "Lenna Paprocki",
-      "country": {
-        "name": "Slovenia",
-        "code": "si"
-      },
-      "company": "Feltz Printing Service",
-      "date": "2020-09-15",
-      "status": "new",
-
-      "representative": {
-        "name": "Xuxue Feng",
-        "image": "xuxuefeng.png"
-      }
-    },
-    {
-      "id": 1004,
-      "name": "Donette Foller",
-      "country": {
-        "name": "South Africa",
-        "code": "za"
-      },
-      "company": "Printing Dimensions",
-      "date": "2016-05-20",
-      "status": "proposal",
-      "representative": {
-        "name": "Asiya Javayant",
-        "image": "asiyajavayant.png"
-      }
-    }
-
-  ]
   title = 'REPORTES';
 
-  constructor() { }
+  profesorDto?: ProfessorRequest;
 
-  ngOnInit(): void {
+  data = {
+    labels: ['A', 'B', 'C'],
+    datasets: [
+      {
+        data: [300, 50, 100],
+        backgroundColor: ['#42A5F5', '#66BB6A', '#FFA726'],
+        hoverBackgroundColor: ['#64B5F6', '#81C784', '#FFB74D'],
+      },
+    ],
+  };
 
+  constructor(
+    public profesorManager: ProfesorManagerService,
+    public reportsManager: ReportManagerService
+  ) {}
+
+  ngOnInit(): void {}
+
+  getReportProjectByProfessor() {
+    if (this.profesorDto?.cedulaProfesor) {
+      this.reportsManager
+        .getProjectByCC(this.profesorDto?.cedulaProfesor)
+        .subscribe((res) => {
+          this.generateDataReportProjectByProfessor(res);
+        });
+    }
   }
 
-
-
-
+  generateDataReportProjectByProfessor(report: ProjectsByProfessorView[]) {
+    let labels: string[] = report.map(
+      (item) => `${item.codigoProyecto} - ${item.nombreProyecto}`
+    );
+    let data: any[] = [];
+    let backgroundColors: any[] = [];
+    let hoverBackgroundColor: any[] = [];
+    report.forEach((item) => {
+      data.push(labels.length / 100);
+      backgroundColors.push(Utils.generateRamdomColor());
+      hoverBackgroundColor.push(Utils.generateRamdomColor());
+    });
+    if (labels.length > 0) {
+      this.data = {
+        labels: labels,
+        datasets: [
+          {
+            data: data,
+            backgroundColor: backgroundColors,
+            hoverBackgroundColor: hoverBackgroundColor,
+          },
+        ],
+      };
+    }
+  }
 }
-
-
-
