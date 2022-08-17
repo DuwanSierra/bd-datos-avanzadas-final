@@ -1,7 +1,7 @@
 CREATE
 OR REPLACE VIEW VISTA_DETERMINADO_PROFESOR_PROYECTO AS
 select
-    DISTINCT  prof.cedula_profesor as id,
+    DISTINCT proy.codigo_proyecto as id,
     proy.codigo_grupo as codigogrupo,
     proy.nombre_grupo as nombregrupo,
     proy.codigo_proyecto as codigoproyecto,
