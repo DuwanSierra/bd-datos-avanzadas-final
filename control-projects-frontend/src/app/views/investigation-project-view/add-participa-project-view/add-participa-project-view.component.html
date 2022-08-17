@@ -1,0 +1,48 @@
+<window-template
+  [title]="title"
+  [showActions]="true"
+  [customFormGroup]="viewFormGroup"
+  [validateForm]="true"
+  (actionPrimaryEvent)="saveEvent($event)"
+>
+  <div class="create-catalog" content>
+    <div>
+      <custom-dropdown
+        methodGetData="findAllGProjects"
+        label="Selecciona el proyecto de investigación"
+        hint="Selecciona el proyecto de investigación al cual pertenece el proyecto"
+        placeholder="Grupo"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="proyectoInvestigacionManager"
+        [(model)]="participaDto.proyecto"
+        [keysToShow]="['codigo', 'nombre']"
+      >
+      </custom-dropdown>
+      <custom-dropdown
+        methodGetData="findAllRol"
+        label="Selecciona el rol"
+        hint="Selecciona el rol con el cual participara el Profesor"
+        placeholder="Grupo"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="rolManager"
+        [(model)]="participaDto.rol"
+        [keysToShow]="['rol']"
+      >
+      </custom-dropdown>
+      <custom-dropdown
+        methodGetData="findAllProfessor"
+        label="Selecciona el profesor"
+        hint="Selecciona el profesor el cual participa en el proyecto"
+        placeholder="Grupo"
+        [isRequired]="true"
+        [customFormGroup]="viewFormGroup"
+        [service]="profesorManager"
+        [(model)]="participaDto.profesor"
+        [keysToShow]="['cedulaProfesor', 'nombreProfesor']"
+      >
+      </custom-dropdown>
+    </div>
+  </div>
+</window-template>

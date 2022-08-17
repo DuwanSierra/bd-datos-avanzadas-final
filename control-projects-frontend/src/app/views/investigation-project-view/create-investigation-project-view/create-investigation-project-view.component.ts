@@ -15,7 +15,7 @@ export class CreateInvestigationProjectViewComponent
   implements OnInit
 {
   proyectoInvestigacion = new ProyectoInvestigacionRequest();
-  title = 'Crear Grupo de Investigación';
+  title = 'Crear Proyecto de Investigación';
 
   constructor(
     public override activatedRoute: ActivatedRoute,
@@ -38,7 +38,7 @@ export class CreateInvestigationProjectViewComponent
   }
 
   override afterCheckIsEditMode(): void {
-    this.title = 'Editar grupo de investigación';
+    this.title = 'Editar proyecto de investigación';
   }
 
   override afterLoadParams(data: any): void {

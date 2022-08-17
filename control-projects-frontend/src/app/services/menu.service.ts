@@ -189,6 +189,17 @@ export class MenuService {
               this.router.navigateByUrl("investigation-project/list");
             }
           },
+          {
+            separator: true,
+          },
+          {
+            label: 'Añadir participante',
+            icon: 'pi pi-fw pi-list',
+            id: 'investigation-project-participant-add',
+            command: () => {
+              this.router.navigateByUrl("investigation-project/add-participant");
+            }
+          },
         ],
       },
       {
