@@ -195,47 +195,14 @@ export class MenuService {
         label: 'Reportes',
         items: [
           {
-            label: 'Proyectos por profesor',
+            label: 'Reportes general',
             icon: 'pi pi-fw pi-list',
-            id: 'proffesor-report',
+            id: 'reports',
             command: () => {
-              this.router.navigateByUrl("report/professor");
+              this.router.navigateByUrl("report/general");
             }
 
-          },
-          {
-            separator: true,
-          },
-          {
-            label: 'Proyectos activos, y terminados',
-            icon: 'pi pi-fw pi-list',
-            id: 'report-investigation-project',
-            command: () => {
-              this.router.navigateByUrl("report/investigation-project");
-            }
-          },
-          {
-            separator: true,
-          },
-          {
-            label: 'Profesores con sus proyectos de investigación',
-            icon: 'pi pi-fw pi-list',
-            id: 'report-investigation-group',
-            command: () => {
-              this.router.navigateByUrl("report/investigation-group");
-            }
-          },
-          {
-            separator: true,
-          },
-          {
-            label: 'Presupuesto por facultad',
-            icon: 'pi pi-fw pi-list',
-            id: 'report-faculty',
-            command: () => {
-              this.router.navigateByUrl("report/faculty");
-            }
-          },
+          }
         ],
       },
     ];

@@ -31,7 +31,7 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeflex/primeflex.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/chart.js/dist/chart.js"]
           },
           "configurations": {
             "production": {
@@ -100,7 +100,7 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeflex/primeflex.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/chart.js/dist/chart.js"]
           }
         }
       }
