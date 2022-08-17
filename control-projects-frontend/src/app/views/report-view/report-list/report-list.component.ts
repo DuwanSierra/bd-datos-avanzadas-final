@@ -17,6 +17,7 @@ export class ReportListComponent implements OnInit {
   profesorDto?: ProfessorRequest;
 
   data?: any;
+  data2?: any;
 
   constructor(
     public profesorManager: ProfesorManagerService,
@@ -33,6 +34,18 @@ export class ReportListComponent implements OnInit {
           this.generateDataReportProjectByProfessor(res);
         });
     }
+  }
+
+  setReport(event: any) {
+    if (event?.index === 1) {
+      this.loadData2();
+    }
+  }
+
+  loadData2() {
+    this.reportsManager.getProjectsActiveInactives().subscribe((res) => {
+      this.data2 = res;
+    });
   }
 
   generateDataReportProjectByProfessor(report: ProjectsByProfessorView[]) {

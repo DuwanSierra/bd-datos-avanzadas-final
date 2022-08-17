@@ -1,6 +1,6 @@
 <window-template [title]="title">
   <div class="reports" content>
-    <p-tabView>
+    <p-tabView (onChange)="setReport($event)">
       <p-tabPanel header="Proyectos por Profesor">
         <div class="report-project-professor">
           <div class="filters">
@@ -22,7 +22,16 @@
         </div>
       </p-tabPanel>
       <p-tabPanel header="Proyectos activos y terminados">
-        Content 2
+        <div class="report-projects-active-inactives">
+          <div class="row">
+            <div class="header item"><span>Nombre y código del proyecto</span></div>
+            <div class="header item"><span>Estado del proyecto</span></div>
+          </div>
+          <div class="row" *ngFor="let data of data2">
+            <div>{{data.nombreproyecto}}{{data.codigoproyecto}}</div>
+            <div class="item {{data.estado === 'Activo' ? 'active' : 'inactive'}}">{{data.estado}}</div>
+          </div>
+        </div>
       </p-tabPanel>
       <p-tabPanel header="Profesores por grupo de investigación">
         Content 3
