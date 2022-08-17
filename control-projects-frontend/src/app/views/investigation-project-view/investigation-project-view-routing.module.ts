@@ -32,7 +32,7 @@ const routes: Routes = [
   title: 'Editar participante a un proyecto de investigacion',
 },
 {
-  path: 'edit/:id',
+  path: 'edit/:nombre/:codigo/:codigoProyecto',
   component: CreateInvestigationProjectViewComponent,
   title: 'Editar proyecto de investigacion',
   data: {
