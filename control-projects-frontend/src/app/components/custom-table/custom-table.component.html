@@ -30,7 +30,12 @@
           <p-tableCheckbox [value]="dataItem"></p-tableCheckbox>
         </td>
         <td *ngFor="let configItem of configuration?.dataConfig">
-          {{ configItem.key ? printDataByKey(configItem.key, dataItem) : "" }}
+          <span *ngIf="configItem.type === undefined">
+            {{ configItem.key ? printDataByKey(configItem.key, dataItem) : "" }}
+          </span>
+          <span *ngIf="configItem.type === 'Date'">
+            {{ (configItem.key ? printDataByKey(configItem.key, dataItem) : "") | date : 'dd/MM/yyyy' }}
+          </span>
         </td>
         <td *ngIf="configuration?.showActions">
           <button

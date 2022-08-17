@@ -11,4 +11,5 @@ export class CustomTableHeader {
 
 export class CustomTableItem {
   public key?: string;
+  public type?: string;
 }

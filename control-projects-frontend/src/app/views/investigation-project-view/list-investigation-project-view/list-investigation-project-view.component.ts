@@ -41,9 +41,11 @@ export class ListInvestigationProjectViewComponent implements OnInit {
       },
       {
         key: 'fechaInicio',
+        type: 'Date'
       },
       {
         key: 'fechaTerminacion',
+        type: 'Date'
       },
     ];
     this.configTable = config;
