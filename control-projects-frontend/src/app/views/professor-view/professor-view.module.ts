@@ -11,6 +11,8 @@ import { InputTextFormModule } from 'src/app/components/input-text-form/input-te
 import { CustomDropdownModule } from 'src/app/components/custom-dropdown/custom-dropdown.module';
 import { CustomMultipleInputTextModule } from 'src/app/components/custom-multiple-input-text/custom-multiple-input-text.module';
 import { CustomDatepickerModule } from 'src/app/components/custom-datepicker/custom-datepicker.module';
+import { CustomTableModule } from 'src/app/components/custom-table/custom-table.module';
+
 
 @NgModule({
   declarations: [CreateProfessorViewComponent, ListprofessorViewComponent],
@@ -23,7 +25,14 @@ import { CustomDatepickerModule } from 'src/app/components/custom-datepicker/cus
     InputTextFormModule,
     CustomDropdownModule,
     CustomMultipleInputTextModule,
-    CustomDatepickerModule
+    CustomDatepickerModule,
+    CustomTableModule,
+  
+    
   ],
 })
 export class ProfessorViewModule {}
+/* InputTextFormModule,
+CustomDropdownModule,
+CustomMultipleInputTextModule,
+CustomTableModule */
