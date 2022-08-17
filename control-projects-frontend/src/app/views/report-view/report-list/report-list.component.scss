@@ -7,3 +7,21 @@
     margin: auto;
   }
 }
+
+.report-projects-active-inactives {
+  width: 100%;
+  .row {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    .header {
+      color: var(--primary-color);
+    }
+    .inactive {
+      color: var(--pink-600);
+    }
+    .active {
+      color: var(--green-500);
+    }
+  }
+}

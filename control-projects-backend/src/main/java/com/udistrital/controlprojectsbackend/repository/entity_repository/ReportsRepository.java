@@ -1,5 +1,6 @@
 package com.udistrital.controlprojectsbackend.repository.entity_repository;
 
+import com.udistrital.controlprojectsbackend.repository.reports.ReportProjectsActivesInactivesView;
 import com.udistrital.controlprojectsbackend.repository.reports.ReporteProyectoProfesorView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,6 +1,7 @@
 package com.udistrital.controlprojectsbackend.controller;
 
 import com.udistrital.controlprojectsbackend.controller.dto.ProfesorDto;
+import com.udistrital.controlprojectsbackend.controller.dto.ReporProjectActivesInactivesDto;
 import com.udistrital.controlprojectsbackend.controller.dto.ReporteProyectoProfesorDto;
 import com.udistrital.controlprojectsbackend.query.reports.ReportsQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,12 @@ public class ReportsController {
         _reportsQuery = reportsQuery;
     }
     @GetMapping("/report-project-by-professor/{cedula}")
-    private Mono<List<ReporteProyectoProfesorDto>> findRol(@PathVariable Long cedula) {
+    private Mono<List<ReporteProyectoProfesorDto>> findReportProjectByProfessor(@PathVariable Long cedula) {
         return _reportsQuery.FindProjectsByCedulaReport(cedula);
+    }
+
+    @GetMapping("/report-actives-inactives")
+    private Mono<List<ReporProjectActivesInactivesDto>> findProjectActivesInactives() {
+        return _reportsQuery.FindProjectsActivesInactives();
     }
 }
